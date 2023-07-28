@@ -5,6 +5,12 @@ resource "aws_cognito_user_pool_client" "website" {
   allowed_oauth_scopes = [
     "openid"
   ]
+  analytics_configuration {
+    application_id   = aws_pinpoint_app.main.application_id
+    external_id      = aws_pinpoint_app.main.name
+    role_arn         = aws_iam_role.cognito.arn
+    user_data_shared = true
+  }
   auth_session_validity = 3
   callback_urls = [
     "https://${aws_s3_bucket_website_configuration.website.website_endpoint}/index.html"
