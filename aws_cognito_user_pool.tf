@@ -13,6 +13,9 @@ resource "aws_cognito_user_pool" "main" {
       sms_message   = "{username} {####}"
     }
   }
+  auto_verified_attributes = [
+    "email"
+  ]
   deletion_protection = local.environment == "production" ? "ACTIVE" : "INACTIVE"
   email_configuration {
 
