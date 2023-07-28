@@ -30,6 +30,14 @@ resource "aws_cognito_user_pool" "main" {
     temporary_password_validity_days = 1
   }
   tags_all = local.tags_all
+  user_attribute_update_settings {
+    attributes_require_verification_before_update = [
+      "email"
+    ]
+  }
+  username_attributes = [
+    "email"
+  ]
   username_configuration {
     case_sensitive = false
   }
