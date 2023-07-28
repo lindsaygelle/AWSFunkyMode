@@ -4,7 +4,7 @@ variable "account" {
 
 variable "application" {
   default = "FunkyMode"
-  type = string
+  type    = string
 }
 
 variable "region" {

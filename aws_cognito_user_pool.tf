@@ -10,14 +10,14 @@ resource "aws_cognito_user_pool" "main" {
     invite_message_template {
       email_message = "user: {username}. temporary password: {####}"
       email_subject = "Funky Mode"
-      sms_message = "{username} {####}"
+      sms_message   = "{username} {####}"
     }
   }
   deletion_protection = local.environment == "production" ? "ACTIVE" : "INACTIVE"
   email_configuration {
 
   }
-  name = "FunkyMode"
+  name = var.application
   password_policy {
     minimum_length                   = 10
     require_lowercase                = true

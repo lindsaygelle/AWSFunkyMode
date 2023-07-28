@@ -6,6 +6,6 @@ locals {
   tags_all = {
     application = var.application
     environment = local.environment
-    region = var.region
+    region      = var.region
   }
 }
