@@ -24,3 +24,21 @@ data "aws_iam_policy_document" "mobile_analytics_full_access" {
     ]
   }
 }
+
+data "aws_iam_policy_document" "s3_bucket_policy_website" {
+  statement {
+    actions = [
+      "s3:GetObject"
+    ]
+    effect = "Allow"
+    principals {
+      identifiers = [
+        "*"
+      ]
+      type = "AWS"
+    }
+    resources = [
+      "${aws_s3_bucket.website.arn}/*"
+    ]
+  }
+}
