@@ -8,7 +8,7 @@ resource "aws_cognito_user_pool" "main" {
   admin_create_user_config {
     allow_admin_create_user_only = false
     invite_message_template {
-      email_message = "user: {username}. temporary password: {####}"
+      email_message = file("./src/cognito/user_pool/email/invite.html")
       email_subject = "Funky Mode"
       sms_message   = "{username} {####}"
     }
