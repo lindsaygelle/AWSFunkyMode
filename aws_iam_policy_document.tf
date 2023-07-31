@@ -25,6 +25,7 @@ data "aws_iam_policy_document" "mobile_analytics_full_access" {
   }
 }
 
+// TODO: This policy isn't working as expected. There is still some stuff needed for S3/Cognito.
 data "aws_iam_policy_document" "s3_bucket_policy_website" {
   statement {
     actions = [
@@ -33,9 +34,9 @@ data "aws_iam_policy_document" "s3_bucket_policy_website" {
     effect = "Allow"
     principals {
       identifiers = [
-        "*"
+        aws_cognito_user_pool.main.arn
       ]
-      type = "AWS"
+      type = "Federated"
     }
     resources = [
       "${aws_s3_bucket.website.arn}/*"

@@ -11,7 +11,7 @@ resource "aws_s3_bucket_acl" "main" {
 }
 
 resource "aws_s3_bucket_acl" "website" {
-  acl        = "public-read"
+  acl        = "private"
   bucket     = aws_s3_bucket.website.id
   depends_on = [aws_s3_bucket_ownership_controls.website]
 }
