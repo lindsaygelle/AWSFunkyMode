@@ -8,9 +8,9 @@ resource "aws_cognito_user_pool" "main" {
   admin_create_user_config {
     allow_admin_create_user_only = false
     invite_message_template {
-      email_message = "user: {username}. temporary password: {####}"
-      email_subject = "Funky Mode"
-      sms_message   = "{username} {####}"
+      email_message = file("./src/cognito/user_pool/email/invite_message.html")
+      email_subject = "${var.application} invitation"
+      sms_message   = file("./src/cognito/user_pool/sms/invite_message.txt")
     }
   }
   auto_verified_attributes = [
@@ -30,10 +30,22 @@ resource "aws_cognito_user_pool" "main" {
     temporary_password_validity_days = 1
   }
   tags_all = local.tags_all
+  user_attribute_update_settings {
+    attributes_require_verification_before_update = [
+      "email"
+    ]
+  }
+  username_attributes = [
+    "email"
+  ]
   username_configuration {
     case_sensitive = false
   }
   verification_message_template {
-    default_email_option = "CONFIRM_WITH_CODE"
+    default_email_option  = "CONFIRM_WITH_CODE"
+    email_message         = file("./src/cognito/user_pool/email/verification_message.html")
+    email_subject         = "${var.application} verification"
+    email_subject_by_link = "New register to ${var.application}"
+    sms_message           = file("./src/cognito/user_pool/sms/verification_message.txt")
   }
 }
