@@ -1,10 +1,13 @@
 resource "aws_cognito_user_pool_client" "website" {
   allowed_oauth_flows = [
-    "implicit"
+    "code"
   ]
   allowed_oauth_scopes = [
-    "openid"
+    "email",
+    "openid",
+    "profile"
   ]
+  allowed_oauth_flows_user_pool_client = true
   analytics_configuration {
     application_id   = aws_pinpoint_app.main.application_id
     external_id      = aws_pinpoint_app.main.name
@@ -19,6 +22,7 @@ resource "aws_cognito_user_pool_client" "website" {
   explicit_auth_flows = [
     "ALLOW_CUSTOM_AUTH",
     "ALLOW_REFRESH_TOKEN_AUTH",
+    "ALLOW_USER_PASSWORD_AUTH",
     "ALLOW_USER_SRP_AUTH"
   ]
   generate_secret = true
