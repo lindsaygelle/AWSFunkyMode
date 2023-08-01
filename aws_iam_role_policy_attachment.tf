@@ -1,3 +1,8 @@
+resource "aws_iam_role_policy_attachment" "app_sync_push_to_cloudwatch_logs" {
+  policy_arn = aws_iam_policy.app_sync_push_to_cloudwatch_logs.arn
+  role       = aws_iam_role.app_sync.id
+}
+
 resource "aws_iam_role_policy_attachment" "cognito_mobile_analytics_full_access" {
   policy_arn = aws_iam_policy.mobile_analytics_full_access.arn
   role       = aws_iam_role.cognito.id
