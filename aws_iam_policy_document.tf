@@ -1,3 +1,16 @@
+data "aws_iam_policy_document" "assume_role_app_sync" {
+  statement {
+    effect = "Allow"
+
+    principals {
+      type        = "Service"
+      identifiers = ["appsync.amazonaws.com"]
+    }
+
+    actions = ["sts:AssumeRole"]
+  }
+}
+
 data "aws_iam_policy_document" "assume_role_cognito" {
   statement {
     actions = [
@@ -10,6 +23,20 @@ data "aws_iam_policy_document" "assume_role_cognito" {
       ]
       type = "Service"
     }
+  }
+}
+
+data "aws_iam_policy_document" "app_sync_push_to_cloudwatch_logs" {
+  statement {
+    actions = [
+      "logs:CreateLogGroup",
+      "logs:CreateLogStream",
+      "logs:PutLogEvents"
+    ]
+    effect = "Allow"
+    resources = [
+      "*"
+    ]
   }
 }
 
