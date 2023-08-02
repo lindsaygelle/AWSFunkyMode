@@ -15,6 +15,7 @@ resource "aws_lambda_function" "cognito_user_pool_pre_authentication" {
   role             = aws_iam_role.cognito_lambda.arn
   runtime          = "python3.9"
   source_code_hash = filebase64sha256(data.archive_file.cognito_user_pool_pre_authentication.output_path)
+  tags_all         = local.tags_all
   timeout          = 5
   tracing_config {
     mode = "Active"
@@ -38,6 +39,7 @@ resource "aws_lambda_function" "cognito_user_pool_post_authentication" {
   role             = aws_iam_role.cognito_lambda.arn
   runtime          = "python3.9"
   source_code_hash = filebase64sha256(data.archive_file.cognito_user_pool_post_authentication.output_path)
+  tags_all         = local.tags_all
   timeout          = 5
   tracing_config {
     mode = "Active"
@@ -61,6 +63,7 @@ resource "aws_lambda_function" "cognito_user_pool_post_sign_up" {
   role             = aws_iam_role.cognito_lambda.arn
   runtime          = "python3.9"
   source_code_hash = filebase64sha256(data.archive_file.cognito_user_pool_post_sign_up.output_path)
+  tags_all         = local.tags_all
   timeout          = 5
   tracing_config {
     mode = "Active"
@@ -84,6 +87,7 @@ resource "aws_lambda_function" "cognito_user_pool_pre_sign_up" {
   role             = aws_iam_role.cognito_lambda.arn
   runtime          = "python3.9"
   source_code_hash = filebase64sha256(data.archive_file.cognito_user_pool_pre_sign_up.output_path)
+  tags_all         = local.tags_all
   timeout          = 5
   tracing_config {
     mode = "Active"
