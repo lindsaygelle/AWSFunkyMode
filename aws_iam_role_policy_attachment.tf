@@ -1,5 +1,5 @@
 resource "aws_iam_role_policy_attachment" "app_sync_dynamo_db_full_access" {
-  policy_arn = "arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess" // TODO
+  policy_arn = "arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess" // TODO: Create a policy more appropriate.
   role       = aws_iam_role.app_sync.id
 }
 
