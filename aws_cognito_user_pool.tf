@@ -20,6 +20,12 @@ resource "aws_cognito_user_pool" "main" {
   email_configuration {
 
   }
+  lambda_config {
+    pre_authentication  = aws_lambda_function.cognito_user_pool_pre_authentication.arn
+    post_authentication = aws_lambda_function.cognito_user_pool_post_authentication.arn
+    post_confirmation   = aws_lambda_function.cognito_user_pool_post_sign_up.arn
+    pre_sign_up         = aws_lambda_function.cognito_user_pool_pre_sign_up.arn
+  }
   name = var.application
   password_policy {
     minimum_length                   = 10
