@@ -1,3 +1,8 @@
+resource "aws_iam_role_policy_attachment" "app_sync_dynamo_db_full_access" {
+  policy_arn = "arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess"
+  role       = aws_iam_role.app_sync.id
+}
+
 resource "aws_iam_role_policy_attachment" "app_sync_push_to_cloudwatch_logs" {
   policy_arn = aws_iam_policy.app_sync_push_to_cloudwatch_logs.arn
   role       = aws_iam_role.app_sync.id

@@ -6,6 +6,7 @@ resource "aws_appsync_graphql_api" "main" {
     field_log_level          = "ALL"
   }
   name     = var.application
+  schema   = file("./src/app_sync/graphql/schema.graphql")
   tags_all = local.tags_all
   user_pool_config {
     aws_region     = var.region

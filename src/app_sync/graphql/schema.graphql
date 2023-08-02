@@ -1,0 +1,20 @@
+type UserSetting {
+  username: String
+}
+
+input UserSettingInput {
+  username: String
+}
+
+type Query {
+  getUserSetting: UserSetting
+}
+
+type Mutation {
+  storeUserSetting(UserSetting: UserSettingInput): UserSetting
+}
+
+schema {
+  mutation: Mutation
+  query: Query
+}
