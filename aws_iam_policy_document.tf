@@ -26,6 +26,19 @@ data "aws_iam_policy_document" "assume_role_cognito" {
   }
 }
 
+data "aws_iam_policy_document" "assume_role_lambda" {
+  statement {
+    effect = "Allow"
+
+    principals {
+      type        = "Service"
+      identifiers = ["lambda.amazonaws.com"]
+    }
+
+    actions = ["sts:AssumeRole"]
+  }
+}
+
 data "aws_iam_policy_document" "app_sync_push_to_cloudwatch_logs" {
   statement {
     actions = [
@@ -36,6 +49,20 @@ data "aws_iam_policy_document" "app_sync_push_to_cloudwatch_logs" {
     effect = "Allow"
     resources = [
       "*"
+    ]
+  }
+}
+
+data "aws_iam_policy_document" "cognito_lambda_invoke_function" {
+  statement {
+    actions = [
+      "lambda:InvokeFunction"
+    ]
+    effect = "Allow"
+    resources = [
+      aws_lambda_function.cognito_user_pool_post_authentication.arn,
+      aws_lambda_function.cognito_user_pool_post_sign_up.arn,
+      aws_lambda_function.cognito_user_pool_pre_sign_up.arn
     ]
   }
 }

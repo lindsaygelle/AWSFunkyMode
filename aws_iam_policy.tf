@@ -13,3 +13,11 @@ resource "aws_iam_policy" "mobile_analytics_full_access" {
   name        = "${var.application}MobileAnalyticsFullAccess"
   tags_all    = local.tags_all
 }
+
+resource "aws_iam_policy" "cognito_lambda_invoke_function" {
+  description = "Provides ${aws_iam_role.cognito_lambda.name} invoke function access."
+  path        = "/${var.application}/"
+  policy      = data.aws_iam_policy_document.cognito_lambda_invoke_function.json
+  name        = "${var.application}CognitoLambdaInvokeFunction"
+  tags_all    = local.tags_all
+}
