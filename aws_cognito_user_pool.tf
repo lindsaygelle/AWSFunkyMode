@@ -16,7 +16,7 @@ resource "aws_cognito_user_pool" "main" {
   auto_verified_attributes = [
     "email"
   ]
-  deletion_protection = local.environment == "production" ? "ACTIVE" : "INACTIVE"
+  deletion_protection = local.is_production ? "ACTIVE" : "INACTIVE"
   email_configuration {
 
   }

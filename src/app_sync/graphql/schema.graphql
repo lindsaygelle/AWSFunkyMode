@@ -1,0 +1,108 @@
+input CreateUserInput {
+	user_id: String!
+}
+
+input DeleteUserInput {
+	user_id: String!
+}
+
+type User {
+	user_id: String!
+}
+
+type UserConnection {
+	items: [User]
+	nextToken: String
+}
+
+input TableBooleanFilterInput {
+	ne: Boolean
+	eq: Boolean
+}
+
+input TableFloatFilterInput {
+	ne: Float
+	eq: Float
+	le: Float
+	lt: Float
+	ge: Float
+	gt: Float
+	contains: Float
+	notContains: Float
+	between: [Float]
+}
+
+input TableUserFilterInput {
+	user_id: TableStringFilterInput
+}
+
+input TableIDFilterInput {
+	ne: ID
+	eq: ID
+	le: ID
+	lt: ID
+	ge: ID
+	gt: ID
+	contains: ID
+	notContains: ID
+	between: [ID]
+	beginsWith: ID
+}
+
+input TableIntFilterInput {
+	ne: Int
+	eq: Int
+	le: Int
+	lt: Int
+	ge: Int
+	gt: Int
+	contains: Int
+	notContains: Int
+	between: [Int]
+}
+
+input TableStringFilterInput {
+	ne: String
+	eq: String
+	le: String
+	lt: String
+	ge: String
+	gt: String
+	contains: String
+	notContains: String
+	between: [String]
+	beginsWith: String
+}
+
+input UpdateUserInput {
+	user_id: String!
+}
+
+
+type Mutation {
+	createUser(input: CreateUserInput!): User
+	updateUser(input: UpdateUserInput!): User
+	deleteUser(input: DeleteUserInput!): User
+}
+
+type Query {
+	getUser(user_id: String!): User
+  @aws_auth(cognito_groups: ["restricted", "admin"])
+	listUsers(filter: TableUserFilterInput, limit: Int, nextToken: String): UserConnection
+  @aws_auth(cognito_groups: ["admin"])
+}
+
+type Subscription {
+	onCreateUser(user_id: String): User
+		@aws_subscribe(mutations: ["createUser"])
+	onUpdateUser(user_id: String): User
+		@aws_subscribe(mutations: ["updateUser"])
+	onDeleteUser(user_id: String): User
+		@aws_subscribe(mutations: ["deleteUser"])
+}
+
+schema {
+	query: Query
+	mutation: Mutation
+	subscription: Subscription
+}
