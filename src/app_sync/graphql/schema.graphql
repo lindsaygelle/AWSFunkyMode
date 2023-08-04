@@ -21,8 +21,11 @@ input UpdateUserInput {
 }
 
 type User {
-    email: String!
+    createdAt: AWSDateTime!
+    email: AWSEmail!
     id: ID!
+    sk: ID!
+    updatedAt: AWSDateTime!
 }
 
 type UserConnection {
@@ -32,6 +35,8 @@ type UserConnection {
 
 type Mutation {
     createUser(input: CreateUserInput): User!
+        @aws_auth(cognito_groups: ["admin"])
+    deleteUser(input: DeleteUserInput!): User!
         @aws_auth(cognito_groups: ["admin"])
 }
 

@@ -1,13 +1,22 @@
+resource "aws_appsync_resolver" "delete_user" {
+  api_id            = aws_appsync_graphql_api.main.id
+  data_source       = aws_appsync_datasource.main.name
+  field             = "deleteUser"
+  request_template  = file("./src/app_sync/graphql/resolver/dynamo_db/delete_item/request/user/template.vtl")
+  response_template = file("./src/app_sync/graphql/resolver/dynamo_db/delete_item/response/template.vtl")
+  type              = "Mutation"
+}
+
 resource "aws_appsync_resolver" "get_user" {
   api_id            = aws_appsync_graphql_api.main.id
   data_source       = aws_appsync_datasource.main.name
   field             = "getUser"
-  request_template  = file("./src/app_sync/graphql/resolver/dynamo_db/get_item/request/template.vtl")
+  request_template  = file("./src/app_sync/graphql/resolver/dynamo_db/get_item/request/user/template.vtl")
   response_template = file("./src/app_sync/graphql/resolver/dynamo_db/get_item/response/template.vtl")
   type              = "Query"
 }
 
-resource "aws_appsync_resolver" "get_users" {
+resource "aws_appsync_resolver" "scan_user" {
   api_id            = aws_appsync_graphql_api.main.id
   data_source       = aws_appsync_datasource.main.name
   field             = "getUsers"
@@ -20,7 +29,7 @@ resource "aws_appsync_resolver" "put_user" {
   api_id            = aws_appsync_graphql_api.main.id
   data_source       = aws_appsync_datasource.main.name
   field             = "createUser"
-  request_template  = file("./src/app_sync/graphql/resolver/dynamo_db/put_item/request/template.vtl")
+  request_template  = file("./src/app_sync/graphql/resolver/dynamo_db/put_item/request/user/template.vtl")
   response_template = file("./src/app_sync/graphql/resolver/dynamo_db/put_item/response/template.vtl")
   type              = "Mutation"
 }
