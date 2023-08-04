@@ -1,353 +1,48 @@
-input CreateQuoteInput {
-    CreatedAt: String!
-    Entities: CreateQuoteEntitesInput!
-    KeyPhrases: CreateQuoteKeyPhrasesInput!
-    MD5: String!
-    Pii: CreateQuotePiiInput!
-    Quote: String!
-    SHA256: String!
-    Sentiment: CreateQuoteSentimentInput!
-    Syntax: CreateQuoteSyntaxInput!
-    UpdatedAt: String!
-}
-
-input CreateQuoteConsoleInput {
-    Name: String!
-    Quotes: [CreateQuoteInput!]!
-}
-
-input CreateQuoteEntitesInput {
-    Entities: [CreateQuoteEntityInput!]!
-}
-
-input CreateQuoteEntityInput {
-    BeginOffset: Int!
-    EndOffset: Int!
-    Score: Float!
-    Text: String!
-    Type: String!
-}
-
-input CreateQuoteGameInput {
-    Consoles: [CreateQuoteConsoleInput!]!
-    Name: String!
-}
-
-input CreateQuoteKeyPhraseInput {
-    BeginOffset: Int!
-    EndOffset: Int!
-    Score: Float!
-    Text: String!
-}
-
-input CreateQuoteKeyPhrasesInput {
-    KeyPhrases: [CreateQuoteKeyPhraseInput!]!
-}
-
-input CreateQuotePiiInput {
-    Entities: [CreateQuotePiiEntityInput!]!
-
-}
-
-input CreateQuotePiiEntityInput {
-    BeginOffset: Int!
-    EndOffset: Int!
-    Score: Float!
-    Type: String!
-}
-
-input CreateQuoteSentimentInput {
-    Sentiment: String!
-    SentimentScore: CreateQuoteSentimentScoreInput!
-}
-
-input CreateQuoteSentimentScoreInput {
-    Mixed: Float!
-    Negative: Float!
-    Neutral: Float!
-    Positive: Float!
-}
-
-input CreateQuoteSyntaxInput {
-    SyntaxTokens: [CreateQuoteSyntaxTokenInput!]!
-}
-
-input CreateQuoteSyntaxTokenInput {
-    BeginOffset: Int!
-    EndOffset: Int!
-    PartOfSpeech: CreateQuoteSyntaxTokenPartOfSpeechInput!
-    Text: String!
-    TokenId: Int!
-}
-
-input CreateQuoteSyntaxTokenPartOfSpeechInput {
-    Score: Float!
-    Tag: String!
-}
-
 input CreateUserInput {
-    Id: ID!
+    email: String!
+    id: ID!
 }
 
 input DeleteUserInput {
-    Id: ID!
+    id: ID!
 }
 
-input TableBooleanFilterInput {
-    ne: Boolean
-    eq: Boolean
+input GetUserInput {
+    id: ID!
 }
 
-input TableFloatFilterInput {
-    ne: Float
-    eq: Float
-    le: Float
-    lt: Float
-    ge: Float
-    gt: Float
-    contains: Float
-    notContains: Float
-    between: [Float]
-}
-
-input TableUserFilterInput {
-    Id: TableStringFilterInput
-}
-
-input TableIDFilterInput {
-    ne: ID
-    eq: ID
-    le: ID
-    lt: ID
-    ge: ID
-    gt: ID
-    contains: ID
-    notContains: ID
-    between: [ID]
-    beginsWith: ID
-}
-
-input TableIntFilterInput {
-    ne: Int
-    eq: Int
-    le: Int
-    lt: Int
-    ge: Int
-    gt: Int
-    contains: Int
-    notContains: Int
-    between: [Int]
-}
-
-input TableStringFilterInput {
-    ne: String
-    eq: String
-    le: String
-    lt: String
-    ge: String
-    gt: String
-    contains: String
-    notContains: String
-    between: [String]
-    beginsWith: String
-}
-
-input UpdateUserInput {
-    Id: ID!
-}
-
-type Quote {
-    CreatedAt: String!
-    Entities: QuoteEntites!
-    Id: ID!
-    KeyPhrases: QuoteKeyPhrases!
-    MD5: String!
-    Pii: QuotePii!
-    Quote: String!
-    SHA256: String!
-    Sentiment: QuoteSentiment!
-    Syntax: QuoteSyntax!
-    UpdatedAt: String!
-}
-
-type QuoteConsole {
-    Id: ID!
-    Name: String!
-    Quotes: [Quote!]!
-}
-
-type QuoteEntites {
-    Id: ID!
-    Entities: [QuoteEntity!]!
-}
-
-type QuoteEntity {
-    BeginOffset: Int!
-    EndOffset: Int!
-    Id: ID!
-    Score: Float!
-    Text: String!
-    Type: String!
-}
-
-type QuoteGame {
-    Consoles: [QuoteConsole!]!
-    Id: ID!
-    Name: String!
-}
-
-type QuoteKeyPhrase {
-    BeginOffset: Int!
-    EndOffset: Int!
-    Id: ID!
-    Score: Float!
-    Text: String!
-}
-
-type QuoteKeyPhrases {
-    Id: ID!
-    KeyPhrases: [QuoteKeyPhrase!]!
-}
-
-type QuotePii {
-    Entities: [QuotePiiEntity!]!
-    Id: ID!
-}
-
-type QuotePiiEntity {
-    BeginOffset: Int!
-    EndOffset: Int!
-    Id: ID!
-    Score: Float!
-    Type: String!
-}
-
-type QuoteSentiment {
-    Id: ID!
-    Sentiment: String!
-    SentimentScore: QuoteSentimentScore!
-}
-
-type QuoteSentimentScore {
-    Id: ID!
-    Mixed: Float!
-    Negative: Float!
-    Neutral: Float!
-    Positive: Float!
-}
-
-type QuoteSyntax {
-    Id: ID!
-    SyntaxTokens: [QuoteSyntaxToken!]!
-}
-
-type QuoteSyntaxToken {
-    BeginOffset: Int!
-    Id: ID!
-    EndOffset: Int!
-    PartOfSpeech: QuoteSyntaxTokenPartOfSpeech!
-    Text: String!
-    TokenId: Int!
-}
-
-type QuoteSyntaxTokenPartOfSpeech {
-    Id: ID!
-    Score: Float!
-    Tag: String!
-}
-
-type User {
-    Id: ID!
-}
-
-type UserConnection {
-    items: [User]
+input GetUsersInput {
+    limit: Int
     nextToken: String
 }
 
+input UpdateUserInput {
+    id: ID!
+}
+
+type User {
+    email: String!
+    id: ID!
+}
+
+type UserConnection {
+    nextToken: String
+    users: [User]
+}
+
 type Mutation {
-    createQuote(input: CreateQuoteInput): Quote
-    @aws_auth(cognito_groups: [aws_cognito_user_group.admin.name])
-    createQuoteConsole(input: CreateQuoteConsoleInput): QuoteConsole
-    @aws_auth(cognito_groups: [aws_cognito_user_group.admin.name])
-    createQuoteEntites(input: CreateQuoteEntitesInput): QuoteEntites
-    @aws_auth(cognito_groups: [aws_cognito_user_group.admin.name])
-    createQuoteEntity(input: CreateQuoteEntityInput): QuoteEntity
-    @aws_auth(cognito_groups: [aws_cognito_user_group.admin.name])
-    createQuoteGame(input: CreateQuoteGameInput): QuoteGame
-    @aws_auth(cognito_groups: [aws_cognito_user_group.admin.name])
-    createQuoteKeyPhrase(input: CreateQuoteKeyPhraseInput): QuoteKeyPhrase
-    @aws_auth(cognito_groups: [aws_cognito_user_group.admin.name])
-    createQuoteKeyPhrases(input: CreateQuoteKeyPhrasesInput): QuoteKeyPhrases
-    @aws_auth(cognito_groups: [aws_cognito_user_group.admin.name])
-    createQuotePii(input: CreateQuotePiiInput): QuotePii
-    @aws_auth(cognito_groups: [aws_cognito_user_group.admin.name])
-    createQuotePiiEntity(input: CreateQuotePiiEntityInput): QuotePiiEntity
-    @aws_auth(cognito_groups: [aws_cognito_user_group.admin.name])
-    createQuoteSentiment(input: CreateQuoteSentimentInput): QuoteSentiment
-    @aws_auth(cognito_groups: [aws_cognito_user_group.admin.name])
-    createQuoteSentimentScore(input: CreateQuoteSentimentScoreInput): QuoteSentimentScore
-    @aws_auth(cognito_groups: [aws_cognito_user_group.admin.name])
-    createQuoteSyntax(input: CreateQuoteSyntaxInput): QuoteSyntax
-    @aws_auth(cognito_groups: [aws_cognito_user_group.admin.name])
-    createQuoteSyntaxToken(input: CreateQuoteSyntaxTokenInput): QuoteSyntaxToken
-    @aws_auth(cognito_groups: [aws_cognito_user_group.admin.name])
-    createQuoteSyntaxTokenPartOfSpeech(input: CreateQuoteSyntaxTokenPartOfSpeechInput): QuoteSyntaxTokenPartOfSpeech
-    @aws_auth(cognito_groups: [aws_cognito_user_group.admin.name])
-    createUser(input: CreateUserInput!): User
-    @aws_auth(cognito_groups: [aws_cognito_user_group.admin.name])
-    updateUser(input: UpdateUserInput!): User
-    @aws_auth(cognito_groups: [aws_cognito_user_group.admin.name])
-    deleteUser(input: DeleteUserInput!): User
-    @aws_auth(cognito_groups: [aws_cognito_user_group.admin.name])
+    createUser(input: CreateUserInput): User!
+        @aws_auth(cognito_groups: ["admin"])
 }
 
 type Query {
-    getQuoteInput(Id: ID!): Quote
-    @aws_auth(cognito_groups: [aws_cognito_user_group.user.name])
-    getQuoteConsoleInput(Id: ID!): QuoteConsole
-    @aws_auth(cognito_groups: [aws_cognito_user_group.user.name])
-    getQuoteEntitesInput(Id: ID!): QuoteEntites
-    @aws_auth(cognito_groups: [aws_cognito_user_group.user.name])
-    getQuoteEntityInput(Id: ID!): QuoteEntity
-    @aws_auth(cognito_groups: [aws_cognito_user_group.user.name])
-    getQuoteGameInput(Id: ID!): QuoteGame
-    @aws_auth(cognito_groups: [aws_cognito_user_group.user.name])
-    getQuoteKeyPhraseInput(Id: ID!): QuoteKeyPhrase
-    @aws_auth(cognito_groups: [aws_cognito_user_group.user.name])
-    getQuoteKeyPhrasesInput(Id: ID!): QuoteKeyPhrases
-    @aws_auth(cognito_groups: [aws_cognito_user_group.user.name])
-    getQuotePiiInput(Id: ID!): QuotePii
-    @aws_auth(cognito_groups: [aws_cognito_user_group.user.name])
-    getQuotePiiEntityInput(Id: ID!): QuotePiiEntity
-    @aws_auth(cognito_groups: [aws_cognito_user_group.user.name])
-    getQuoteSentimentInput(Id: ID!): QuoteSentiment
-    @aws_auth(cognito_groups: [aws_cognito_user_group.user.name])
-    getQuoteSentimentScoreInput(Id: ID!): QuoteSentimentScore
-    @aws_auth(cognito_groups: [aws_cognito_user_group.user.name])
-    getQuoteSyntaxInput(Id: ID!): QuoteSyntax
-    @aws_auth(cognito_groups: [aws_cognito_user_group.user.name])
-    getQuoteSyntaxTokenInput(Id: ID!): QuoteSyntaxToken
-    @aws_auth(cognito_groups: [aws_cognito_user_group.user.name])
-    getQuoteSyntaxTokenPartOfSpeechInput(Id: ID!): QuoteSyntaxTokenPartOfSpeech
-    @aws_auth(cognito_groups: [aws_cognito_user_group.user.name])
-    getUser(Id: ID!): User
-    @aws_auth(cognito_groups: [aws_cognito_user_group.user.name])
-    getUsers(filter: TableUserFilterInput, limit: Int, nextToken: String): UserConnection
-    @aws_auth(cognito_groups: [aws_cognito_user_group.admin.name])
-}
-
-type Subscription {
-    onCreateUser(Id: String): User
-    @aws_subscribe(mutations: ["createUser"])
-    onUpdateUser(Id: String): User
-    @aws_subscribe(mutations: ["updateUser"])
-    onDeleteUser(Id: String): User
-    @aws_subscribe(mutations: ["deleteUser"])
+    getUser(input: GetUserInput): User
+        @aws_auth(cognito_groups: ["user"])
+    getUsers(input: GetUsersInput): UserConnection
+        @aws_auth(cognito_groups: ["admin"])
 }
 
 schema {
-    query: Query
     mutation: Mutation
-    subscription: Subscription
+    query: Query
 }
