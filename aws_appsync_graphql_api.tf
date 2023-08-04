@@ -1,5 +1,6 @@
 resource "aws_appsync_graphql_api" "main" {
   authentication_type = "AMAZON_COGNITO_USER_POOLS"
+  depends_on          = [aws_cognito_user_group.admin, aws_cognito_user_group.user]
   log_config {
     cloudwatch_logs_role_arn = aws_iam_role.app_sync.arn
     exclude_verbose_content  = false

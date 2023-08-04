@@ -1,11 +1,11 @@
-resource "aws_dynamodb_table" "user" {
+resource "aws_dynamodb_table" "main" {
   attribute {
-    name = "user_id"
+    name = "Id"
     type = "S"
   }
   billing_mode = "PROVISIONED"
-  hash_key     = "user_id"
-  name         = "${var.application}User"
+  hash_key     = "Id"
+  name         = var.application
   point_in_time_recovery {
     enabled = local.is_production ? true : false
   }
