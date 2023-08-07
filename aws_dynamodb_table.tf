@@ -1,6 +1,6 @@
 resource "aws_dynamodb_table" "main" {
   attribute {
-    name = "id"
+    name = "pk"
     type = "S"
   }
   attribute {
@@ -8,7 +8,7 @@ resource "aws_dynamodb_table" "main" {
     type = "S"
   }
   billing_mode = "PROVISIONED"
-  hash_key     = "id"
+  hash_key     = "pk"
   name         = var.application
   point_in_time_recovery {
     enabled = local.is_production ? true : false

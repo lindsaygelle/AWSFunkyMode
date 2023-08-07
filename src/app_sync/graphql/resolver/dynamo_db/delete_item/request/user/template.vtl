@@ -1,9 +1,10 @@
-#set($sk = "User")
+#set($partitionKey = $ctx.args.input.partitionKey)
+#set($sortKey = "USER")
 {
-  "version": "2017-02-28",
-  "operation": "DeleteItem",
-  "key": {
-    "id": $util.dynamodb.toDynamoDBJson($ctx.args.input.id),
-    "sk": $util.dynamodb.toDynamoDBJson($sk),
-  },
+    "version": "2017-02-28",
+    "operation": "DeleteItem",
+    "key": {
+        "pk": $util.dynamodb.toDynamoDBJson($partitionKey),
+        "sk": $util.dynamodb.toDynamoDBJson($sortKey),
+    },
 }
