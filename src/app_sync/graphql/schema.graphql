@@ -1,14 +1,14 @@
 input CreateUserInput {
     email: String!
-    pk: ID!
+    id: ID!
 }
 
 input DeleteUserInput {
-    pk: ID!
+    id: ID!
 }
 
 input GetUserInput {
-    pk: ID!
+    id: ID!
 }
 
 input GetUsersInput {
@@ -17,13 +17,13 @@ input GetUsersInput {
 }
 
 input UpdateUserInput {
-    pk: ID!
+    id: ID!
 }
 
 type User {
     createdAt: AWSDateTime!
     email: AWSEmail!
-    pk: ID!
+    id: ID!
     sk: ID!
     updatedAt: AWSDateTime!
 }
@@ -31,14 +31,6 @@ type User {
 type UserConnection {
     nextToken: String
     users: [User]
-}
-
-type UserSetting {
-    createdAt: AWSDateTime!
-    pk: ID!
-    sk: ID!
-    updatedAt: AWSDateTime!
-    userName: String!
 }
 
 type Mutation {

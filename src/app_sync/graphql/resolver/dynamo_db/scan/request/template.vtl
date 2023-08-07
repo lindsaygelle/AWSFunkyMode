@@ -1,0 +1,15 @@
+{
+  "version": "2017-02-28",
+  "operation": "Scan",
+  "filter" : {
+    "expression" : "#sk = :sk",
+    "expressionNames" : {
+        "#sk" : "sk"
+    },
+    "expressionValues" : {
+        ":sk" : $util.dynamodb.toDynamoDBJson("User")
+    }
+  },
+  "limit": $util.defaultIfNull($ctx.args.limit, 20),
+  "nextToken": $util.toJson($util.defaultIfNullOrEmpty($ctx.args.nextToken, null)),
+}

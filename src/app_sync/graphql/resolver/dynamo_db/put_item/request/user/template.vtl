@@ -1,30 +1,25 @@
+#set($sk = "User")
 #set($createdAt = $util.time.nowISO8601())
-#set($partitionKey = $ctx.args.input.partitionKey)
-#set($sortKey = "USER")
 #set($updatedAt = $createdAt)
 {
-    "version": "2017-02-28",
-    "operation": "PutItem",
-    "key": {
-        "partitionKey": $util.dynamodb.toDynamoDBJson($partitionKey),
-        "sortKey": $util.dynamodb.toDynamoDBJson($sortKey),
+  "version": "2017-02-28",
+  "operation": "PutItem",
+  "key": {
+    "id": $util.dynamodb.toDynamoDBJson($ctx.args.input.id),
+    "sk": $util.dynamodb.toDynamoDBJson($sk),
+  },
+  "attributeValues": {
+    "createdAt": $util.dynamodb.toDynamoDBJson($createdAt),
+    "email": $util.dynamodb.toDynamoDBJson($ctx.args.input.email),
+    "id": $util.dynamodb.toDynamoDBJson($ctx.args.input.id),
+    "sk": $util.dynamodb.toDynamoDBJson($sk),
+    "updatedAt": $util.dynamodb.toDynamoDBJson($updatedAt),
+  },
+  "condition": {
+    "expression": "attribute_not_exists(#id) and attribute_not_exists(#sk)",
+    "expressionNames": {
+      "#id": "id",
+      "#sk": "sk",
     },
-    "attributeValues": {
-        "createdAt": $util.dynamodb.toDynamoDBJson($createdAt),
-        "email": $util.dynamodb.toDynamoDBJson($ctx.args.input.email),
-        "partitionKey": $util.dynamodb.toDynamoDBJson($partitionKey),
-        "sortKey": $util.dynamodb.toDynamoDBJson($sortKey),
-        "updatedAt": $util.dynamodb.toDynamoDBJson($updatedAt),
-    },
-    "condition": {
-        "expression": "attribute_not_exists(#partitionKey) and attribute_not_exists(#sortKey)",
-        "expressionNames": {
-            "#partitionKey": "partitionKey",
-            "#sortKey": "sortKey",
-        },
-        "expressionValues": {
-            ":partitionKey": $partitionKey,
-            ":sortKey": $sortKey,
-        },
-    },
+  },
 }
