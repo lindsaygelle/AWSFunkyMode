@@ -1,19 +1,19 @@
 resource "aws_dynamodb_table" "main" {
   attribute {
-    name = "id"
+    name = "PartitionKey"
     type = "S"
   }
   attribute {
-    name = "sk"
+    name = "SortKey"
     type = "S"
   }
   billing_mode = "PROVISIONED"
-  hash_key     = "id"
+  hash_key     = "PartitionKey"
   name         = var.application
   point_in_time_recovery {
     enabled = local.is_production ? true : false
   }
-  range_key      = "sk"
+  range_key      = "SortKey"
   read_capacity  = 1 // TODO: Check this value.
   table_class    = local.is_production ? "STANDARD" : "STANDARD_INFREQUENT_ACCESS"
   tags_all       = local.tags_all
