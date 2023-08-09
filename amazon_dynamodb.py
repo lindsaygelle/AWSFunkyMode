@@ -7,7 +7,8 @@ import boto3
 def create_console_model(console_index, console_name, game_index):
     console_model = {
         "GSI": "Console",
-        "ConsoleId": console_index,
+        "ID": str(console_index),
+        "ConsoleId": str(console_index),
         "Name": console_name,
         "PartitionKey": f"Console#{console_index}",
         "SortKey": "Console#Metadata",
@@ -17,10 +18,11 @@ def create_console_model(console_index, console_name, game_index):
 
 def create_entity_model(console_index, entitiy_index, game_index, quote_index):
     entity_model = {
-        "EntityId": entitiy_index,
+        "EntityId": str(entitiy_index),
         "PartitionKey": f"Game#{game_index}&Console#{console_index}",
         "GSI": "Entity",
-        "QuoteId": quote_index,
+        "ID": str(entitiy_index),
+        "QuoteId": str(quote_index),
         "SortKey": f"Quote#{quote_index}&Entity&Metadata",
     }
     return entity_model
@@ -42,9 +44,10 @@ def create_entity_item_model(
     entity_item_model = {
         "BeginOffset": begin_offset,
         "EndOffset": end_offset,
-        "EntityId": entity_index,
-        "EntityItemId": entity_item_index,
+        "EntityId": str(entity_index),
+        "EntityItemId": str(entity_item_index),
         "GSI": "EntityItem",
+        "ID": str(entity_item_index),
         "PartitionKey": f"Game#{game_index}&Console#{console_index}",
         "Order": order,
         "Score": score,
@@ -58,7 +61,8 @@ def create_entity_item_model(
 def create_game_model(console_index, game_index, game_name):
     game_model = {
         "GSI": "Game",
-        "GameId": game_index,
+        "GameId": str(game_index),
+        "ID": str(game_index),
         "Name": game_name,
         "PartitionKey": f"Game#{game_index}",
         "SortKey": f"Game#{game_index}&Metadata",
@@ -68,10 +72,11 @@ def create_game_model(console_index, game_index, game_name):
 
 def create_key_phrase_model(console_index, game_index, key_phrase_index, quote_index):
     key_phrase_model = {
-        "KeyPhraseId": key_phrase_index,
+        "KeyPhraseId": str(key_phrase_index),
         "PartitionKey": f"Game#{game_index}&Console#{console_index}",
         "GSI": "KeyPhrase",
-        "QuoteId": quote_index,
+        "ID": str(key_phrase_index),
+        "QuoteId": str(quote_index),
         "SortKey": f"Quote#{quote_index}&KeyPhrase&Metadata",
     }
     return key_phrase_model
@@ -93,8 +98,9 @@ def create_key_phrase_item_model(
         "BeginOffset": begin_offset,
         "EndOffset": end_offset,
         "GSI": "KeyPhraseItem",
-        "KeyPhraseId": key_phrase_index,
-        "KeyPhraseItemId": key_phrase_item_index,
+        "ID": str(key_phrase_item_index),
+        "KeyPhraseId": str(key_phrase_index),
+        "KeyPhraseItemId": str(key_phrase_item_index),
         "PartitionKey": f"Game#{game_index}&Console#{console_index}",
         "Order": order,
         "Score": score,
@@ -112,9 +118,10 @@ def create_pii_model(
 ):
     pii_model = {
         "GSI": "PII",
+        "ID": str(pii_index),
         "PartitionKey": f"Game#{game_index}&Console#{console_index}",
-        "PIIId": pii_index,
-        "QuoteId": quote_index,
+        "PIIId": str(pii_index),
+        "QuoteId": str(quote_index),
         "SortKey": f"Quote#{quote_index}&PII&Metadata",
     }
     return pii_model
@@ -136,11 +143,12 @@ def create_pii_entity_item_model(
         "BeginOffset": begin_offset,
         "EndOffset": end_offset,
         "GSI": "PIIItem",
+        "ID": str(pii_item_index),
         "Order": order,
         "PartitionKey": f"Game#{game_index}&Console#{console_index}",
-        "PIIId": pii_index,
-        "PIIItemID": pii_item_index,
-        "QuoteId": quote_index,
+        "PIIId": str(pii_index),
+        "PIIItemID": str(pii_item_index),
+        "QuoteId": str(quote_index),
         "Score": score,
         "SortKey": f"Quote#{quote_index}&PII&Item#{order}",
         "Type": type,
@@ -150,11 +158,12 @@ def create_pii_entity_item_model(
 
 def create_quote_model(console_index, game_index, quote_index, text):
     quote_model = {
-        "ConsoleId": console_index,
+        "ConsoleId": str(console_index),
         "GSI": "Quote",
-        "GameId": game_index,
+        "GameId": str(game_index),
+        "ID": str(quote_index),
         "PartitionKey": f"Game#{game_index}&Console#{console_index}",
-        "QuoteId": quote_index,
+        "QuoteId": str(quote_index),
         "SortKey": f"Quote#{quote_index}&Metadata",
         "Text": text,
     }
@@ -166,9 +175,10 @@ def create_sentiment_model(
 ):
     sentiment_model = {
         "GSI": "Sentiment",
+        "ID": str(sentiment_index),
         "PartitionKey": f"Game#{game_index}&Console#{console_index}",
-        "QuoteId": quote_index,
-        "SentimentId": sentiment_index,
+        "QuoteId": str(quote_index),
+        "SentimentId": str(sentiment_index),
         "SortKey": f"Quote#{quote_index}&Sentiment&Metadata",
     }
     return sentiment_model
@@ -184,11 +194,12 @@ def create_sentiment_value_model(
 ):
     sentiment_value_model = {
         "GSI": "SentimentValue",
+        "ID": str(sentiment_value_index),
         "PartitionKey": f"Game#{game_index}&Console#{console_index}",
-        "QuoteId": quote_index,
+        "QuoteId": str(quote_index),
         "Sentiment": sentiment,
-        "SentimentId": sentiment_index,
-        "SentimentValueId": sentiment_value_index,
+        "SentimentId": str(sentiment_index),
+        "SentimentValueId": str(sentiment_value_index),
         "SortKey": f"Quote#{quote_index}&Sentiment&Value",
     }
     return sentiment_value_model
@@ -207,13 +218,14 @@ def create_sentiment_score_model(
 ):
     sentiment_score_model = {
         "GSI": "SentimentScore",
+        "ID": str(sentiment_score_index),
         "PartitionKey": f"Game#{game_index}&Console#{console_index}",
         "Mixed": mixed,
         "Negative": negative,
         "Neutral": neutral,
         "Positive": positive,
-        "SentimentId": sentiment_index,
-        "SentimentScoreId": sentiment_score_index,
+        "SentimentId": str(sentiment_index),
+        "SentimentScoreId": str(sentiment_score_index),
         "SortKey": f"Quote#{quote_index}&Sentiment&Score",
     }
     return sentiment_score_model
@@ -222,10 +234,11 @@ def create_sentiment_score_model(
 def create_syntax_model(console_index, game_index, quote_index: int, syntax_index: int):
     syntax_model = {
         "GSI": "Syntax",
+        "ID": str(syntax_index),
         "PartitionKey": f"Game#{game_index}&Console#{console_index}",
-        "QuoteId": quote_index,
+        "QuoteId": str(quote_index),
         "SortKey": f"Quote#{quote_index}&Syntax&Metadata",
-        "SyntaxId": syntax_index,
+        "SyntaxId": str(syntax_index),
     }
     return syntax_model
 
@@ -246,10 +259,11 @@ def create_syntax_item_model(
         "BeginOffset": begin_offset,
         "EndOffset": end_offset,
         "GSI": "SyntaxItem",
+        "ID": str(syntax_item_index),
         "Order": order,
         "PartitionKey": f"Game#{game_index}&Console#{console_index}",
-        "SyntaxId": syntax_index,
-        "SyntaxItemId": syntax_item_index,
+        "SyntaxId": str(syntax_index),
+        "SyntaxItemId": str(syntax_item_index),
         "SortKey": f"Quote#{quote_index}&Syntax&Item#{order}",
         "Text": text,
         "TokenId": token_id,
@@ -269,11 +283,12 @@ def create_syntax_item_part_of_speech_model(
 ):
     syntax_item_part_of_speech_model = {
         "GSI": "SyntaxItemPartOfSpeech",
+        "ID": str(syntax_item_index),
         "PartitionKey": f"Game#{game_index}&Console#{console_index}",
         "Score": score,
         "SortKey": f"Quote#{quote_index}&Syntax&Item#{order}&PartOfSpeech",
-        "SyntaxId": syntax_index,
-        "SyntaxItemId": syntax_item_index,
+        "SyntaxId": str(syntax_index),
+        "SyntaxItemId": str(syntax_item_index),
         "Tag": tag,
     }
     return syntax_item_part_of_speech_model
@@ -288,7 +303,7 @@ def process_model(model):
     )
 
 
-def put_item_concurrent(filename, models):
+def put_item_concurrent(dynamodb_table, filename, models):
     with ThreadPoolExecutor() as executor:
         futures = [executor.submit(put_item, dynamodb_table, model) for model in models]
 
@@ -553,6 +568,9 @@ def main():
         dynamodb = boto3.resource("dynamodb")
         dynamodb_table = dynamodb.Table("FunkyMode")
         put_item(dynamodb_table, output_filename, models)
+        #with open(output_filename, mode="w") as output_fp:
+        #    for model in models:
+        #        output_fp.write(process_model(model) + "\n")
 
 
 if __name__ == "__main__":
