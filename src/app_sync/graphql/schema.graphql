@@ -1,3 +1,140 @@
+input CreateGameInput {
+    GameId: ID! # Example="0"
+    Name: String! # Example="Donkey Kong Country"
+    PartitionKey: String! # Example="Game#0"
+    SortKey: String! # Example="Game#0&Metadata"
+}
+
+input CreateConsoleInput {
+    ConsoleId: ID! # Example="0"
+    Name: String! # Example="Super Nintendo Entertainment System"
+    PartitionKey: String! # Example="Console#0"
+    SortKey: String! # Example="Console#Metadata"
+}
+
+input CreateQuoteInput {
+    ConsoleId: ID! # Example="0"
+    GameId: ID! # Example="0"
+    PartitionKey: String! # Example="Game#0&Console#0"
+    QuoteId: ID! # Example="0"
+    SortKey: String! # Example="Quote#0&Metadata"
+    Text: String! # Example="If you guys see Candy on your way out, tell her I'll give her surfing lessons anytime!"
+}
+
+input CreateEntityInput {
+    EntityId: ID! # Example="0"
+    PartitionKey: String! # Example="Game#0&Console#0"
+    QuoteId: ID! # Example="0"
+    SortKey: String! # Example="Quote#0&Entity&Metadata"
+}
+
+input CreateEntityItemInput {
+    BeginOffset: Int! # Example="16"
+    EndOffset: Int! # Example="21"
+    EntityId: ID! # Example="0"
+    EntityItemId: ID! # Example="0"
+    Order: Int # Example="0"
+    PartitionKey: String! # Example="Game#0&Console#0"
+    Score: Float! # Example="0.7504729628562927"
+    SortKey: String! # Example="Quote#0&Entity&Item#0"
+    Text: String! # Example="Candy"
+    Type: String! # Example="PERSON"
+}
+
+input CreateKeyPhraseInput {
+    KeyPhraseId: ID! # Example="0"
+    PartitionKey: String! # Example="Game#0&Console#0"
+    QuoteId: ID! # Example="0"
+    SortKey: String! # Example="Quote#0&KeyPhrase&Metadata"
+}
+
+input CreateKeyPhraseItemInput {
+    BeginOffset: Int! # Example="3"
+    EndOffset: Int! # Example="11"
+    KeyPhraseId: ID! # Example="0"
+    KeyPhraseItemId: ID! # Example="0"
+    Order: Int # Example="0"
+    PartitionKey: String! # Example="Game#0&Console#0"
+    Score: Float! # Example="0.9941169619560242"
+    SortKey: String! # Example="Quote#0&KeyPhrase&Item#0"
+    Text: String! # Example="you guys"
+}
+
+input CreatePIIInput {
+    PIIId: ID! # Example="0"
+    PartitionKey: String! # Example="Game#0&Console#0"
+    QuoteId: ID! # Example="0"
+    SortKey: String! # Example="Quote#0&PII&Metadata"
+}
+
+input CreatePIIItemInput {
+    BeginOffset: Int! # Example="16"
+    EndOffset: Int! # Example="21"
+    Order: Int # Example="0"
+    PIIId: ID! # Example="0"
+    PIIItemID: ID! # Example="0"
+    PartitionKey: String! # Example="Game#0&Console#0"
+    QuoteId: ID! # Example="0"
+    Score: Float! # Example="0.9998854398727417"
+    SortKey: String! # Example="Quote#0&PII&Item#0"
+    Type: String! # Example="NAME"
+}
+
+input CreateSentimentInput {
+    PartitionKey: String! # Example="Game#0&Console#0"
+    QuoteId: ID! # Example="0"
+    SentimentId: ID! # Example="0"
+    SortKey: String! # Example="Quote#0&Sentiment&Metadata"
+}
+
+input CreateSentimentValueInput {
+    PartitionKey: String! # Example="Game#0&Console#0"
+    QuoteId: ID! # Example="0"
+    Sentiment: String! # Example="NEUTRAL"
+    SentimentId: ID! # Example="0"
+    SentimentValueId: ID! # Example="0"
+    SortKey: String! # Example="Quote#0&Sentiment&Value"
+}
+
+input CreateSentimentScoreInput {
+    Mixed: Float! # Example="0.0003706642019096762"
+    Negative: Float! # Example="0.017443181946873665"
+    Neutral: Float! # Example="0.502835750579834"
+    PartitionKey: String! # Example="Game#0&Console#0"
+    Positive: Float! # Example="0.47935038805007935"
+    SentimentId: ID! # Example="0"
+    SentimentScoreId: ID! # Example="0"
+    SortKey: String! # Example="Quote#0&Sentiment&Score"
+}
+
+input CreateSyntaxInput {
+    PartitionKey: String! # Example="Game#0&Console#0"
+    QuoteId: ID! # Example="0"
+    SortKey: String! # Example="Quote#0&Syntax&Metadata"
+    SyntaxId: ID! # Example="0"
+}
+
+input CreateSyntaxItemInput {
+    BeginOffset: Int! # Example="0"
+    EndOffset: Int! # Example="2"
+    Order: Int # Example="0"
+    PartitionKey: String! # Example="Game#0&Console#0"
+    SortKey: String! # Example="Quote#0&Syntax&Item#0"
+    SyntaxId: ID! # Example="0"
+    SyntaxItemId: ID! # Example="0"
+    Text: String! # Example="If"
+    TokenId: Int! # Example="1"
+}
+
+input CreateSyntaxItemPartOfSpeechInput {
+    PartitionKey: String! # Example="Game#0&Console#0"
+    Score: Float! # Example="0.9999009966850281"
+    SortKey: String! # Example="Quote#0&Syntax&Item#0&PartOfSpeech"
+    SyntaxId: ID! # Example="0"
+    SyntaxItemId: ID! # Example="0"
+    Tag: String! # Example="SCONJ"
+}
+
 input CreateUserInput {
     email: String!
     id: ID!
@@ -22,183 +159,183 @@ input UpdateUserInput {
 
 type Game {
     CreatedDate: AWSDateTime!
-    GSI: String! # Example="Game"
-    GameId: ID! # Example="0"
-    Name: String! # Example="Donkey Kong Country"
-    PartitionKey: String! # Example="Game#0"
-    SortKey: String! # Example="Game#0&Metadata"
+    GSI: String!
+    GameId: ID!
+    Name: String!
+    PartitionKey: String!
+    SortKey: String!
     UpdatedDate: AWSDateTime!
 }
 
 type Console {
-    ConsoleId: ID! # Example="0"
+    ConsoleId: ID!
     CreatedDate: AWSDateTime!
-    GSI: String! # Example="Console"
-    Name: String! # Example="Super Nintendo Entertainment System"
-    PartitionKey: String! # Example="Console#0"
-    SortKey: String! # Example="Console#Metadata"
+    GSI: String!
+    Name: String!
+    PartitionKey: String!
+    SortKey: String!
     UpdatedDate: AWSDateTime!
 }
 
 type Quote {
-    ConsoleId: ID! # Example="0"
+    ConsoleId: ID!
     CreatedDate: AWSDateTime!
-    GSI: String! # Example="Quote"
-    GameId: ID! # Example="0"
-    PartitionKey: String! # Example="Game#0&Console#0"
-    QuoteId: ID! # Example="0"
-    SortKey: String! # Example="Quote#0&Metadata"
-    Text: String! # Example="If you guys see Candy on your way out, tell her I'll give her surfing lessons anytime!"
+    GSI: String!
+    GameId: ID!
+    PartitionKey: String!
+    QuoteId: ID!
+    SortKey: String!
+    Text: String!
     UpdatedDate: AWSDateTime!
 }
 
 type Entity {
     CreatedDate: AWSDateTime!
-    EntityId: ID! # Example="0"
-    GSI: String! # Example="Entity"
-    PartitionKey: String! # Example="Game#0&Console#0"
-    QuoteId: ID! # Example="0"
-    SortKey: String! # Example="Quote#0&Entity&Metadata"
+    EntityId: ID!
+    GSI: String!
+    PartitionKey: String!
+    QuoteId: ID!
+    SortKey: String!
     UpdatedDate: AWSDateTime!
 }
 
 type EntityItem {
-    BeginOffset: Int! # Example="16"
+    BeginOffset: Int!
     CreatedDate: AWSDateTime!
-    EndOffset: Int! # Example="21"
-    EntityId: ID! # Example="0"
-    EntityItemId: ID! # Example="0"
-    GSI: String! # Example="EntityItem"
-    Order: Int # Example="0"
-    PartitionKey: String! # Example="Game#0&Console#0"
-    Score: Float! # Example="0.7504729628562927"
-    SortKey: String! # Example="Quote#0&Entity&Item#0"
-    Text: String! # Example="Candy"
-    Type: String! # Example="PERSON"
+    EndOffset: Int!
+    EntityId: ID!
+    EntityItemId: ID!
+    GSI: String!
+    Order: Int
+    PartitionKey: String!
+    Score: Float!
+    SortKey: String!
+    Text: String!
+    Type: String!
     UpdatedDate: AWSDateTime!
 }
 
 type KeyPhrase {
     CreatedDate: AWSDateTime!
-    GSI: String! # Example="KeyPhrase"
-    KeyPhraseId: ID! # Example="0"
-    PartitionKey: String! # Example="Game#0&Console#0"
-    QuoteId: ID! # Example="0"
-    SortKey: String! # Example="Quote#0&KeyPhrase&Metadata"
+    GSI: String!
+    KeyPhraseId: ID!
+    PartitionKey: String!
+    QuoteId: ID!
+    SortKey: String!
     UpdatedDate: AWSDateTime!
 }
 
 type KeyPhraseItem {
-    BeginOffset: Int! # Example="3"
+    BeginOffset: Int!
     CreatedDate: AWSDateTime!
-    EndOffset: Int! # Example="11"
-    GSI: String! # Example="KeyPhraseItem"
-    KeyPhraseId: ID! # Example="0"
-    KeyPhraseItemId: ID! # Example="0"
-    Order: Int # Example="0"
-    PartitionKey: String! # Example="Game#0&Console#0"
-    Score: Float! # Example="0.9941169619560242"
-    SortKey: String! # Example="Quote#0&KeyPhrase&Item#0"
-    Text: String! # Example="you guys"
+    EndOffset: Int!
+    GSI: String!
+    KeyPhraseId: ID!
+    KeyPhraseItemId: ID!
+    Order: Int
+    PartitionKey: String!
+    Score: Float!
+    SortKey: String!
+    Text: String!
     UpdatedDate: AWSDateTime!
 }
 
 type PII {
     CreatedDate: AWSDateTime!
-    GSI: String! # Example="PII"
-    PIIId: ID! # Example="0"
-    PartitionKey: String! # Example="Game#0&Console#0"
-    QuoteId: ID! # Example="0"
-    SortKey: String! # Example="Quote#0&PII&Metadata"
+    GSI: String!
+    PIIId: ID!
+    PartitionKey: String!
+    QuoteId: ID!
+    SortKey: String!
     UpdatedDate: AWSDateTime!
 }
 
 type PIIItem {
-    BeginOffset: Int! # Example="16"
+    BeginOffset: Int!
     CreatedDate: AWSDateTime!
-    EndOffset: Int! # Example="21"
-    GSI: String! # Example="PIIItem"
-    Order: Int # Example="0"
-    PIIId: ID! # Example="0"
-    PIIItemID: ID! # Example="0"
-    PartitionKey: String! # Example="Game#0&Console#0"
-    QuoteId: ID! # Example="0"
-    Score: Float! # Example="0.9998854398727417"
-    SortKey: String! # Example="Quote#0&PII&Item#0"
-    Type: String! # Example="NAME"
+    EndOffset: Int!
+    GSI: String!
+    Order: Int
+    PIIId: ID!
+    PIIItemID: ID!
+    PartitionKey: String!
+    QuoteId: ID!
+    Score: Float!
+    SortKey: String!
+    Type: String!
     UpdatedDate: AWSDateTime!
 }
 
 type Sentiment {
     CreatedDate: AWSDateTime!
-    GSI: String! # Example="Sentiment"
-    PartitionKey: String! # Example="Game#0&Console#0"
-    QuoteId: ID! # Example="0"
-    SentimentId: ID! # Example="0"
-    SortKey: String! # Example="Quote#0&Sentiment&Metadata"
+    GSI: String!
+    PartitionKey: String!
+    QuoteId: ID!
+    SentimentId: ID!
+    SortKey: String!
     UpdatedDate: AWSDateTime!
 }
 
 type SentimentValue {
     CreatedDate: AWSDateTime!
-    GSI: String! # Example="SentimentValue"
-    PartitionKey: String! # Example="Game#0&Console#0"
-    QuoteId: ID! # Example="0"
-    Sentiment: String! # Example="NEUTRAL"
-    SentimentId: ID! # Example="0"
-    SentimentValueId: ID! # Example="0"
-    SortKey: String! # Example="Quote#0&Sentiment&Value"
+    GSI: String!
+    PartitionKey: String!
+    QuoteId: ID!
+    Sentiment: String!
+    SentimentId: ID!
+    SentimentValueId: ID!
+    SortKey: String!
     UpdatedDate: AWSDateTime!
 }
 
 type SentimentScore {
     CreatedDate: AWSDateTime!
-    GSI: String! # Example="SentimentScore"
-    Mixed: Float! # Example="0.0003706642019096762"
-    Negative: Float! # Example="0.017443181946873665"
-    Neutral: Float! # Example="0.502835750579834"
-    PartitionKey: String! # Example="Game#0&Console#0"
-    Positive: Float! # Example="0.47935038805007935"
-    SentimentId: ID! # Example="0"
-    SentimentScoreId: ID! # Example="0"
-    SortKey: String! # Example="Quote#0&Sentiment&Score"
+    GSI: String!
+    Mixed: Float!
+    Negative: Float!
+    Neutral: Float!
+    PartitionKey: String!
+    Positive: Float!
+    SentimentId: ID!
+    SentimentScoreId: ID!
+    SortKey: String!
     UpdatedDate: AWSDateTime!
 }
 
 type Syntax {
     CreatedDate: AWSDateTime!
-    GSI: String! # Example="Syntax"
-    PartitionKey: String! # Example="Game#0&Console#0"
-    QuoteId: ID! # Example="0"
-    SortKey: String! # Example="Quote#0&Syntax&Metadata"
-    SyntaxId: ID! # Example="0"
+    GSI: String!
+    PartitionKey: String!
+    QuoteId: ID!
+    SortKey: String!
+    SyntaxId: ID!
     UpdatedDate: AWSDateTime!
 }
 
 type SyntaxItem {
-    BeginOffset: Int! # Example="0"
+    BeginOffset: Int!
     CreatedDate: AWSDateTime!
-    EndOffset: Int! # Example="2"
-    GSI: String! # Example="SyntaxItem"
-    Order: Int # Example="0"
-    PartitionKey: String! # Example="Game#0&Console#0"
-    SortKey: String! # Example="Quote#0&Syntax&Item#0"
-    SyntaxId: ID! # Example="0"
-    SyntaxItemId: ID! # Example="0"
-    Text: String! # Example="If"
-    TokenId: Int! # Example="1"
+    EndOffset: Int!
+    GSI: String!
+    Order: Int
+    PartitionKey: String!
+    SortKey: String!
+    SyntaxId: ID!
+    SyntaxItemId: ID!
+    Text: String!
+    TokenId: Int!
     UpdatedDate: AWSDateTime!
 }
 
 type SyntaxItemPartOfSpeech {
     CreatedDate: AWSDateTime!
-    GSI: String! # Example="SyntaxItemPartOfSpeech"
-    PartitionKey: String! # Example="Game#0&Console#0"
-    Score: Float! # Example="0.9999009966850281"
-    SortKey: String! # Example="Quote#0&Syntax&Item#0&PartOfSpeech"
-    SyntaxId: ID! # Example="0"
-    SyntaxItemId: ID! # Example="0"
-    Tag: String! # Example="SCONJ"
+    GSI: String!
+    PartitionKey: String!
+    Score: Float!
+    SortKey: String!
+    SyntaxId: ID!
+    SyntaxItemId: ID!
+    Tag: String!
     UpdatedDate: AWSDateTime!
 }
 
@@ -216,8 +353,54 @@ type UserConnection {
 }
 
 type Mutation {
+    createGame(input: CreateGameInput): Game!
+        @aws_auth(cognito_groups: ["admin"])
+
+    createConsole(input: CreateConsoleInput): Console!
+        @aws_auth(cognito_groups: ["admin"])
+
+    createQuote(input: CreateQuoteInput): Quote!
+        @aws_auth(cognito_groups: ["admin"])
+
+    createEntity(input: CreateEntityInput): Entity!
+        @aws_auth(cognito_groups: ["admin"])
+
+    createEntityItem(input: CreateEntityItemInput): EntityItem!
+        @aws_auth(cognito_groups: ["admin"])
+
+    createKeyPhrase(input: CreateKeyPhraseInput): KeyPhrase!
+        @aws_auth(cognito_groups: ["admin"])
+
+    createKeyPhraseItem(input: CreateKeyPhraseItemInput): KeyPhraseItem!
+        @aws_auth(cognito_groups: ["admin"])
+
+    createPII(input: CreatePIIInput): PII!
+        @aws_auth(cognito_groups: ["admin"])
+
+    createPIIItem(input: CreatePIIItemInput): PIIItem!
+        @aws_auth(cognito_groups: ["admin"])
+
+    createSentiment(input: CreateSentimentInput): Sentiment!
+        @aws_auth(cognito_groups: ["admin"])
+
+    createSentimentValue(input: CreateSentimentValueInput): SentimentValue!
+        @aws_auth(cognito_groups: ["admin"])
+
+    createSentimentScore(input: CreateSentimentScoreInput): SentimentScore!
+        @aws_auth(cognito_groups: ["admin"])
+
+    createSyntax(input: CreateSyntaxInput): Syntax!
+        @aws_auth(cognito_groups: ["admin"])
+
+    createSyntaxItem(input: CreateSyntaxItemInput): SyntaxItem!
+        @aws_auth(cognito_groups: ["admin"])
+
+    createSyntaxItemPartOfSpeech(input: CreateSyntaxItemPartOfSpeechInput): SyntaxItemPartOfSpeech!
+        @aws_auth(cognito_groups: ["admin"])
+
     createUser(input: CreateUserInput): User!
         @aws_auth(cognito_groups: ["admin"])
+
     deleteUser(input: DeleteUserInput!): User!
         @aws_auth(cognito_groups: ["admin"])
 }
