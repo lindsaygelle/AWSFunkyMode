@@ -1,35 +1,45 @@
-resource "aws_appsync_resolver" "delete_user" {
+resource "aws_appsync_resolver" "dynamo_db_get_item_console" {
   api_id            = aws_appsync_graphql_api.main.id
   data_source       = aws_appsync_datasource.main.name
-  field             = "deleteUser"
-  request_template  = file("./src/app_sync/graphql/resolver/dynamo_db/delete_item/request/user/template.vtl")
-  response_template = file("./src/app_sync/graphql/resolver/dynamo_db/delete_item/response/template.vtl")
-  type              = "Mutation"
+  field             = "getConsole"
+  request_template  = <<EOF
+{
+    "version" : "2017-02-28",
+    "operation": "GetItem",
+    "key": {
+        "PartitionKey": $util.dynamodb.toDynamoDBJson("Console"),
+        "SortKey": $util.dynamodb.toDynamoDBJson("Console#$ctx.arguments.input.ID&Metadata"),
+    }
 }
-
-resource "aws_appsync_resolver" "get_user" {
-  api_id            = aws_appsync_graphql_api.main.id
-  data_source       = aws_appsync_datasource.main.name
-  field             = "getUser"
-  request_template  = file("./src/app_sync/graphql/resolver/dynamo_db/get_item/request/user/template.vtl")
-  response_template = file("./src/app_sync/graphql/resolver/dynamo_db/get_item/response/template.vtl")
+EOF
+  response_template = <<EOF
+#if($ctx.error)
+    $util.error($ctx.error.message, $ctx.error.type)
+#end
+$util.toJson($ctx.result)
+EOF
   type              = "Query"
 }
 
-resource "aws_appsync_resolver" "scan_user" {
+resource "aws_appsync_resolver" "dynamo_db_get_item_game" {
   api_id            = aws_appsync_graphql_api.main.id
   data_source       = aws_appsync_datasource.main.name
-  field             = "getUsers"
-  request_template  = file("./src/app_sync/graphql/resolver/dynamo_db/scan/request/template.vtl")
-  response_template = file("./src/app_sync/graphql/resolver/dynamo_db/scan/response/template.vtl")
-  type              = "Query"
+  field             = "getGame"
+  request_template  = <<EOF
+{
+    "version" : "2017-02-28",
+    "operation": "GetItem",
+    "key": {
+        "PartitionKey": $util.dynamodb.toDynamoDBJson("Game"),
+        "SortKey": $util.dynamodb.toDynamoDBJson("Game#$ctx.arguments.input.ID&Metadata"),
+    }
 }
-
-resource "aws_appsync_resolver" "put_user" {
-  api_id            = aws_appsync_graphql_api.main.id
-  data_source       = aws_appsync_datasource.main.name
-  field             = "createUser"
-  request_template  = file("./src/app_sync/graphql/resolver/dynamo_db/put_item/request/user/template.vtl")
-  response_template = file("./src/app_sync/graphql/resolver/dynamo_db/put_item/response/template.vtl")
-  type              = "Mutation"
+EOF
+  response_template = <<EOF
+#if($ctx.error)
+    $util.error($ctx.error.message, $ctx.error.type)
+#end
+$util.toJson($ctx.result)
+EOF
+  type              = "Query"
 }
