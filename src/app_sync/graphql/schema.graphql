@@ -79,11 +79,156 @@ type EntityConnection {
     nextToken: String
 }
 
+input CreateKeyPhraseInput {
+    beginOffset: Int!
+    endOffset: Int!
+    order: Int!
+    quoteId: ID!
+    score: Float!
+    text: String!
+}
+
+type KeyPhrase {
+    createdDate: AWSDateTime!
+    beginOffset: Int!
+    endOffset: Int!
+    id: ID!
+    order: Int!
+    quoteId: ID!
+    score: Float!
+    text: String!
+    updatedDate: AWSDateTime!
+}
+
+type KeyPhraseConnection {
+    items: [KeyPhrase]
+    nextToken: String
+}
+
+input CreatePIIInput {
+    beginOffset: Int!
+    endOffset: Int!
+    order: Int!
+    quoteId: ID!
+    score: Float!
+    type: String!
+}
+
+type PII {
+    beginOffset: Int!
+    createdDate: AWSDateTime!
+    endOffset: Int!
+    id: ID!
+    order: Int!
+    quoteId: ID!
+    score: Float!
+    type: String!
+    updatedDate: AWSDateTime!
+}
+
+type PIIConnection {
+    items: [PII]
+    nextToken: String
+}
+
+input CreateSentimentInput {
+    quoteId: ID!
+    sentiment: String!
+}
+
+type Sentiment {
+    createdDate: AWSDateTime!
+    id: ID!
+    quoteId: ID!
+    sentiment: String!
+    updatedDate: AWSDateTime!
+}
+
+type SentimentConnection {
+    items: [Sentiment]
+    nextToken: String
+}
+
+input CreateSentimentScoreInput {
+    mixed: Float!
+    negative: Float!
+    neutral: Float!
+    positive: Float!
+    sentimentId: ID!
+}
+
+type SentimentScore {
+    createdDate: AWSDateTime!
+    mixed: Float!
+    negative: Float!
+    neutral: Float!
+    positive: Float!
+    sentimentId: ID!
+    updatedDate: AWSDateTime!
+}
+
+type SentimentScoreConnection {
+    items: [SentimentScore]
+    nextToken: String
+}
+
+input CreateSyntaxTokenInput {
+    beginOffset: Int!
+    endOffset: Int!
+    order: Int!
+    quoteId: ID!
+    text: String!
+    tokenId: Int!
+}
+
+type SyntaxToken {
+    beginOffset: Int!
+    createdDate: AWSDateTime!
+    endOffset: Int!
+    id: ID!
+    order: Int!
+    quoteId: ID!
+    text: String!
+    tokenId: Int!
+    updatedDate: AWSDateTime!
+}
+
+type SyntaxTokenConnection {
+    items: [SyntaxToken]
+    nextToken: String
+}
+
+input CreateSyntaxTokenPartOfSpeechInput {
+    score: Float!
+    syntaxTokenId: ID!
+    tag: String!
+}
+
+type SyntaxTokenPartOfSpeech {
+    createdDate: AWSDateTime!
+    score: Float!
+    id: ID!
+    syntaxTokenId: ID!
+    tag: String!
+    updatedDate: AWSDateTime!
+}
+
+type SyntaxTokenPartOfSpeechConnection {
+    items: [SyntaxTokenPartOfSpeech]
+    nextToken: String
+}
+
 type Mutation {
     createConsole(input: CreateConsoleInput): Console
     createGame(input: CreateGameInput): Game
     createQuote(input: createQuoteInput): Quote
     createEntity(input: CreateEntityInput): Entity
+    createKeyPhrase(input: CreateKeyPhraseInput): KeyPhrase
+    createPII(input: CreatePIIInput): PII
+    createSentiment(input: CreateSentimentInput): Sentiment
+    createSentimentScore(input: CreateSentimentScoreInput): SentimentScore
+    createSyntaxToken(input: CreateSyntaxTokenInput): SyntaxToken
+    createSyntaxTokenPartOfSpeech(input: CreateSyntaxTokenPartOfSpeechInput): SyntaxTokenPartOfSpeech
 }
 
 type Query {
@@ -95,6 +240,18 @@ type Query {
     getQuotes(consoleId: ID, limit: Int, nextToken: String): QuoteConnection
     getEntity(id: ID!): Entity
     getEntities(quoteId: ID, limit: Int, nextToken: String): EntityConnection
+    getKeyPhrase(id: ID!): KeyPhrase
+    getKeyPhrases(quoteId: ID, limit: Int, nextToken: String): KeyPhraseConnection
+    getPII(id: ID): PII
+    getPIIs(quoteId: ID, limit: Int, nextToken: String): PIIConnection
+    getSentiment(id: ID!): Sentiment
+    getSentiments(quoteId: ID, limit: Int, nextToken: String): SentimentConnection
+    getSentimentScore(id: ID!): Sentiment
+    getSentimentScores(quoteId: ID, limit: Int, nextToken: String): SentimentScoreConnection
+    getSyntaxToken(id: ID!): SyntaxToken
+    getSyntaxTokens(quoteId: ID, limit: Int, nextToken: String): SyntaxTokenConnection
+    getSyntaxTokenPartOfSpeech(id: ID!): SyntaxToken
+    getSyntaxTokenPartOfSpeechs(syntaxTokenId: ID, limit: Int, nextToken: String): SyntaxTokenPartOfSpeechConnection
 }
 
 schema {
