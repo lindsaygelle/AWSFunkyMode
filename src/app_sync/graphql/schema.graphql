@@ -150,14 +150,12 @@ input CreateSyntaxItemPartOfSpeechInput {
     Tag: String! # Example="SCONJ"
 }
 
-
 input CreateUserInput {
-    email: String!
-    ID: ID! # Example=0
+    ID: ID!
 }
 
 input DeleteUserInput {
-    ID: ID! # Example=0
+    ID: ID!
 }
 
 input GetGameInput {
@@ -221,7 +219,7 @@ input GetSyntaxItemPartOfSpeechInput {
 }
 
 input GetUserInput {
-    ID: ID! # Example=0
+    ID: ID!
 }
 
 input GetUsersInput {
@@ -230,14 +228,14 @@ input GetUsersInput {
 }
 
 input UpdateUserInput {
-    ID: ID! # Example=0
+    ID: ID!
 }
 
 type Game {
     CreatedDate: AWSDateTime!
     GSI: String!
     GameId: ID!
-    ID: ID! # Example=0
+    ID: ID!
     Name: String!
     PartitionKey: String!
     SortKey: String!
@@ -248,7 +246,7 @@ type Console {
     ConsoleId: ID!
     CreatedDate: AWSDateTime!
     GSI: String!
-    ID: ID! # Example=0
+    ID: ID!
     Name: String!
     PartitionKey: String!
     SortKey: String!
@@ -259,7 +257,7 @@ type Quote {
     ConsoleId: ID!
     CreatedDate: AWSDateTime!
     GSI: String!
-    ID: ID! # Example=0
+    ID: ID!
     GameId: ID!
     PartitionKey: String!
     QuoteId: ID!
@@ -272,7 +270,7 @@ type Entity {
     CreatedDate: AWSDateTime!
     EntityId: ID!
     GSI: String!
-    ID: ID! # Example=0
+    ID: ID!
     PartitionKey: String!
     QuoteId: ID!
     SortKey: String!
@@ -286,7 +284,7 @@ type EntityItem {
     EntityId: ID!
     EntityItemId: ID!
     GSI: String!
-    ID: ID! # Example=0
+    ID: ID!
     Order: Int
     PartitionKey: String!
     Score: Float!
@@ -299,7 +297,7 @@ type EntityItem {
 type KeyPhrase {
     CreatedDate: AWSDateTime!
     GSI: String!
-    ID: ID! # Example=0
+    ID: ID!
     KeyPhraseId: ID!
     PartitionKey: String!
     QuoteId: ID!
@@ -312,7 +310,7 @@ type KeyPhraseItem {
     CreatedDate: AWSDateTime!
     EndOffset: Int!
     GSI: String!
-    ID: ID! # Example=0
+    ID: ID!
     KeyPhraseId: ID!
     KeyPhraseItemId: ID!
     Order: Int
@@ -326,7 +324,7 @@ type KeyPhraseItem {
 type PII {
     CreatedDate: AWSDateTime!
     GSI: String!
-    ID: ID! # Example=0
+    ID: ID!
     PIIId: ID!
     PartitionKey: String!
     QuoteId: ID!
@@ -339,7 +337,7 @@ type PIIItem {
     CreatedDate: AWSDateTime!
     EndOffset: Int!
     GSI: String!
-    ID: ID! # Example=0
+    ID: ID!
     Order: Int
     PIIId: ID!
     PIIItemID: ID!
@@ -354,7 +352,7 @@ type PIIItem {
 type Sentiment {
     CreatedDate: AWSDateTime!
     GSI: String!
-    ID: ID! # Example=0
+    ID: ID!
     PartitionKey: String!
     QuoteId: ID!
     SentimentId: ID!
@@ -365,7 +363,7 @@ type Sentiment {
 type SentimentValue {
     CreatedDate: AWSDateTime!
     GSI: String!
-    ID: ID! # Example=0
+    ID: ID!
     PartitionKey: String!
     QuoteId: ID!
     Sentiment: String!
@@ -378,7 +376,7 @@ type SentimentValue {
 type SentimentScore {
     CreatedDate: AWSDateTime!
     GSI: String!
-    ID: ID! # Example=0
+    ID: ID!
     Mixed: Float!
     Negative: Float!
     Neutral: Float!
@@ -393,7 +391,7 @@ type SentimentScore {
 type Syntax {
     CreatedDate: AWSDateTime!
     GSI: String!
-    ID: ID! # Example=0
+    ID: ID!
     PartitionKey: String!
     QuoteId: ID!
     SortKey: String!
@@ -406,7 +404,7 @@ type SyntaxItem {
     CreatedDate: AWSDateTime!
     EndOffset: Int!
     GSI: String!
-    ID: ID! # Example=0
+    ID: ID!
     Order: Int
     PartitionKey: String!
     SortKey: String!
@@ -420,7 +418,7 @@ type SyntaxItem {
 type SyntaxItemPartOfSpeech {
     CreatedDate: AWSDateTime!
     GSI: String!
-    ID: ID! # Example=0
+    ID: ID!
     PartitionKey: String!
     Score: Float!
     SortKey: String!
@@ -433,7 +431,7 @@ type SyntaxItemPartOfSpeech {
 type User {
     CreatedDate: AWSDateTime!
     Email: AWSEmail!
-    ID: ID! # Example=0
+    ID: ID!
     PartitionKey: String!
     SortKey: String!
     UpdatedDate: AWSDateTime!
@@ -498,56 +496,56 @@ type Mutation {
 }
 
 type Query {
-    getGame(input: GetGameInput): Game!
-        @aws_auth(cognito_groups: ["admin"])
+  getGame(input: GetGameInput): Game
+      @aws_auth(cognito_groups: ["admin"])
 
-    getConsole(input: GetConsoleInput): Console!
-        @aws_auth(cognito_groups: ["admin"])
+  getConsole(input: GetConsoleInput): Console
+      @aws_auth(cognito_groups: ["admin"])
 
-    getQuote(input: GetQuoteInput): Quote!
-        @aws_auth(cognito_groups: ["admin"])
+  getQuote(input: GetQuoteInput): Quote
+      @aws_auth(cognito_groups: ["admin"])
 
-    getEntity(input: GetEntityInput): Entity!
-        @aws_auth(cognito_groups: ["admin"])
+  getEntity(input: GetEntityInput): Entity
+      @aws_auth(cognito_groups: ["admin"])
 
-    getEntityItem(input: GetEntityItemInput): EntityItem!
-        @aws_auth(cognito_groups: ["admin"])
+  getEntityItem(input: GetEntityItemInput): EntityItem
+      @aws_auth(cognito_groups: ["admin"])
 
-    getKeyPhrase(input: GetKeyPhraseInput): KeyPhrase!
-        @aws_auth(cognito_groups: ["admin"])
+  getKeyPhrase(input: GetKeyPhraseInput): KeyPhrase
+      @aws_auth(cognito_groups: ["admin"])
 
-    getKeyPhraseItem(input: GetKeyPhraseItemInput): KeyPhraseItem!
-        @aws_auth(cognito_groups: ["admin"])
+  getKeyPhraseItem(input: GetKeyPhraseItemInput): KeyPhraseItem
+      @aws_auth(cognito_groups: ["admin"])
 
-    getPII(input: GetPIIInput): PII!
-        @aws_auth(cognito_groups: ["admin"])
+  getPII(input: GetPIIInput): PII
+      @aws_auth(cognito_groups: ["admin"])
 
-    getPIIItem(input: GetPIIItemInput): PIIItem!
-        @aws_auth(cognito_groups: ["admin"])
+  getPIIItem(input: GetPIIItemInput): PIIItem
+      @aws_auth(cognito_groups: ["admin"])
 
-    getSentiment(input: GetSentimentInput): Sentiment!
-        @aws_auth(cognito_groups: ["admin"])
+  getSentiment(input: GetSentimentInput): Sentiment
+      @aws_auth(cognito_groups: ["admin"])
 
-    getSentimentValue(input: GetSentimentValueInput): SentimentValue!
-        @aws_auth(cognito_groups: ["admin"])
+  getSentimentValue(input: GetSentimentValueInput): SentimentValue
+      @aws_auth(cognito_groups: ["admin"])
 
-    getSentimentScore(input: GetSentimentScoreInput): SentimentScore!
-        @aws_auth(cognito_groups: ["admin"])
+  getSentimentScore(input: GetSentimentScoreInput): SentimentScore
+      @aws_auth(cognito_groups: ["admin"])
 
-    getSyntax(input: GetSyntaxInput): Syntax!
-        @aws_auth(cognito_groups: ["admin"])
+  getSyntax(input: GetSyntaxInput): Syntax
+      @aws_auth(cognito_groups: ["admin"])
 
-    getSyntaxItem(input: GetSyntaxItemInput): SyntaxItem!
-        @aws_auth(cognito_groups: ["admin"])
+  getSyntaxItem(input: GetSyntaxItemInput): SyntaxItem
+      @aws_auth(cognito_groups: ["admin"])
 
-    getSyntaxItemPartOfSpeech(input: GetSyntaxItemPartOfSpeechInput): SyntaxItemPartOfSpeech!
-        @aws_auth(cognito_groups: ["admin"])
+  getSyntaxItemPartOfSpeech(input: GetSyntaxItemPartOfSpeechInput): SyntaxItemPartOfSpeech
+      @aws_auth(cognito_groups: ["admin"])
 
-    getUser(input: GetUserInput): User
-        @aws_auth(cognito_groups: ["user"])
+  getUser(input: GetUserInput): User
+      @aws_auth(cognito_groups: ["user"])
 
-    getUsers(input: GetUsersInput): UserConnection
-        @aws_auth(cognito_groups: ["admin"])
+  getUsers(input: GetUsersInput): UserConnection
+      @aws_auth(cognito_groups: ["admin"])
 }
 
 schema {
