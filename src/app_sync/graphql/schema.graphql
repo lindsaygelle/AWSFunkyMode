@@ -1,551 +1,100 @@
-input CreateGameInput {
-    GameId: ID! # Example="0"
-    ID: ID! # Example=0
-    Name: String! # Example="Donkey Kong Country"
-    PartitionKey: String! # Example="Game#0"
-    SortKey: String! # Example="Game#0&Metadata"
-}
-
 input CreateConsoleInput {
-    ConsoleId: ID! # Example="0"
-    ID: ID! # Example=0
-    Name: String! # Example="Super Nintendo Entertainment System"
-    PartitionKey: String! # Example="Console#0"
-    SortKey: String! # Example="Console#Metadata"
-}
-
-input CreateQuoteInput {
-    ConsoleId: ID! # Example="0"
-    GameId: ID! # Example="0"
-    ID: ID! # Example=0
-    PartitionKey: String! # Example="Game#0&Console#0"
-    QuoteId: ID! # Example="0"
-    SortKey: String! # Example="Quote#0&Metadata"
-    Text: String! # Example="If you guys see Candy on your way out, tell her I'll give her surfing lessons anytime!"
-}
-
-input CreateEntityInput {
-    EntityId: ID! # Example="0"
-    ID: ID! # Example=0
-    PartitionKey: String! # Example="Game#0&Console#0"
-    QuoteId: ID! # Example="0"
-    SortKey: String! # Example="Quote#0&Entity&Metadata"
-}
-
-input CreateEntityItemInput {
-    BeginOffset: Int! # Example="16"
-    EndOffset: Int! # Example="21"
-    EntityId: ID! # Example="0"
-    EntityItemId: ID! # Example="0"
-    ID: ID! # Example=0
-    Order: Int # Example="0"
-    PartitionKey: String! # Example="Game#0&Console#0"
-    Score: Float! # Example="0.7504729628562927"
-    SortKey: String! # Example="Quote#0&Entity&Item#0"
-    Text: String! # Example="Candy"
-    Type: String! # Example="PERSON"
-}
-
-input CreateKeyPhraseInput {
-    ID: ID! # Example=0
-    KeyPhraseId: ID! # Example="0"
-    PartitionKey: String! # Example="Game#0&Console#0"
-    QuoteId: ID! # Example="0"
-    SortKey: String! # Example="Quote#0&KeyPhrase&Metadata"
-}
-
-input CreateKeyPhraseItemInput {
-    BeginOffset: Int! # Example="3"
-    EndOffset: Int! # Example="11"
-    ID: ID! # Example=0
-    KeyPhraseId: ID! # Example="0"
-    KeyPhraseItemId: ID! # Example="0"
-    Order: Int # Example="0"
-    PartitionKey: String! # Example="Game#0&Console#0"
-    Score: Float! # Example="0.9941169619560242"
-    SortKey: String! # Example="Quote#0&KeyPhrase&Item#0"
-    Text: String! # Example="you guys"
-}
-
-input CreatePIIInput {
-    ID: ID! # Example=0
-    PIIId: ID! # Example="0"
-    PartitionKey: String! # Example="Game#0&Console#0"
-    QuoteId: ID! # Example="0"
-    SortKey: String! # Example="Quote#0&PII&Metadata"
-}
-
-input CreatePIIItemInput {
-    BeginOffset: Int! # Example="16"
-    EndOffset: Int! # Example="21"
-    ID: ID! # Example=0
-    Order: Int # Example="0"
-    PIIId: ID! # Example="0"
-    PIIItemID: ID! # Example="0"
-    PartitionKey: String! # Example="Game#0&Console#0"
-    QuoteId: ID! # Example="0"
-    Score: Float! # Example="0.9998854398727417"
-    SortKey: String! # Example="Quote#0&PII&Item#0"
-    Type: String! # Example="NAME"
-}
-
-input CreateSentimentInput {
-    ID: ID! # Example=0
-    PartitionKey: String! # Example="Game#0&Console#0"
-    QuoteId: ID! # Example="0"
-    SentimentId: ID! # Example="0"
-    SortKey: String! # Example="Quote#0&Sentiment&Metadata"
-}
-
-input CreateSentimentValueInput {
-    ID: ID! # Example=0
-    PartitionKey: String! # Example="Game#0&Console#0"
-    QuoteId: ID! # Example="0"
-    Sentiment: String! # Example="NEUTRAL"
-    SentimentId: ID! # Example="0"
-    SentimentValueId: ID! # Example="0"
-    SortKey: String! # Example="Quote#0&Sentiment&Value"
-}
-
-input CreateSentimentScoreInput {
-    ID: ID! # Example=0
-    Mixed: Float! # Example="0.0003706642019096762"
-    Negative: Float! # Example="0.017443181946873665"
-    Neutral: Float! # Example="0.502835750579834"
-    PartitionKey: String! # Example="Game#0&Console#0"
-    Positive: Float! # Example="0.47935038805007935"
-    SentimentId: ID! # Example="0"
-    SentimentScoreId: ID! # Example="0"
-    SortKey: String! # Example="Quote#0&Sentiment&Score"
-}
-
-input CreateSyntaxInput {
-    ID: ID! # Example=0
-    PartitionKey: String! # Example="Game#0&Console#0"
-    QuoteId: ID! # Example="0"
-    SortKey: String! # Example="Quote#0&Syntax&Metadata"
-    SyntaxId: ID! # Example="0"
-}
-
-input CreateSyntaxItemInput {
-    BeginOffset: Int! # Example="0"
-    EndOffset: Int! # Example="2"
-    ID: ID! # Example=0
-    Order: Int # Example="0"
-    PartitionKey: String! # Example="Game#0&Console#0"
-    SortKey: String! # Example="Quote#0&Syntax&Item#0"
-    SyntaxId: ID! # Example="0"
-    SyntaxItemId: ID! # Example="0"
-    Text: String! # Example="If"
-    TokenId: Int! # Example="1"
-}
-
-input CreateSyntaxItemPartOfSpeechInput {
-    ID: ID! # Example=0
-    PartitionKey: String! # Example="Game#0&Console#0"
-    Score: Float! # Example="0.9999009966850281"
-    SortKey: String! # Example="Quote#0&Syntax&Item#0&PartOfSpeech"
-    SyntaxId: ID! # Example="0"
-    SyntaxItemId: ID! # Example="0"
-    Tag: String! # Example="SCONJ"
-}
-
-input CreateUserInput {
-    ID: ID!
-}
-
-input DeleteUserInput {
-    ID: ID!
-}
-
-input GetGameInput {
-    ID: ID!
-}
-
-input GetConsoleInput {
-    ID: ID!
-}
-
-input GetQuoteInput {
-    ID: ID!
-}
-
-input GetEntityInput {
-    ID: ID!
-}
-
-input GetEntityItemInput {
-    ID: ID!
-}
-
-input GetKeyPhraseInput {
-    ID: ID!
-}
-
-input GetKeyPhraseItemInput {
-    ID: ID!
-}
-
-input GetPIIInput {
-    ID: ID!
-}
-
-input GetPIIItemInput {
-    ID: ID!
-}
-
-input GetSentimentInput {
-    ID: ID!
-}
-
-input GetSentimentValueInput {
-    ID: ID!
-}
-
-input GetSentimentScoreInput {
-    ID: ID!
-}
-
-input GetSyntaxInput {
-    ID: ID!
-}
-
-input GetSyntaxItemInput {
-    ID: ID!
-}
-
-input GetSyntaxItemPartOfSpeechInput {
-    ID: ID!
-}
-
-input GetUserInput {
-    ID: ID!
-}
-
-input GetUsersInput {
-    limit: Int
-    nextToken: String
-}
-
-input UpdateUserInput {
-    ID: ID!
-}
-
-type Game {
-    CreatedDate: AWSDateTime!
-    GSI: String!
-    GameId: ID!
-    ID: ID!
-    Name: String!
-    PartitionKey: String!
-    SortKey: String!
-    UpdatedDate: AWSDateTime!
+    abbreviation: String!
+    name: String!
 }
 
 type Console {
-    ConsoleId: ID!
-    CreatedDate: AWSDateTime!
-    GSI: String!
-    ID: ID!
-    Name: String!
-    PartitionKey: String!
-    SortKey: String!
-    UpdatedDate: AWSDateTime!
+    abbreviation: String!
+    createdDate: AWSDateTime!
+    id: ID!
+    name: String!
+    updatedDate: AWSDateTime!
+}
+
+type ConsoleConnection {
+    items: [Console]
+    nextToken: String
+}
+
+input CreateGameInput {
+    consoleId: ID!
+    name: String!
+}
+
+type Game {
+    consoleId: ID!
+    createdDate: AWSDateTime!
+    id: ID!
+    name: String!
+    updatedDate: AWSDateTime!
+}
+
+type GameConnection {
+    items: [Game]
+    nextToken: String
+}
+
+input createQuoteInput {
+    gameId: ID!
+    text: String!
 }
 
 type Quote {
-    ConsoleId: ID!
-    CreatedDate: AWSDateTime!
-    GSI: String!
-    ID: ID!
-    GameId: ID!
-    PartitionKey: String!
-    QuoteId: ID!
-    SortKey: String!
-    Text: String!
-    UpdatedDate: AWSDateTime!
+    createdDate: AWSDateTime!
+    gameId: ID!
+    text: String!
+    updatedDate: AWSDateTime!
+}
+
+type QuoteConnection {
+    items: [Quote]
+    nextToken: String
+}
+
+input CreateEntityInput {
+    beginOffset: Int!
+    endOffset: Int!
+    order: Int!
+    quoteId: ID!
+    score: Float!
+    text: String!
+    type: String!
 }
 
 type Entity {
-    CreatedDate: AWSDateTime!
-    EntityId: ID!
-    GSI: String!
-    ID: ID!
-    PartitionKey: String!
-    QuoteId: ID!
-    SortKey: String!
-    UpdatedDate: AWSDateTime!
+    beginOffset: Int!
+    createdDate: AWSDateTime!
+    endOffset: Int!
+    id: ID!
+    order: Int!
+    quoteId: ID!
+    score: Float!
+    text: String!
+    type: String!
+    updatedDate: AWSDateTime!
 }
 
-type EntityItem {
-    BeginOffset: Int!
-    CreatedDate: AWSDateTime!
-    EndOffset: Int!
-    EntityId: ID!
-    EntityItemId: ID!
-    GSI: String!
-    ID: ID!
-    Order: Int
-    PartitionKey: String!
-    Score: Float!
-    SortKey: String!
-    Text: String!
-    Type: String!
-    UpdatedDate: AWSDateTime!
-}
-
-type KeyPhrase {
-    CreatedDate: AWSDateTime!
-    GSI: String!
-    ID: ID!
-    KeyPhraseId: ID!
-    PartitionKey: String!
-    QuoteId: ID!
-    SortKey: String!
-    UpdatedDate: AWSDateTime!
-}
-
-type KeyPhraseItem {
-    BeginOffset: Int!
-    CreatedDate: AWSDateTime!
-    EndOffset: Int!
-    GSI: String!
-    ID: ID!
-    KeyPhraseId: ID!
-    KeyPhraseItemId: ID!
-    Order: Int
-    PartitionKey: String!
-    Score: Float!
-    SortKey: String!
-    Text: String!
-    UpdatedDate: AWSDateTime!
-}
-
-type PII {
-    CreatedDate: AWSDateTime!
-    GSI: String!
-    ID: ID!
-    PIIId: ID!
-    PartitionKey: String!
-    QuoteId: ID!
-    SortKey: String!
-    UpdatedDate: AWSDateTime!
-}
-
-type PIIItem {
-    BeginOffset: Int!
-    CreatedDate: AWSDateTime!
-    EndOffset: Int!
-    GSI: String!
-    ID: ID!
-    Order: Int
-    PIIId: ID!
-    PIIItemID: ID!
-    PartitionKey: String!
-    QuoteId: ID!
-    Score: Float!
-    SortKey: String!
-    Type: String!
-    UpdatedDate: AWSDateTime!
-}
-
-type Sentiment {
-    CreatedDate: AWSDateTime!
-    GSI: String!
-    ID: ID!
-    PartitionKey: String!
-    QuoteId: ID!
-    SentimentId: ID!
-    SortKey: String!
-    UpdatedDate: AWSDateTime!
-}
-
-type SentimentValue {
-    CreatedDate: AWSDateTime!
-    GSI: String!
-    ID: ID!
-    PartitionKey: String!
-    QuoteId: ID!
-    Sentiment: String!
-    SentimentId: ID!
-    SentimentValueId: ID!
-    SortKey: String!
-    UpdatedDate: AWSDateTime!
-}
-
-type SentimentScore {
-    CreatedDate: AWSDateTime!
-    GSI: String!
-    ID: ID!
-    Mixed: Float!
-    Negative: Float!
-    Neutral: Float!
-    PartitionKey: String!
-    Positive: Float!
-    SentimentId: ID!
-    SentimentScoreId: ID!
-    SortKey: String!
-    UpdatedDate: AWSDateTime!
-}
-
-type Syntax {
-    CreatedDate: AWSDateTime!
-    GSI: String!
-    ID: ID!
-    PartitionKey: String!
-    QuoteId: ID!
-    SortKey: String!
-    SyntaxId: ID!
-    UpdatedDate: AWSDateTime!
-}
-
-type SyntaxItem {
-    BeginOffset: Int!
-    CreatedDate: AWSDateTime!
-    EndOffset: Int!
-    GSI: String!
-    ID: ID!
-    Order: Int
-    PartitionKey: String!
-    SortKey: String!
-    SyntaxId: ID!
-    SyntaxItemId: ID!
-    Text: String!
-    TokenId: Int!
-    UpdatedDate: AWSDateTime!
-}
-
-type SyntaxItemPartOfSpeech {
-    CreatedDate: AWSDateTime!
-    GSI: String!
-    ID: ID!
-    PartitionKey: String!
-    Score: Float!
-    SortKey: String!
-    SyntaxId: ID!
-    SyntaxItemId: ID!
-    Tag: String!
-    UpdatedDate: AWSDateTime!
-}
-
-type User {
-    CreatedDate: AWSDateTime!
-    Email: AWSEmail!
-    ID: ID!
-    PartitionKey: String!
-    SortKey: String!
-    UpdatedDate: AWSDateTime!
-}
-
-type UserConnection {
+type EntityConnection {
+    items: [Entity]
     nextToken: String
-    users: [User]
 }
 
 type Mutation {
-    createGame(input: CreateGameInput): Game!
-        @aws_auth(cognito_groups: ["admin"])
-
-    createConsole(input: CreateConsoleInput): Console!
-        @aws_auth(cognito_groups: ["admin"])
-
-    createQuote(input: CreateQuoteInput): Quote!
-        @aws_auth(cognito_groups: ["admin"])
-
-    createEntity(input: CreateEntityInput): Entity!
-        @aws_auth(cognito_groups: ["admin"])
-
-    createEntityItem(input: CreateEntityItemInput): EntityItem!
-        @aws_auth(cognito_groups: ["admin"])
-
-    createKeyPhrase(input: CreateKeyPhraseInput): KeyPhrase!
-        @aws_auth(cognito_groups: ["admin"])
-
-    createKeyPhraseItem(input: CreateKeyPhraseItemInput): KeyPhraseItem!
-        @aws_auth(cognito_groups: ["admin"])
-
-    createPII(input: CreatePIIInput): PII!
-        @aws_auth(cognito_groups: ["admin"])
-
-    createPIIItem(input: CreatePIIItemInput): PIIItem!
-        @aws_auth(cognito_groups: ["admin"])
-
-    createSentiment(input: CreateSentimentInput): Sentiment!
-        @aws_auth(cognito_groups: ["admin"])
-
-    createSentimentValue(input: CreateSentimentValueInput): SentimentValue!
-        @aws_auth(cognito_groups: ["admin"])
-
-    createSentimentScore(input: CreateSentimentScoreInput): SentimentScore!
-        @aws_auth(cognito_groups: ["admin"])
-
-    createSyntax(input: CreateSyntaxInput): Syntax!
-        @aws_auth(cognito_groups: ["admin"])
-
-    createSyntaxItem(input: CreateSyntaxItemInput): SyntaxItem!
-        @aws_auth(cognito_groups: ["admin"])
-
-    createSyntaxItemPartOfSpeech(input: CreateSyntaxItemPartOfSpeechInput): SyntaxItemPartOfSpeech!
-        @aws_auth(cognito_groups: ["admin"])
-
-    createUser(input: CreateUserInput): User!
-        @aws_auth(cognito_groups: ["admin"])
-
-    deleteUser(input: DeleteUserInput!): User!
-        @aws_auth(cognito_groups: ["admin"])
+    createConsole(input: CreateConsoleInput): Console
+    createGame(input: CreateGameInput): Game
+    createQuote(input: createQuoteInput): Quote
+    createEntity(input: CreateEntityInput): Entity
 }
 
 type Query {
-  getGame(input: GetGameInput): Game
-      @aws_auth(cognito_groups: ["admin"])
-
-  getConsole(input: GetConsoleInput): Console
-      @aws_auth(cognito_groups: ["admin"])
-
-  getQuote(input: GetQuoteInput): Quote
-      @aws_auth(cognito_groups: ["admin"])
-
-  getEntity(input: GetEntityInput): Entity
-      @aws_auth(cognito_groups: ["admin"])
-
-  getEntityItem(input: GetEntityItemInput): EntityItem
-      @aws_auth(cognito_groups: ["admin"])
-
-  getKeyPhrase(input: GetKeyPhraseInput): KeyPhrase
-      @aws_auth(cognito_groups: ["admin"])
-
-  getKeyPhraseItem(input: GetKeyPhraseItemInput): KeyPhraseItem
-      @aws_auth(cognito_groups: ["admin"])
-
-  getPII(input: GetPIIInput): PII
-      @aws_auth(cognito_groups: ["admin"])
-
-  getPIIItem(input: GetPIIItemInput): PIIItem
-      @aws_auth(cognito_groups: ["admin"])
-
-  getSentiment(input: GetSentimentInput): Sentiment
-      @aws_auth(cognito_groups: ["admin"])
-
-  getSentimentValue(input: GetSentimentValueInput): SentimentValue
-      @aws_auth(cognito_groups: ["admin"])
-
-  getSentimentScore(input: GetSentimentScoreInput): SentimentScore
-      @aws_auth(cognito_groups: ["admin"])
-
-  getSyntax(input: GetSyntaxInput): Syntax
-      @aws_auth(cognito_groups: ["admin"])
-
-  getSyntaxItem(input: GetSyntaxItemInput): SyntaxItem
-      @aws_auth(cognito_groups: ["admin"])
-
-  getSyntaxItemPartOfSpeech(input: GetSyntaxItemPartOfSpeechInput): SyntaxItemPartOfSpeech
-      @aws_auth(cognito_groups: ["admin"])
-
-  getUser(input: GetUserInput): User
-      @aws_auth(cognito_groups: ["user"])
-
-  getUsers(input: GetUsersInput): UserConnection
-      @aws_auth(cognito_groups: ["admin"])
+    getConsole(id: ID!): Console
+    getConsoles(limit: Int, nextToken: String): ConsoleConnection
+    getGame(id: ID!): Game
+    getGames(limit: Int, nextToken: String): GameConnection
+    getQuote(id: ID!): Quote
+    getQuotes(consoleId: ID, limit: Int, nextToken: String): QuoteConnection
+    getEntity(id: ID!): Entity
+    getEntities(quoteId: ID, limit: Int, nextToken: String): EntityConnection
 }
 
 schema {
