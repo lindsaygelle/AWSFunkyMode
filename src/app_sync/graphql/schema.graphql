@@ -1,13 +1,13 @@
 input CreateConsoleInput {
     abbreviation: String!
-    name: String!
+    nameValue: String! # "name" is a reserved word
 }
 
 type Console {
     abbreviation: String!
     createdDate: AWSDateTime!
     id: ID!
-    name: String!
+    nameValue: String! # "name" is a reserved word
     updatedDate: AWSDateTime!
 }
 
@@ -18,14 +18,14 @@ type ConsoleConnection {
 
 input CreateGameInput {
     consoleId: ID!
-    name: String!
+    nameValue: String! # "name" is a reserved word
 }
 
 type Game {
     consoleId: ID!
     createdDate: AWSDateTime!
     id: ID!
-    name: String!
+    nameValue: String! # "name" is a reserved word
     updatedDate: AWSDateTime!
 }
 
@@ -36,13 +36,14 @@ type GameConnection {
 
 input createQuoteInput {
     gameId: ID!
-    text: String!
+    textValue: String! # textValue because DynamoDB reserves "text"
 }
 
 type Quote {
     createdDate: AWSDateTime!
     gameId: ID!
-    text: String!
+    id: ID!
+    textValue: String! # textValue because DynamoDB reserves "text"
     updatedDate: AWSDateTime!
 }
 
@@ -57,7 +58,7 @@ input CreateEntityInput {
     order: Int!
     quoteId: ID!
     score: Float!
-    text: String!
+    textValue: String! # textValue because DynamoDB reserves "text"
     type: String!
 }
 
@@ -69,7 +70,7 @@ type Entity {
     order: Int!
     quoteId: ID!
     score: Float!
-    text: String!
+    textValue: String! # textValue because DynamoDB reserves "text"
     type: String!
     updatedDate: AWSDateTime!
 }
@@ -85,7 +86,7 @@ input CreateKeyPhraseInput {
     order: Int!
     quoteId: ID!
     score: Float!
-    text: String!
+    textValue: String! # textValue because DynamoDB reserves "text"
 }
 
 type KeyPhrase {
@@ -96,7 +97,7 @@ type KeyPhrase {
     order: Int!
     quoteId: ID!
     score: Float!
-    text: String!
+    textValue: String! # textValue because DynamoDB reserves "text"
     updatedDate: AWSDateTime!
 }
 
@@ -177,7 +178,7 @@ input CreateSyntaxTokenInput {
     endOffset: Int!
     order: Int!
     quoteId: ID!
-    text: String!
+    textValue: String! # textValue because DynamoDB reserves "text"
     tokenId: Int!
 }
 
@@ -188,7 +189,7 @@ type SyntaxToken {
     id: ID!
     order: Int!
     quoteId: ID!
-    text: String!
+    textValue: String! # textValue because DynamoDB reserves "text"
     tokenId: Int!
     updatedDate: AWSDateTime!
 }
@@ -218,6 +219,36 @@ type SyntaxTokenPartOfSpeechConnection {
     nextToken: String
 }
 
+input CreateUserInput {
+    email: AWSEmail
+    id: ID!
+}
+
+type User {
+    createdDate: AWSDateTime!
+    email: AWSEmail!
+    id: ID!
+    updatedDate: AWSDateTime!
+}
+
+type UserConnection {
+    items: [User]
+    nextToken: String
+}
+
+input CreateQuoteSubscriptionInput {
+    quoteId: ID!
+    userId: ID!
+}
+
+type QuoteSubscription {
+    createdDate: AWSDateTime!
+    quoteId: ID!
+    id: ID!
+    updatedDate: AWSDateTime!
+    userId: ID!
+}
+
 type Mutation {
     createConsole(input: CreateConsoleInput): Console
     createGame(input: CreateGameInput): Game
@@ -229,6 +260,8 @@ type Mutation {
     createSentimentScore(input: CreateSentimentScoreInput): SentimentScore
     createSyntaxToken(input: CreateSyntaxTokenInput): SyntaxToken
     createSyntaxTokenPartOfSpeech(input: CreateSyntaxTokenPartOfSpeechInput): SyntaxTokenPartOfSpeech
+    createUser(input: CreateUserInput): User
+    createQuoteSubscription(input: CreateQuoteSubscriptionInput): QuoteSubscription
 }
 
 type Query {
@@ -252,6 +285,10 @@ type Query {
     getSyntaxTokens(quoteId: ID, limit: Int, nextToken: String): SyntaxTokenConnection
     getSyntaxTokenPartOfSpeech(id: ID!): SyntaxToken
     getSyntaxTokenPartOfSpeechs(syntaxTokenId: ID, limit: Int, nextToken: String): SyntaxTokenPartOfSpeechConnection
+    getUser(id: ID!): User
+    getUsers(id: ID, limit: Int, nextToken: String): UserConnection
+    getQuoteSubscription(id: ID!): QuoteSubscription
+    getQuoteSubscriptions(quoteId: ID, userId: ID, limit: Int, nextToken: String): QuoteSubscription
 }
 
 schema {

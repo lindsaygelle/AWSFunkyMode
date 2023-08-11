@@ -16,12 +16,23 @@ resource "aws_appsync_resolver" "create_console" {
         "sk": $util.dynamodb.toDynamoDBJson($sk)
     },
     "attributeValues" : {
-    	"abbreviation": $util.dynamodb.toDynamoDBJson($ctx.args.input.abbreviation),
-    	"createdDate": $util.dynamodb.toDynamoDBJson($createdDate),
-    	"id": $util.dynamodb.toDynamoDBJson($id),
-      "name": $util.dynamodb.toDynamoDBJson($ctx.args.input.name),
-    	"updatedDate": $util.dynamodb.toDynamoDBJson($updatedDate),
-    }
+        "abbreviation": $util.dynamodb.toDynamoDBJson($ctx.args.input.abbreviation),
+        "createdDate": $util.dynamodb.toDynamoDBJson($createdDate),
+        "id": $util.dynamodb.toDynamoDBJson($id),
+        "nameValue": $util.dynamodb.toDynamoDBJson($ctx.args.input.nameValue),
+        "updatedDate": $util.dynamodb.toDynamoDBJson($updatedDate),
+    },
+    "condition" : {
+        "expression" : "(attribute_not_exists(abbreviation) or (abbreviation = :abbreviation)) or (attribute_not_exists(nameValue) or (nameValue = :nameValue))",
+        "expressionNames": {
+            "#abbreviation": "abbreviation",
+            "#nameValue": "nameValue"
+        },
+        "expressionValues" : {
+            ":abbreviation": $util.dynamodb.toDynamoDBJson($ctx.args.input.abbreviation),
+            ":nameValue": $util.dynamodb.toDynamoDBJson($ctx.args.input.nameValue)
+        }
+    },
 }
 EOF
   response_template = <<EOF
@@ -113,7 +124,7 @@ resource "aws_appsync_resolver" "create_game" {
         "consoleId": $util.dynamodb.toDynamoDBJson($ctx.args.input.consoleId),
         "createdDate": $util.dynamodb.toDynamoDBJson($createdDate),
         "id": $util.dynamodb.toDynamoDBJson($id),
-        "name": $util.dynamodb.toDynamoDBJson($ctx.args.input.name),
+        "nameValue": $util.dynamodb.toDynamoDBJson($ctx.args.input.nameValue),
         "updatedDate": $util.dynamodb.toDynamoDBJson($updatedDate),
     }
 }
@@ -199,21 +210,25 @@ resource "aws_appsync_resolver" "create_quote" {
 {
     "version" : "2018-05-29",
     "operation" : "PutItem",
+    "condition" : {
+        "expression" : "#textValue <> :textValue",
+        "expressionNames": {
+            "#textValue": "textValue"
+        },
+        "expressionValues" : {
+            ":textValue" : $util.dynamodb.toDynamoDBJson($ctx.args.input.textValue)
+        }
+    },
     "key" : {
         "pk": $util.dynamodb.toDynamoDBJson($pk),
         "sk": $util.dynamodb.toDynamoDBJson($sk)
     },
     "attributeValues" : {
-        "beginOffset": $util.dynamodb.toDynamoDBJson($ctx.args.input.beginOffset),
         "createdDate": $util.dynamodb.toDynamoDBJson($createdDate),
-        "endOffset": $util.dynamodb.toDynamoDBJson($ctx.args.input.endOffset),
-        "id": $util.dynamodb.toDynamoDBJson($ctx.args.input.id),
-        "order": $util.dynamodb.toDynamoDBJson($ctx.args.input.order),
-        "quoteId": $util.dynamodb.toDynamoDBJson($ctx.args.input.quoteId),
-        "score": $util.dynamodb.toDynamoDBJson($ctx.args.input.score),
-        "text": $util.dynamodb.toDynamoDBJson($ctx.args.input.text),
-        "type": $util.dynamodb.toDynamoDBJson($ctx.args.input.type),
-        "updatedDate": $util.dynamodb.toDynamoDBJson($updatedDate),
+        "gameId": $util.dynamodb.toDynamoDBJson($ctx.args.input.gameId),
+        "id": $util.dynamodb.toDynamoDBJson($id),
+        "textValue": $util.dynamodb.toDynamoDBJson($ctx.args.input.textValue),
+        "updatedDate": $util.dynamodb.toDynamoDBJson($updatedDate)
     }
 }
 EOF
@@ -310,7 +325,7 @@ resource "aws_appsync_resolver" "create_entity" {
         "order": $util.dynamodb.toDynamoDBJson($ctx.args.input.order),
         "quoteId": $util.dynamodb.toDynamoDBJson($ctx.args.input.quoteId),
         "score": $util.dynamodb.toDynamoDBJson($ctx.args.input.score),
-        "text": $util.dynamodb.toDynamoDBJson($ctx.args.input.text),
+        "textValue": $util.dynamodb.toDynamoDBJson($ctx.args.input.textValue),
         "type": $util.dynamodb.toDynamoDBJson($ctx.args.input.type),
         "updatedDate": $util.dynamodb.toDynamoDBJson($updatedDate),
     }
@@ -409,7 +424,7 @@ resource "aws_appsync_resolver" "create_key_phrase" {
         "order": $util.dynamodb.toDynamoDBJson($ctx.args.input.order),
         "quoteId": $util.dynamodb.toDynamoDBJson($ctx.args.input.quoteId),
         "score": $util.dynamodb.toDynamoDBJson($ctx.args.input.score),
-        "text": $util.dynamodb.toDynamoDBJson($ctx.args.input.text),
+        "textValue": $util.dynamodb.toDynamoDBJson($ctx.args.input.textValue),
         "updatedDate": $util.dynamodb.toDynamoDBJson($updatedDate),
     }
 }
@@ -795,7 +810,7 @@ resource "aws_appsync_resolver" "create_syntax_token" {
         "id": $util.dynamodb.toDynamoDBJson($id),
         "order": $util.dynamodb.toDynamoDBJson($ctx.args.input.order),
         "quoteId": $util.dynamodb.toDynamoDBJson($ctx.args.input.quoteId),
-        "text": $util.dynamodb.toDynamoDBJson($ctx.args.input.text),
+        "textValue": $util.dynamodb.toDynamoDBJson($ctx.args.input.textValue),
         "tokenId": $util.dynamodb.toDynamoDBJson($ctx.args.input.tokenId),
         "updatedDate": $util.dynamodb.toDynamoDBJson($updatedDate),
     }
@@ -945,6 +960,99 @@ resource "aws_appsync_resolver" "get_syntax_token_part_of_speechs" {
         "expressionValues" : {
             ":pk" : {
                 "S" : "SyntaxTokenPartOfSpeech"
+            }
+        }
+    },
+    "limit": $util.defaultIfNull($ctx.args.limit, 10),
+    "nextToken": $util.toJson($util.defaultIfNullOrBlank($ctx.args.nextToken, null))
+}
+EOF
+  response_template = <<EOF
+#if($ctx.error)
+    $util.error($ctx.error.message, $ctx.error.type)
+#end
+{
+    "items": $util.toJson($ctx.result.items),
+    "nextToken": $util.toJson($util.defaultIfNullOrBlank($context.result.nextToken, null))
+}
+EOF
+  type              = "Query"
+}
+
+resource "aws_appsync_resolver" "create_user" {
+  api_id            = aws_appsync_graphql_api.main.id
+  data_source       = aws_appsync_datasource.main.name
+  field             = "createUser"
+  request_template  = <<EOF
+#set($id = $util.autoId())
+#set($createdDate = $util.time.nowISO8601())
+#set($pk = "User")
+#set($sk = $id)
+#set($updatedDate = $createdDate)
+{
+    "version" : "2018-05-29",
+    "operation" : "PutItem",
+    "key" : {
+        "pk": $util.dynamodb.toDynamoDBJson($pk),
+        "sk": $util.dynamodb.toDynamoDBJson($sk)
+    },
+    "attributeValues" : {
+        "createdDate": $util.dynamodb.toDynamoDBJson($createdDate),
+        "email": $util.dynamodb.toDynamoDBJson($ctx.args.input.$email),
+        "id": $util.dynamodb.toDynamoDBJson($ctx.args.input.$id),
+        "updatedDate": $util.dynamodb.toDynamoDBJson($updatedDate),
+    }
+}
+EOF
+  response_template = <<EOF
+#if($ctx.error)
+    $util.error($ctx.error.message, $ctx.error.type)
+#end
+$util.toJson($ctx.result)
+EOF
+  type              = "Mutation"
+}
+
+resource "aws_appsync_resolver" "get_user" {
+  api_id            = aws_appsync_graphql_api.main.id
+  data_source       = aws_appsync_datasource.main.name
+  field             = "getUser"
+  request_template  = <<EOF
+{
+    "version": "2018-05-29",
+    "operation": "Query",
+    "query": {
+        "expression": "pk = :pk and sk = :sk",
+        "expressionValues": {
+            ":pk": $util.dynamodb.toDynamoDBJson("User"),
+            ":sk": $util.dynamodb.toDynamoDBJson($ctx.args.id)
+        }
+    },
+    "scanIndexForward": false
+}
+EOF
+  response_template = <<EOF
+#if($ctx.error)
+    $util.error($ctx.error.message, $ctx.error.type)
+#end
+$util.toJson($ctx.result)
+EOF
+  type              = "Query"
+}
+
+resource "aws_appsync_resolver" "get_users" {
+  api_id            = aws_appsync_graphql_api.main.id
+  data_source       = aws_appsync_datasource.main.name
+  field             = "getUsers"
+  request_template  = <<EOF
+{
+    "version" : "2017-02-28",
+    "operation" : "Query",
+    "query" : {
+        "expression": "pk = :pk",
+        "expressionValues" : {
+            ":pk" : {
+                "S" : "User"
             }
         }
     },
