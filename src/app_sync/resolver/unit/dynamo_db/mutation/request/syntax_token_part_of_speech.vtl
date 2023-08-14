@@ -1,0 +1,27 @@
+#set($createdDate = $util.time.nowISO8601())
+#set($id = $ctx.args.input.id)
+#set($score = $ctx.args.input.score)
+#set($syntaxTokenId = $ctx.args.input.syntaxTokenId)
+#set($tag = $ctx.args.input.tag)
+#set($tag = $tag.replaceAll("\s+", " "))
+#set($tag = $tag.trim())
+#set($updatedDate = $createdDate)
+{
+    "attributeValues": {
+        "createdDate": $util.dynamodb.toDynamoDBJson($createdDate),
+        "id": $util.dynamodb.toDynamoDBJson($id),
+        "score": $util.dynamodb.toDynamoDBJson($score),
+        "syntaxTokenId": $util.dynamodb.toDynamoDBJson($syntaxTokenId),
+        "tag": $util.dynamodb.toDynamoDBJson($tag),
+        "updatedDate": $util.dynamodb.toDynamoDBJson($updatedDate)
+    },
+    "condition" : {
+        "expression": "(attribute_not_exists(pk) AND attribute_not_exists(sk))"
+    },
+    "key": {
+        "pk": $util.dynamodb.toDynamoDBJson("SyntaxTokenPartOfSpeech"),
+        "sk": $util.dynamodb.toDynamoDBJson($id)
+    },
+    "operation" : "PutItem",
+    "version" : "2018-05-29"
+}

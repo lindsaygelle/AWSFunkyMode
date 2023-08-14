@@ -1,13 +1,12 @@
 input CreateConsoleInput {
-    abbreviation: String!
-    nameValue: String! # "name" is a reserved word
+    id: ID!
+    name: String!
 }
 
 type Console {
-    abbreviation: String!
     createdDate: AWSDateTime!
     id: ID!
-    nameValue: String! # "name" is a reserved word
+    name: String!
     updatedDate: AWSDateTime!
 }
 
@@ -18,14 +17,15 @@ type ConsoleConnection {
 
 input CreateGameInput {
     consoleId: ID!
-    nameValue: String! # "name" is a reserved word
+    id: ID!
+    name: String!
 }
 
 type Game {
     consoleId: ID!
     createdDate: AWSDateTime!
     id: ID!
-    nameValue: String! # "name" is a reserved word
+    name: String!
     updatedDate: AWSDateTime!
 }
 
@@ -36,14 +36,15 @@ type GameConnection {
 
 input createQuoteInput {
     gameId: ID!
-    textValue: String! # textValue because DynamoDB reserves "text"
+    id: ID!
+    text: String!
 }
 
 type Quote {
     createdDate: AWSDateTime!
     gameId: ID!
     id: ID!
-    textValue: String! # textValue because DynamoDB reserves "text"
+    text: String!
     updatedDate: AWSDateTime!
 }
 
@@ -58,7 +59,7 @@ input CreateEntityInput {
     order: Int!
     quoteId: ID!
     score: Float!
-    textValue: String! # textValue because DynamoDB reserves "text"
+    text: String!
     type: String!
 }
 
@@ -70,7 +71,7 @@ type Entity {
     order: Int!
     quoteId: ID!
     score: Float!
-    textValue: String! # textValue because DynamoDB reserves "text"
+    text: String!
     type: String!
     updatedDate: AWSDateTime!
 }
@@ -86,7 +87,7 @@ input CreateKeyPhraseInput {
     order: Int!
     quoteId: ID!
     score: Float!
-    textValue: String! # textValue because DynamoDB reserves "text"
+    text: String!
 }
 
 type KeyPhrase {
@@ -97,7 +98,7 @@ type KeyPhrase {
     order: Int!
     quoteId: ID!
     score: Float!
-    textValue: String! # textValue because DynamoDB reserves "text"
+    text: String!
     updatedDate: AWSDateTime!
 }
 
@@ -178,7 +179,7 @@ input CreateSyntaxTokenInput {
     endOffset: Int!
     order: Int!
     quoteId: ID!
-    textValue: String! # textValue because DynamoDB reserves "text"
+    text: String!
     tokenId: Int!
 }
 
@@ -189,7 +190,7 @@ type SyntaxToken {
     id: ID!
     order: Int!
     quoteId: ID!
-    textValue: String! # textValue because DynamoDB reserves "text"
+    text: String!
     tokenId: Int!
     updatedDate: AWSDateTime!
 }
@@ -247,6 +248,14 @@ type QuoteSubscription {
     id: ID!
     updatedDate: AWSDateTime!
     userId: ID!
+}
+
+type QuoteSubscriptionRule {
+    address: String!
+    addressCategory: String!
+    createdDate: AWSDateTime!
+    quoteSubscriptionId: ID!
+    updatedDate: AWSDateTime!
 }
 
 type Mutation {

@@ -1,0 +1,27 @@
+#set($createdDate = $util.time.nowISO8601())
+#set($mixed = $ctx.args.input.mixed)
+#set($negative = $ctx.args.input.negative)
+#set($neutral = $ctx.args.input.neutral)
+#set($positive = $ctx.args.input.positive)
+#set($sentimentId = $ctx.args.input.sentimentId)
+#set($updatedDate = $createdDate)
+{
+    "attributeValues": {
+        "createdDate": $util.dynamodb.toDynamoDBJson($createdDate),
+        "mixed": $util.dynamodb.toDynamoDBJson($mixed),
+        "negative": $util.dynamodb.toDynamoDBJson($negative),
+        "neutral": $util.dynamodb.toDynamoDBJson($neutral),
+        "positive": $util.dynamodb.toDynamoDBJson($positive),
+        "sentimentId": $util.dynamodb.toDynamoDBJson($sentimentId),
+        "updatedDate": $util.dynamodb.toDynamoDBJson($updatedDate)
+    },
+    "condition" : {
+        "expression": "(attribute_not_exists(pk) AND attribute_not_exists(sk))"
+    },
+    "key": {
+        "pk": $util.dynamodb.toDynamoDBJson("SentimentScore"),
+        "sk": $util.dynamodb.toDynamoDBJson($id)
+    },
+    "operation" : "PutItem",
+    "version" : "2018-05-29"
+}
