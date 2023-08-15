@@ -1,5 +1,6 @@
 input CreateConsoleInput {
     abbreviation: String!
+    id: ID!
     name: String!
 }
 
@@ -17,7 +18,9 @@ type ConsoleConnection {
 }
 
 input CreateGameInput {
+    abbreviation: String!
     consoleId: ID!
+    id: ID!
     name: String!
 }
 
@@ -36,12 +39,14 @@ type GameConnection {
 
 input createQuoteInput {
     gameId: ID!
+    id: ID!
     text: String!
 }
 
 type Quote {
     createdDate: AWSDateTime!
     gameId: ID!
+    id: ID!
     text: String!
     updatedDate: AWSDateTime!
 }
@@ -218,6 +223,44 @@ type SyntaxTokenPartOfSpeechConnection {
     nextToken: String
 }
 
+input CreateUserInput {
+    email: AWSEmail
+    id: ID!
+}
+
+type User {
+    createdDate: AWSDateTime!
+    email: AWSEmail!
+    id: ID!
+    updatedDate: AWSDateTime!
+}
+
+type UserConnection {
+    items: [User]
+    nextToken: String
+}
+
+input CreateQuoteSubscriptionInput {
+    quoteId: ID!
+    userId: ID!
+}
+
+type QuoteSubscription {
+    createdDate: AWSDateTime!
+    quoteId: ID!
+    id: ID!
+    updatedDate: AWSDateTime!
+    userId: ID!
+}
+
+type QuoteSubscriptionRule {
+    address: String!
+    addressCategory: String!
+    createdDate: AWSDateTime!
+    quoteSubscriptionId: ID!
+    updatedDate: AWSDateTime!
+}
+
 type Mutation {
     createConsole(input: CreateConsoleInput): Console
     createGame(input: CreateGameInput): Game
@@ -229,6 +272,8 @@ type Mutation {
     createSentimentScore(input: CreateSentimentScoreInput): SentimentScore
     createSyntaxToken(input: CreateSyntaxTokenInput): SyntaxToken
     createSyntaxTokenPartOfSpeech(input: CreateSyntaxTokenPartOfSpeechInput): SyntaxTokenPartOfSpeech
+    createUser(input: CreateUserInput): User
+    createQuoteSubscription(input: CreateQuoteSubscriptionInput): QuoteSubscription
 }
 
 type Query {
@@ -252,6 +297,10 @@ type Query {
     getSyntaxTokens(quoteId: ID, limit: Int, nextToken: String): SyntaxTokenConnection
     getSyntaxTokenPartOfSpeech(id: ID!): SyntaxToken
     getSyntaxTokenPartOfSpeechs(syntaxTokenId: ID, limit: Int, nextToken: String): SyntaxTokenPartOfSpeechConnection
+    getUser(id: ID!): User
+    getUsers(id: ID, limit: Int, nextToken: String): UserConnection
+    getQuoteSubscription(id: ID!): QuoteSubscription
+    getQuoteSubscriptions(quoteId: ID, userId: ID, limit: Int, nextToken: String): QuoteSubscription
 }
 
 schema {
