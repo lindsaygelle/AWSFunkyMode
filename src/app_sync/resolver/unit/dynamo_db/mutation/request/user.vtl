@@ -1,0 +1,21 @@
+#set($createdDate = $util.time.nowISO8601())
+#set($email = $ctx.args.input.email)
+#set($id = $ctx.args.input.id)
+#set($updatedDate = $createdDate)
+{
+    "attributeValues": {
+        "createdDate": $util.dynamodb.toDynamoDBJson($createdDate),
+        "email": $util.dynamodb.toDynamoDBJson($email),
+        "id": $util.dynamodb.toDynamoDBJson($id),
+        "updatedDate": $util.dynamodb.toDynamoDBJson($updatedDate)
+    },
+    "condition" : {
+        "expression": "(attribute_not_exists(pk) AND attribute_not_exists(sk))"
+    },
+    "key": {
+        "pk": $util.dynamodb.toDynamoDBJson("User"),
+        "sk": $util.dynamodb.toDynamoDBJson($id)
+    },
+    "operation" : "PutItem",
+    "version" : "2018-05-29"
+}

@@ -39,6 +39,18 @@ data "aws_iam_policy_document" "assume_role_lambda" {
   }
 }
 
+data "aws_iam_policy_document" "app_sync_full_access" {
+  statement {
+    actions = [
+      "appsync:*"
+    ]
+    effect = "Allow"
+    resources = [
+      aws_appsync_graphql_api.main.arn
+    ]
+  }
+}
+
 data "aws_iam_policy_document" "app_sync_push_to_cloudwatch_logs" {
   statement {
     actions = [
@@ -63,6 +75,23 @@ data "aws_iam_policy_document" "cognito_lambda_invoke_function" {
       aws_lambda_function.cognito_user_pool_post_authentication.arn,
       aws_lambda_function.cognito_user_pool_post_sign_up.arn,
       aws_lambda_function.cognito_user_pool_pre_sign_up.arn
+    ]
+  }
+}
+
+data "aws_iam_policy_document" "dynamo_db_basic_access" {
+  statement {
+    actions = [
+      "dynamodb:DeleteItem",
+      "dynamodb:GetItem",
+      "dynamodb:PutItem",
+      "dynamodb:Query",
+      "dynamodb:Scan",
+      "dynamodb:UpdateItem"
+    ]
+    resources = [
+      aws_dynamodb_table.main.arn,
+      "${aws_dynamodb_table.main.arn}/*",
     ]
   }
 }

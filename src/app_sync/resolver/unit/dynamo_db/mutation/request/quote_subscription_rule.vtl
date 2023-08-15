@@ -1,0 +1,27 @@
+#set($address = $ctx.args.input.address)
+#set($address = $address.replaceAll("\s+", " "))
+#set($address = $address.trim())
+#set($addressCategory = $ctx.args.input.addressCategory)
+#set($addressCategory = $addressCategory.replaceAll("\s+", " "))
+#set($addressCategory = $addressCategory.trim())
+#set($createdDate = $util.time.nowISO8601())
+#set($quoteSubscriptionId = $ctx.args.input.quoteSubscriptionId)
+#set($updatedDate = $createdDate)
+{
+    "attributeValues": {
+        "address": $util.dynamodb.toDynamoDBJson($address),
+        "addressCategory": $util.dynamodb.toDynamoDBJson($addressCategory),
+        "createdDate": $util.dynamodb.toDynamoDBJson($createdDate),
+        "quoteSubscriptionId": $util.dynamodb.toDynamoDBJson($quoteSubscriptionId),
+        "updatedDate": $util.dynamodb.toDynamoDBJson($updatedDate)
+    },
+    "condition" : {
+        "expression": "(attribute_not_exists(pk) AND attribute_not_exists(sk))"
+    },
+    "key": {
+        "pk": $util.dynamodb.toDynamoDBJson("QuoteSubscriptionRule"),
+        "sk": $util.dynamodb.toDynamoDBJson($id)
+    },
+    "operation" : "PutItem",
+    "version" : "2018-05-29"
+}
