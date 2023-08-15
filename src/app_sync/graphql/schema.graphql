@@ -1,6 +1,5 @@
 input CreateConsoleInput {
     abbreviation: String!
-    id: ID!
     name: String!
 }
 
@@ -20,7 +19,6 @@ type ConsoleConnection {
 input CreateGameInput {
     abbreviation: String!
     consoleId: ID!
-    id: ID!
     name: String!
 }
 
@@ -39,7 +37,6 @@ type GameConnection {
 
 input createQuoteInput {
     gameId: ID!
-    id: ID!
     text: String!
 }
 
