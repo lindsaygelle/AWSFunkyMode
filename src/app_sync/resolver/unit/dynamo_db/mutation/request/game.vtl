@@ -1,3 +1,6 @@
+#set($abbreviation = $ctx.args.input.abbreviation)
+#set($abbreviation = $abbreviation.replaceAll("\s+", " "))
+#set($abbreviation = $abbreviation.trim())
 #set($consoleId = $ctx.args.input.consoleId)
 #set($createdDate = $util.time.nowISO8601())
 #set($id = $ctx.args.input.id)
@@ -7,6 +10,7 @@
 #set($updatedDate = $createdDate)
 {
     "attributeValues": {
+        "abbreviation": $util.dynamodb.toDynamoDBJson($abbreviation),
         "consoleId": $util.dynamodb.toDynamoDBJson($consoleId),
         "createdDate": $util.dynamodb.toDynamoDBJson($createdDate),
         "id": $util.dynamodb.toDynamoDBJson($id),

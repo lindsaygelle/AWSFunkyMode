@@ -1,9 +1,11 @@
 input CreateConsoleInput {
+    abbreviation: String!
     id: ID!
     name: String!
 }
 
 type Console {
+    abbreviation: String!
     createdDate: AWSDateTime!
     id: ID!
     name: String!
@@ -16,6 +18,7 @@ type ConsoleConnection {
 }
 
 input CreateGameInput {
+    abbreviation: String!
     consoleId: ID!
     id: ID!
     name: String!
