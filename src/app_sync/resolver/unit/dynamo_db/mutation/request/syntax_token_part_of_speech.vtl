@@ -1,5 +1,5 @@
 #set($createdDate = $util.time.nowISO8601())
-#set($id = $ctx.args.input.id)
+#set($id = $util.autoId())
 #set($score = $ctx.args.input.score)
 #set($syntaxTokenId = $ctx.args.input.syntaxTokenId)
 #set($tag = $ctx.args.input.tag)
@@ -20,7 +20,7 @@
     },
     "key": {
         "pk": $util.dynamodb.toDynamoDBJson("SyntaxTokenPartOfSpeech"),
-        "sk": $util.dynamodb.toDynamoDBJson($id)
+        "sk": $util.dynamodb.toDynamoDBJson("Metadata#$id")
     },
     "operation" : "PutItem",
     "version" : "2018-05-29"

@@ -280,7 +280,7 @@ type Query {
     getConsole(id: ID!): Console
     getConsoles(limit: Int, nextToken: String): ConsoleConnection
     getGame(id: ID!): Game
-    getGames(limit: Int, nextToken: String): GameConnection
+    getGames(consoleId: ID, limit: Int, nextToken: String): GameConnection
     getQuote(id: ID!): Quote
     getQuotes(consoleId: ID, limit: Int, nextToken: String): QuoteConnection
     getEntity(id: ID!): Entity

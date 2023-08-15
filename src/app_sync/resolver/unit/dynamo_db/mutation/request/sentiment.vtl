@@ -1,5 +1,5 @@
 #set($createdDate = $util.time.nowISO8601())
-#set($id = $ctx.args.input.id)
+#set($id = $util.autoId())
 #set($quoteId = $ctx.args.input.quoteId)
 #set($sentiment = $ctx.args.input.sentiment)
 #set($sentiment = $sentiment.replaceAll("\s+", " "))
@@ -18,7 +18,7 @@
     },
     "key": {
         "pk": $util.dynamodb.toDynamoDBJson("Sentiment"),
-        "sk": $util.dynamodb.toDynamoDBJson($id)
+        "sk": $util.dynamodb.toDynamoDBJson("Metadata#$id")
     },
     "operation" : "PutItem",
     "version" : "2018-05-29"

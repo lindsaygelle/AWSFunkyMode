@@ -1,7 +1,7 @@
 #set($beginOffset = $ctx.args.input.beginOffset)
 #set($createdDate = $util.time.nowISO8601())
 #set($endOffset = $ctx.args.input.endOffset)
-#set($id = $ctx.args.input.id)
+#set($id = $util.autoId())
 #set($order = $ctx.args.input.order)
 #set($quoteId = $ctx.args.input.quoteId)
 #set($score = $ctx.args.input.score)
@@ -26,7 +26,7 @@
     },
     "key": {
         "pk": $util.dynamodb.toDynamoDBJson("KeyPhrase"),
-        "sk": $util.dynamodb.toDynamoDBJson($id)
+        "sk": $util.dynamodb.toDynamoDBJson("Metadata#$id")
     },
     "operation" : "PutItem",
     "version" : "2018-05-29"
