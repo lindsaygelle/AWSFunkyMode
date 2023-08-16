@@ -1,5 +1,5 @@
 #set($createdDate = $util.time.nowISO8601())
-#set($id = $ctx.args.input.id)
+#set($id = $util.autoId())
 #set($quoteId = $ctx.args.input.quoteId)
 #set($updatedDate = $createdDate)
 #set($userId = $ctx.args.input.userId)
@@ -16,7 +16,7 @@
     },
     "key": {
         "pk": $util.dynamodb.toDynamoDBJson("QuoteSubscription"),
-        "sk": $util.dynamodb.toDynamoDBJson($id)
+        "sk": $util.dynamodb.toDynamoDBJson("Metadata#$id")
     },
     "operation" : "PutItem",
     "version" : "2018-05-29"

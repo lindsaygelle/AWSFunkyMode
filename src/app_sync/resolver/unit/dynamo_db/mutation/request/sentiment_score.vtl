@@ -20,7 +20,7 @@
     },
     "key": {
         "pk": $util.dynamodb.toDynamoDBJson("SentimentScore"),
-        "sk": $util.dynamodb.toDynamoDBJson($id)
+        "sk": $util.dynamodb.toDynamoDBJson("Metadata#$id")
     },
     "operation" : "PutItem",
     "version" : "2018-05-29"
