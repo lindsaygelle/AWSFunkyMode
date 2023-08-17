@@ -1,3 +1,8 @@
+resource "aws_iam_role_policy_attachment" "api_gateway_app_sync_graphql_full_access" {
+  policy_arn = aws_iam_policy.app_sync_graphql_full_access.arn
+  role       = aws_iam_role.api_gateway.id
+}
+
 resource "aws_iam_role_policy_attachment" "app_sync_dynamo_db_basic_access" {
   policy_arn = aws_iam_policy.dynamo_db_basic_access.arn
   role       = aws_iam_role.app_sync.id
