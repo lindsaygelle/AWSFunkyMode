@@ -250,12 +250,29 @@ type QuoteSubscription {
     userId: ID!
 }
 
+type QuoteSubscriptionConnection {
+    items: [QuoteSubscription]
+    nextToken: String
+}
+
+input CreateQuoteSubscriptionRuleInput {
+    address: String!
+    addressCategory: String!
+    quoteSubscriptionId: ID!
+}
+
 type QuoteSubscriptionRule {
     address: String!
     addressCategory: String!
     createdDate: AWSDateTime!
+    id: ID!
     quoteSubscriptionId: ID!
     updatedDate: AWSDateTime!
+}
+
+type QuoteSubscriptionRuleConnection {
+    items: [QuoteSubscriptionRule]
+    nextToken: String
 }
 
 type Mutation {
@@ -271,6 +288,7 @@ type Mutation {
     createSyntaxTokenPartOfSpeech(input: CreateSyntaxTokenPartOfSpeechInput): SyntaxTokenPartOfSpeech
     createUser(input: CreateUserInput): User
     createQuoteSubscription(input: CreateQuoteSubscriptionInput): QuoteSubscription
+    createQuoteSubscriptionRule(input: CreateQuoteSubscriptionRuleInput): QuoteSubscriptionRule
 }
 
 type Query {
@@ -297,7 +315,9 @@ type Query {
     getUser(id: ID!): User
     getUsers(id: ID, limit: Int, nextToken: String): UserConnection
     getQuoteSubscription(id: ID!): QuoteSubscription
-    getQuoteSubscriptions(quoteId: ID, userId: ID, limit: Int, nextToken: String): QuoteSubscription
+    getQuoteSubscriptions(quoteId: ID, userId: ID, limit: Int, nextToken: String): QuoteSubscriptionConnection
+    getQuoteSubscriptionRule(id: ID!): QuoteSubscriptionRule
+    getQuoteSubscriptionRules(quoteSubscriptionId: ID, limit: Int, nextToken: String): QuoteSubscriptionRuleConnection
 }
 
 schema {

@@ -1,12 +1,21 @@
+data "aws_iam_policy_document" "assume_role_api_gateway" {
+  statement {
+    effect = "Allow"
+    principals {
+      type        = "Service"
+      identifiers = ["apigateway.amazonaws.com"]
+    }
+    actions = ["sts:AssumeRole"]
+  }
+}
+
 data "aws_iam_policy_document" "assume_role_app_sync" {
   statement {
     effect = "Allow"
-
     principals {
       type        = "Service"
       identifiers = ["appsync.amazonaws.com"]
     }
-
     actions = ["sts:AssumeRole"]
   }
 }
@@ -29,12 +38,10 @@ data "aws_iam_policy_document" "assume_role_cognito" {
 data "aws_iam_policy_document" "assume_role_lambda" {
   statement {
     effect = "Allow"
-
     principals {
       type        = "Service"
       identifiers = ["lambda.amazonaws.com"]
     }
-
     actions = ["sts:AssumeRole"]
   }
 }
@@ -43,6 +50,18 @@ data "aws_iam_policy_document" "app_sync_full_access" {
   statement {
     actions = [
       "appsync:*"
+    ]
+    effect = "Allow"
+    resources = [
+      aws_appsync_graphql_api.main.arn
+    ]
+  }
+}
+
+data "aws_iam_policy_document" "app_sync_graphql_full_access" {
+  statement {
+    actions = [
+      "appsync:GraphQL"
     ]
     effect = "Allow"
     resources = [
