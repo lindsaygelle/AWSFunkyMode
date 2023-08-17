@@ -1,0 +1,8 @@
+{
+    "operation": "GetItem",
+    "key": {
+        "pk": $util.dynamodb.toDynamoDBJson("SentimentScore"),
+        "sk": $util.dynamodb.toDynamoDBJson("Metadata#$ctx.args.id")
+    },
+    "version": "2018-05-29"
+}

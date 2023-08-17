@@ -1,0 +1,29 @@
+#set($abbreviation = $ctx.args.input.abbreviation)
+#set($abbreviation = $abbreviation.replaceAll("\s+", " "))
+#set($abbreviation = $abbreviation.trim())
+#set($consoleId = $ctx.args.input.consoleId)
+#set($createdDate = $util.time.nowISO8601())
+#set($id = $util.autoId())
+#set($name = $ctx.args.input.name)
+#set($name = $name.replaceAll("\s+", " "))
+#set($name = $name.trim())
+#set($updatedDate = $createdDate)
+{
+    "attributeValues": {
+        "abbreviation": $util.dynamodb.toDynamoDBJson($abbreviation),
+        "consoleId": $util.dynamodb.toDynamoDBJson($consoleId),
+        "createdDate": $util.dynamodb.toDynamoDBJson($createdDate),
+        "id": $util.dynamodb.toDynamoDBJson($id),
+        "name": $util.dynamodb.toDynamoDBJson($name),
+        "updatedDate": $util.dynamodb.toDynamoDBJson($updatedDate)
+    },
+    "condition" : {
+        "expression": "(attribute_not_exists(pk) AND attribute_not_exists(sk))"
+    },
+    "key": {
+        "pk": $util.dynamodb.toDynamoDBJson("Game"),
+        "sk": $util.dynamodb.toDynamoDBJson("Metadata#$id")
+    },
+    "operation" : "PutItem",
+    "version" : "2018-05-29"
+}

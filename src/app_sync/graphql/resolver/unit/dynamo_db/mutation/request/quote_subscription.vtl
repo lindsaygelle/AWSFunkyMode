@@ -1,0 +1,23 @@
+#set($createdDate = $util.time.nowISO8601())
+#set($id = $util.autoId())
+#set($quoteId = $ctx.args.input.quoteId)
+#set($updatedDate = $createdDate)
+#set($userId = $ctx.args.input.userId)
+{
+    "attributeValues": {
+        "createdDate": $util.dynamodb.toDynamoDBJson($createdDate),
+        "id": $util.dynamodb.toDynamoDBJson($id),
+        "quoteId": $util.dynamodb.toDynamoDBJson($quoteId),
+        "updatedDate": $util.dynamodb.toDynamoDBJson($updatedDate),
+        "userId": $util.dynamodb.toDynamoDBJson($userId)
+    },
+    "condition" : {
+        "expression": "(attribute_not_exists(pk) AND attribute_not_exists(sk))"
+    },
+    "key": {
+        "pk": $util.dynamodb.toDynamoDBJson("QuoteSubscription"),
+        "sk": $util.dynamodb.toDynamoDBJson("Metadata#$id")
+    },
+    "operation" : "PutItem",
+    "version" : "2018-05-29"
+}

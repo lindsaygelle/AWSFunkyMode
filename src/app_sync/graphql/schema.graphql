@@ -1,6 +1,5 @@
 input CreateConsoleInput {
     abbreviation: String!
-    id: ID!
     name: String!
 }
 
@@ -20,7 +19,6 @@ type ConsoleConnection {
 input CreateGameInput {
     abbreviation: String!
     consoleId: ID!
-    id: ID!
     name: String!
 }
 
@@ -39,7 +37,6 @@ type GameConnection {
 
 input createQuoteInput {
     gameId: ID!
-    id: ID!
     text: String!
 }
 
@@ -253,12 +250,29 @@ type QuoteSubscription {
     userId: ID!
 }
 
+type QuoteSubscriptionConnection {
+    items: [QuoteSubscription]
+    nextToken: String
+}
+
+input CreateQuoteSubscriptionRuleInput {
+    address: String!
+    addressCategory: String!
+    quoteSubscriptionId: ID!
+}
+
 type QuoteSubscriptionRule {
     address: String!
     addressCategory: String!
     createdDate: AWSDateTime!
+    id: ID!
     quoteSubscriptionId: ID!
     updatedDate: AWSDateTime!
+}
+
+type QuoteSubscriptionRuleConnection {
+    items: [QuoteSubscriptionRule]
+    nextToken: String
 }
 
 type Mutation {
@@ -274,13 +288,14 @@ type Mutation {
     createSyntaxTokenPartOfSpeech(input: CreateSyntaxTokenPartOfSpeechInput): SyntaxTokenPartOfSpeech
     createUser(input: CreateUserInput): User
     createQuoteSubscription(input: CreateQuoteSubscriptionInput): QuoteSubscription
+    createQuoteSubscriptionRule(input: CreateQuoteSubscriptionRuleInput): QuoteSubscriptionRule
 }
 
 type Query {
     getConsole(id: ID!): Console
     getConsoles(limit: Int, nextToken: String): ConsoleConnection
     getGame(id: ID!): Game
-    getGames(limit: Int, nextToken: String): GameConnection
+    getGames(consoleId: ID, limit: Int, nextToken: String): GameConnection
     getQuote(id: ID!): Quote
     getQuotes(consoleId: ID, limit: Int, nextToken: String): QuoteConnection
     getEntity(id: ID!): Entity
@@ -300,7 +315,9 @@ type Query {
     getUser(id: ID!): User
     getUsers(id: ID, limit: Int, nextToken: String): UserConnection
     getQuoteSubscription(id: ID!): QuoteSubscription
-    getQuoteSubscriptions(quoteId: ID, userId: ID, limit: Int, nextToken: String): QuoteSubscription
+    getQuoteSubscriptions(quoteId: ID, userId: ID, limit: Int, nextToken: String): QuoteSubscriptionConnection
+    getQuoteSubscriptionRule(id: ID!): QuoteSubscriptionRule
+    getQuoteSubscriptionRules(quoteSubscriptionId: ID, limit: Int, nextToken: String): QuoteSubscriptionRuleConnection
 }
 
 schema {
