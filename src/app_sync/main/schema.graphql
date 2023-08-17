@@ -1,0 +1,392 @@
+input CreateConsoleInput {
+    abbreviation: String!
+    name: String!
+}
+
+input CreateEntityInput {
+    begin_offset: Int!
+    end_offset: Int!
+    order: Int!
+    quote_id: ID!
+    score: Float!
+    text: String!
+    type: String!
+}
+
+input CreateGameInput {
+    abbreviation: String!
+    console_id: ID!
+    name: String!
+}
+
+input CreateKeyPhraseInput {
+    begin_offset: Int!
+    end_offset: Int!
+    order: Int!
+    quote_id: ID!
+    score: Float!
+    text: String!
+}
+
+input CreatePiiInput {
+    begin_offset: Int!
+    end_offset: Int!
+    order: Int!
+    quote_id: ID!
+    score: Float!
+    type: String!
+}
+
+input CreateQuoteInput {
+    game_id: ID!
+    text: String!
+}
+
+input CreateQuoteSubscriptionInput {
+    quote_id: ID!
+    user_id: ID!
+}
+
+input CreateQuoteSubscriptionRuleInput {
+    address: String!
+    category: String!
+    quote_subscription_id: ID!
+    schedule: ID!
+}
+
+input CreateSentimentInput {
+    quote_id: ID!
+    sentiment: String!
+}
+
+input CreateSentimentScoreInput {
+    mixed: Float!
+    negative: Float!
+    neutral: Float!
+    positive: Float!
+    sentiment_id: ID!
+}
+
+input CreateSyntaxTokenInput {
+    begin_offset: Int!
+    end_offset: Int!
+    order: Int!
+    quote_id: ID!
+    text: String!
+    tokenId: Int!
+}
+
+input CreateSyntaxTokenPartOfSpeechInput {
+    score: Float!
+    syntax_token_id: ID!
+    tag: String!
+}
+
+input CreateUserInput {
+    email: AWSEmail!
+}
+
+input DeleteConsoleInput {
+    id: ID!
+}
+
+input DeleteEntityInput {
+    id: ID!
+}
+
+input DeleteGameInput {
+    id: ID!
+}
+
+input DeleteKeyPhraseInput {
+    id: ID!
+}
+
+input DeletePiiInput {
+    id: ID!
+}
+
+input DeleteQuoteInput {
+    id: ID!
+}
+
+input DeleteQuoteSubscriptionInput {
+    id: ID!
+}
+
+input DeleteQuoteSubscriptionRuleInput {
+    id: ID!
+}
+
+input DeleteSentimentInput {
+    id: ID!
+}
+
+input DeleteSentimentScoreInput {
+    id: ID!
+}
+
+input DeleteSyntaxTokenInput {
+    id: ID!
+}
+
+input DeleteSyntaxTokenPartOfSpeechInput {
+    id: ID!
+}
+
+input DeleteUserInput {
+    id: ID!
+}
+
+type Console {
+    abbreviation: String!
+    created_date: AWSDateTime!
+    id: ID!
+    name: String!
+    updated_date: AWSDateTime!
+}
+
+type ConsoleConnection {
+    items: [Console]
+    next_token: String
+}
+
+type Entity {
+    begin_offset: Int!
+    created_date: AWSDateTime!
+    end_offset: Int!
+    id: ID!
+    order: Int!
+    quote_id: ID!
+    score: Float!
+    text: String!
+    type: String!
+    updated_date: AWSDateTime!
+}
+
+type EntityConnection {
+    items: [Entity]
+    next_token: String
+}
+
+type Game {
+    abbreviation: String!
+    console_id: ID!
+    created_date: AWSDateTime!
+    id: ID!
+    name: String!
+    updated_date: AWSDateTime!
+}
+
+type GameConnection {
+    items: [Game]
+    next_token: String
+}
+
+type KeyPhrase {
+    created_date: AWSDateTime!
+    begin_offset: Int!
+    end_offset: Int!
+    id: ID!
+    order: Int!
+    quote_id: ID!
+    score: Float!
+    text: String!
+    updated_date: AWSDateTime!
+}
+
+type KeyPhraseConnection {
+    items: [KeyPhrase]
+    next_token: String
+}
+
+type Pii {
+    begin_offset: Int!
+    created_date: AWSDateTime!
+    end_offset: Int!
+    id: ID!
+    order: Int!
+    quote_id: ID!
+    score: Float!
+    type: String!
+    updated_date: AWSDateTime!
+}
+
+type PiiConnection {
+    items: [Pii]
+    next_token: String
+}
+
+type Quote {
+    created_date: AWSDateTime!
+    game_id: ID!
+    id: ID!
+    text: String!
+    updated_date: AWSDateTime!
+}
+
+type QuoteConnection {
+    items: [Quote]
+    next_token: String
+}
+
+type QuoteSubscription {
+    created_date: AWSDateTime!
+    quote_id: ID!
+    id: ID!
+    updated_date: AWSDateTime!
+    user_id: ID!
+}
+
+type QuoteSubscriptionConnection {
+    items: [QuoteSubscription]
+    next_token: String
+}
+
+type QuoteSubscriptionRule {
+    address: String!
+    category: String!
+    created_date: AWSDateTime!
+    quote_subscription_id: ID!
+    schedule: ID!
+    updated_date: AWSDateTime!
+}
+
+type QuoteSubscriptionRuleConnection {
+    items: [QuoteSubscriptionRule]
+    next_token: String
+}
+
+type Sentiment {
+    created_date: AWSDateTime!
+    id: ID!
+    quote_id: ID!
+    sentiment: String!
+    updated_date: AWSDateTime!
+}
+
+type SentimentConnection {
+    items: [Sentiment]
+    next_token: String
+}
+
+type SentimentScore {
+    created_date: AWSDateTime!
+    mixed: Float!
+    negative: Float!
+    neutral: Float!
+    positive: Float!
+    sentiment_id: ID!
+    updated_date: AWSDateTime!
+}
+
+type SentimentScoreConnection {
+    items: [SentimentScore]
+    next_token: String
+}
+
+type SyntaxToken {
+    begin_offset: Int!
+    created_date: AWSDateTime!
+    end_offset: Int!
+    id: ID!
+    order: Int!
+    quote_id: ID!
+    text: String!
+    tokenId: Int!
+    updated_date: AWSDateTime!
+}
+
+type SyntaxTokenConnection {
+    items: [SyntaxToken]
+    next_token: String
+}
+
+type SyntaxTokenPartOfSpeech {
+    created_date: AWSDateTime!
+    score: Float!
+    id: ID!
+    syntax_token_id: ID!
+    tag: String!
+    updated_date: AWSDateTime!
+}
+
+type SyntaxTokenPartOfSpeechConnection {
+    items: [SyntaxTokenPartOfSpeech]
+    next_token: String
+}
+
+type User {
+    created_date: AWSDateTime!
+    email: AWSEmail!
+    id: ID!
+    updated_date: AWSDateTime!
+}
+
+type UserConnection {
+    items: [User]
+    next_token: String
+}
+
+type Mutation {
+    create_console(input: CreateConsoleInput): Console
+    delete_console(id: ID!): Console
+    create_game(input: CreateGameInput): Game
+    delete_game(id: ID!): Game
+    create_quote(input: CreateQuoteInput): Quote
+    delete_quote(id: ID!): Quote
+    create_entity(input: CreateEntityInput): Entity
+    delete_entity(id: ID!): Entity
+    create_key_phrase(input: CreateKeyPhraseInput): KeyPhrase
+    delete_key_phrase(id: ID!): KeyPhrase
+    create_pii(input: CreatePiiInput): Pii
+    delete_pii(id: ID!): Pii
+    create_sentiment(input: CreateSentimentInput): Sentiment
+    delete_sentiment(id: ID!): Sentiment
+    create_sentiment_score(input: CreateSentimentScoreInput): SentimentScore
+    delete_sentiment_score(id: ID!): SentimentScore
+    create_syntax_token(input: CreateSyntaxTokenInput): SyntaxToken
+    delete_syntax_token(id: ID!): SyntaxToken
+    create_syntax_token_part_of_speech(input: CreateSyntaxTokenPartOfSpeechInput): SyntaxTokenPartOfSpeech
+    delete_syntax_token_part_of_speech(id: ID!): SyntaxTokenPartOfSpeech
+    create_user(input: CreateUserInput): User
+    delete_user(id: ID!): User
+    create_quote_subscription(input: CreateQuoteSubscriptionInput): QuoteSubscription
+    delete_quote_subscription(id: ID!): QuoteSubscription
+    create_quote_subscription_rule(input: CreateQuoteSubscriptionRuleInput): QuoteSubscriptionRule
+    delete_quote_subscription_rule(id: ID!): QuoteSubscriptionRule
+}
+
+type Query {
+    get_console(id: ID!): Console
+    get_console_connection(limit: Int, next_token: String): ConsoleConnection
+    get_game(id: ID!): Game
+    get_game_connection(limit: Int, next_token: String): GameConnection
+    get_quote(id: ID!): Quote
+    get_quote_connection(limit: Int, next_token: String): QuoteConnection
+    get_entity(id: ID!): Entity
+    get_entity_connection(limit: Int, next_token: String): EntityConnection
+    get_key_phrase(id: ID!): KeyPhrase
+    get_key_phrase_connection(limit: Int, next_token: String): KeyPhraseConnection
+    get_pii(id: ID!): Pii
+    get_pii_connection(limit: Int, next_token: String): PiiConnection
+    get_sentiment(id: ID!): Sentiment
+    get_sentiment_connection(limit: Int, next_token: String): SentimentConnection
+    get_sentiment_score(id: ID!): SentimentScore
+    get_sentiment_score_connection(limit: Int, next_token: String): SentimentScoreConnection
+    get_syntax_token(id: ID!): SyntaxToken
+    get_syntax_token_connection(limit: Int, next_token: String): SyntaxTokenConnection
+    get_syntax_token_part_of_speech(id: ID!): SyntaxTokenPartOfSpeech
+    get_syntax_token_part_of_speech_connection(limit: Int, next_token: String): SyntaxTokenPartOfSpeechConnection
+    get_user(id: ID!): User
+    get_user_connection(limit: Int, next_token: String): UserConnection
+    get_quote_subscription(id: ID!): QuoteSubscription
+    get_quote_subscription_connection(limit: Int, next_token: String): QuoteSubscriptionConnection
+    get_quote_subscription_rule(id: ID!): QuoteSubscriptionRule
+    get_quote_subscription_rule_connection(limit: Int, next_token: String): QuoteSubscriptionRuleConnection
+}
+
+schema {
+    mutation: Mutation
+    query: Query
+}

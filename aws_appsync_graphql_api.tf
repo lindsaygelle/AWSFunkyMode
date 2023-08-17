@@ -17,7 +17,7 @@ resource "aws_appsync_graphql_api" "main" {
     field_log_level          = "ALL"
   }
   name         = var.application
-  schema       = file("./src/app_sync/graphql/schema.graphql")
+  schema       = file("./src/app_sync/main/schema.graphql")
   tags_all     = local.tags_all
   xray_enabled = local.is_production ? true : false
 }
