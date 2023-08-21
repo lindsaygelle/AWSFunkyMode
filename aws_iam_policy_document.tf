@@ -1,23 +1,27 @@
 // AssumeRoles
 data "aws_iam_policy_document" "assume_role_api_gateway" {
   statement {
+    actions = [
+      "sts:AssumeRole"
+    ]
     effect = "Allow"
     principals {
       type        = "Service"
       identifiers = ["apigateway.amazonaws.com"]
     }
-    actions = ["sts:AssumeRole"]
   }
 }
 
 data "aws_iam_policy_document" "assume_role_app_sync" {
   statement {
+    actions = [
+      "sts:AssumeRole"
+    ]
     effect = "Allow"
     principals {
       type        = "Service"
       identifiers = ["appsync.amazonaws.com"]
     }
-    actions = ["sts:AssumeRole"]
   }
 }
 
@@ -38,12 +42,14 @@ data "aws_iam_policy_document" "assume_role_cognito" {
 
 data "aws_iam_policy_document" "assume_role_lambda" {
   statement {
+    actions = [
+      "sts:AssumeRole"
+    ]
     effect = "Allow"
     principals {
       type        = "Service"
       identifiers = ["lambda.amazonaws.com"]
     }
-    actions = ["sts:AssumeRole"]
   }
 }
 
