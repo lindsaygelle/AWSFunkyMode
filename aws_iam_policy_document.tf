@@ -1,22 +1,27 @@
+// AssumeRoles
 data "aws_iam_policy_document" "assume_role_api_gateway" {
   statement {
+    actions = [
+      "sts:AssumeRole"
+    ]
     effect = "Allow"
     principals {
       type        = "Service"
       identifiers = ["apigateway.amazonaws.com"]
     }
-    actions = ["sts:AssumeRole"]
   }
 }
 
 data "aws_iam_policy_document" "assume_role_app_sync" {
   statement {
+    actions = [
+      "sts:AssumeRole"
+    ]
     effect = "Allow"
     principals {
       type        = "Service"
       identifiers = ["appsync.amazonaws.com"]
     }
-    actions = ["sts:AssumeRole"]
   }
 }
 
@@ -37,15 +42,18 @@ data "aws_iam_policy_document" "assume_role_cognito" {
 
 data "aws_iam_policy_document" "assume_role_lambda" {
   statement {
+    actions = [
+      "sts:AssumeRole"
+    ]
     effect = "Allow"
     principals {
       type        = "Service"
       identifiers = ["lambda.amazonaws.com"]
     }
-    actions = ["sts:AssumeRole"]
   }
 }
 
+// Policies
 data "aws_iam_policy_document" "app_sync_full_access" {
   statement {
     actions = [
@@ -70,7 +78,7 @@ data "aws_iam_policy_document" "app_sync_graphql_full_access" {
   }
 }
 
-data "aws_iam_policy_document" "app_sync_push_to_cloudwatch_logs" {
+data "aws_iam_policy_document" "cloud_watch_logs_write_access" {
   statement {
     actions = [
       "logs:CreateLogGroup",
@@ -108,8 +116,24 @@ data "aws_iam_policy_document" "dynamo_db_basic_access" {
       "dynamodb:Scan",
       "dynamodb:UpdateItem"
     ]
+    effect = "Allow"
     resources = [
       aws_dynamodb_table.main.arn,
+      "${aws_dynamodb_table.main.arn}/*",
+    ]
+  }
+}
+
+data "aws_iam_policy_document" "dynamo_db_stream_read_access" {
+  statement {
+    actions = [
+      "dynamodb:DescribeStream",
+      "dynamodb:GetRecords",
+      "dynamodb:GetShardIterator",
+      "dynamodb:ListStreams"
+    ]
+    effect = "Allow"
+    resources = [
       "${aws_dynamodb_table.main.arn}/*",
     ]
   }
