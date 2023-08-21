@@ -1,3 +1,4 @@
+// APIGateway
 resource "aws_lambda_function" "api_gateway_main_console_get_integration" {
   architectures = ["x86_64"]
   environment {
@@ -10,10 +11,10 @@ resource "aws_lambda_function" "api_gateway_main_console_get_integration" {
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_console_get_integration.output_path
-  function_name    = "FunkyModeApiGatewayGetConsoleConnection"
+  function_name    = "${var.application}ApiGatewayGetConsoleConnection"
   handler          = "lambda.handler"
   memory_size      = 128
-  role             = aws_iam_role.lambda_app_sync.arn
+  role             = aws_iam_role.app_sync_lambda.arn
   runtime          = "python3.11"
   source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_console_get_integration.output_path)
   timeout          = 5
@@ -34,10 +35,10 @@ resource "aws_lambda_function" "api_gateway_main_console_id_get_integration" {
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_console_id_get_integration.output_path
-  function_name    = "FunkyModeApiGatewayGetConsole"
+  function_name    = "${var.application}ApiGatewayGetConsole"
   handler          = "lambda.handler"
   memory_size      = 128
-  role             = aws_iam_role.lambda_app_sync.arn
+  role             = aws_iam_role.app_sync_lambda.arn
   runtime          = "python3.11"
   source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_console_id_get_integration.output_path)
   timeout          = 5
@@ -58,10 +59,10 @@ resource "aws_lambda_function" "api_gateway_main_entity_get_integration" {
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_entity_get_integration.output_path
-  function_name    = "FunkyModeApiGatewayGetEntityConnection"
+  function_name    = "${var.application}ApiGatewayGetEntityConnection"
   handler          = "lambda.handler"
   memory_size      = 128
-  role             = aws_iam_role.lambda_app_sync.arn
+  role             = aws_iam_role.app_sync_lambda.arn
   runtime          = "python3.11"
   source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_entity_get_integration.output_path)
   timeout          = 5
@@ -82,10 +83,10 @@ resource "aws_lambda_function" "api_gateway_main_entity_id_get_integration" {
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_entity_id_get_integration.output_path
-  function_name    = "FunkyModeApiGatewayGetEntity"
+  function_name    = "${var.application}ApiGatewayGetEntity"
   handler          = "lambda.handler"
   memory_size      = 128
-  role             = aws_iam_role.lambda_app_sync.arn
+  role             = aws_iam_role.app_sync_lambda.arn
   runtime          = "python3.11"
   source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_entity_id_get_integration.output_path)
   timeout          = 5
@@ -106,10 +107,10 @@ resource "aws_lambda_function" "api_gateway_main_game_get_integration" {
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_game_get_integration.output_path
-  function_name    = "FunkyModeApiGatewayGetGameConnection"
+  function_name    = "${var.application}ApiGatewayGetGameConnection"
   handler          = "lambda.handler"
   memory_size      = 128
-  role             = aws_iam_role.lambda_app_sync.arn
+  role             = aws_iam_role.app_sync_lambda.arn
   runtime          = "python3.11"
   source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_game_get_integration.output_path)
   timeout          = 5
@@ -130,10 +131,10 @@ resource "aws_lambda_function" "api_gateway_main_game_id_get_integration" {
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_game_id_get_integration.output_path
-  function_name    = "FunkyModeApiGatewayGetGame"
+  function_name    = "${var.application}ApiGatewayGetGame"
   handler          = "lambda.handler"
   memory_size      = 128
-  role             = aws_iam_role.lambda_app_sync.arn
+  role             = aws_iam_role.app_sync_lambda.arn
   runtime          = "python3.11"
   source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_game_id_get_integration.output_path)
   timeout          = 5
@@ -154,10 +155,10 @@ resource "aws_lambda_function" "api_gateway_main_key_phrase_get_integration" {
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_key_phrase_get_integration.output_path
-  function_name    = "FunkyModeApiGatewayGetKeyPhraseConnection"
+  function_name    = "${var.application}ApiGatewayGetKeyPhraseConnection"
   handler          = "lambda.handler"
   memory_size      = 128
-  role             = aws_iam_role.lambda_app_sync.arn
+  role             = aws_iam_role.app_sync_lambda.arn
   runtime          = "python3.11"
   source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_key_phrase_get_integration.output_path)
   timeout          = 5
@@ -178,10 +179,10 @@ resource "aws_lambda_function" "api_gateway_main_key_phrase_id_get_integration" 
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_key_phrase_id_get_integration.output_path
-  function_name    = "FunkyModeApiGatewayGetKeyPhrase"
+  function_name    = "${var.application}ApiGatewayGetKeyPhrase"
   handler          = "lambda.handler"
   memory_size      = 128
-  role             = aws_iam_role.lambda_app_sync.arn
+  role             = aws_iam_role.app_sync_lambda.arn
   runtime          = "python3.11"
   source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_key_phrase_id_get_integration.output_path)
   timeout          = 5
@@ -202,10 +203,10 @@ resource "aws_lambda_function" "api_gateway_main_pii_get_integration" {
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_pii_get_integration.output_path
-  function_name    = "FunkyModeApiGatewayGetPiiConnection"
+  function_name    = "${var.application}ApiGatewayGetPiiConnection"
   handler          = "lambda.handler"
   memory_size      = 128
-  role             = aws_iam_role.lambda_app_sync.arn
+  role             = aws_iam_role.app_sync_lambda.arn
   runtime          = "python3.11"
   source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_pii_get_integration.output_path)
   timeout          = 5
@@ -226,10 +227,10 @@ resource "aws_lambda_function" "api_gateway_main_pii_id_get_integration" {
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_pii_id_get_integration.output_path
-  function_name    = "FunkyModeApiGatewayGetPii"
+  function_name    = "${var.application}ApiGatewayGetPii"
   handler          = "lambda.handler"
   memory_size      = 128
-  role             = aws_iam_role.lambda_app_sync.arn
+  role             = aws_iam_role.app_sync_lambda.arn
   runtime          = "python3.11"
   source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_pii_id_get_integration.output_path)
   timeout          = 5
@@ -250,10 +251,10 @@ resource "aws_lambda_function" "api_gateway_main_quote_get_integration" {
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_quote_get_integration.output_path
-  function_name    = "FunkyModeApiGatewayGetQuoteConnection"
+  function_name    = "${var.application}ApiGatewayGetQuoteConnection"
   handler          = "lambda.handler"
   memory_size      = 128
-  role             = aws_iam_role.lambda_app_sync.arn
+  role             = aws_iam_role.app_sync_lambda.arn
   runtime          = "python3.11"
   source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_quote_get_integration.output_path)
   timeout          = 5
@@ -274,10 +275,10 @@ resource "aws_lambda_function" "api_gateway_main_quote_id_get_integration" {
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_quote_id_get_integration.output_path
-  function_name    = "FunkyModeApiGatewayGetQuote"
+  function_name    = "${var.application}ApiGatewayGetQuote"
   handler          = "lambda.handler"
   memory_size      = 128
-  role             = aws_iam_role.lambda_app_sync.arn
+  role             = aws_iam_role.app_sync_lambda.arn
   runtime          = "python3.11"
   source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_quote_id_get_integration.output_path)
   timeout          = 5
@@ -298,10 +299,10 @@ resource "aws_lambda_function" "api_gateway_main_quote_subscription_get_integrat
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_quote_subscription_get_integration.output_path
-  function_name    = "FunkyModeApiGatewayGetQuoteSubscriptionConnection"
+  function_name    = "${var.application}ApiGatewayGetQuoteSubscriptionConnection"
   handler          = "lambda.handler"
   memory_size      = 128
-  role             = aws_iam_role.lambda_app_sync.arn
+  role             = aws_iam_role.app_sync_lambda.arn
   runtime          = "python3.11"
   source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_quote_subscription_get_integration.output_path)
   timeout          = 5
@@ -322,10 +323,10 @@ resource "aws_lambda_function" "api_gateway_main_quote_subscription_id_get_integ
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_quote_subscription_id_get_integration.output_path
-  function_name    = "FunkyModeApiGatewayGetQuoteSubscription"
+  function_name    = "${var.application}ApiGatewayGetQuoteSubscription"
   handler          = "lambda.handler"
   memory_size      = 128
-  role             = aws_iam_role.lambda_app_sync.arn
+  role             = aws_iam_role.app_sync_lambda.arn
   runtime          = "python3.11"
   source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_quote_subscription_id_get_integration.output_path)
   timeout          = 5
@@ -346,10 +347,10 @@ resource "aws_lambda_function" "api_gateway_main_quote_subscription_rule_get_int
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_quote_subscription_rule_get_integration.output_path
-  function_name    = "FunkyModeApiGatewayGetQuoteSubscriptionRuleConnection"
+  function_name    = "${var.application}ApiGatewayGetQuoteSubscriptionRuleConnection"
   handler          = "lambda.handler"
   memory_size      = 128
-  role             = aws_iam_role.lambda_app_sync.arn
+  role             = aws_iam_role.app_sync_lambda.arn
   runtime          = "python3.11"
   source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_quote_subscription_rule_get_integration.output_path)
   timeout          = 5
@@ -370,10 +371,10 @@ resource "aws_lambda_function" "api_gateway_main_quote_subscription_rule_id_get_
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_quote_subscription_rule_id_get_integration.output_path
-  function_name    = "FunkyModeApiGatewayGetQuoteSubscriptionRule"
+  function_name    = "${var.application}ApiGatewayGetQuoteSubscriptionRule"
   handler          = "lambda.handler"
   memory_size      = 128
-  role             = aws_iam_role.lambda_app_sync.arn
+  role             = aws_iam_role.app_sync_lambda.arn
   runtime          = "python3.11"
   source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_quote_subscription_rule_id_get_integration.output_path)
   timeout          = 5
@@ -394,10 +395,10 @@ resource "aws_lambda_function" "api_gateway_main_sentiment_get_integration" {
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_sentiment_get_integration.output_path
-  function_name    = "FunkyModeApiGatewayGetSentimentConnection"
+  function_name    = "${var.application}ApiGatewayGetSentimentConnection"
   handler          = "lambda.handler"
   memory_size      = 128
-  role             = aws_iam_role.lambda_app_sync.arn
+  role             = aws_iam_role.app_sync_lambda.arn
   runtime          = "python3.11"
   source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_sentiment_get_integration.output_path)
   timeout          = 5
@@ -418,10 +419,10 @@ resource "aws_lambda_function" "api_gateway_main_sentiment_id_get_integration" {
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_sentiment_id_get_integration.output_path
-  function_name    = "FunkyModeApiGatewayGetSentiment"
+  function_name    = "${var.application}ApiGatewayGetSentiment"
   handler          = "lambda.handler"
   memory_size      = 128
-  role             = aws_iam_role.lambda_app_sync.arn
+  role             = aws_iam_role.app_sync_lambda.arn
   runtime          = "python3.11"
   source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_sentiment_id_get_integration.output_path)
   timeout          = 5
@@ -442,10 +443,10 @@ resource "aws_lambda_function" "api_gateway_main_sentiment_score_get_integration
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_sentiment_score_get_integration.output_path
-  function_name    = "FunkyModeApiGatewayGetSentimentScoreConnection"
+  function_name    = "${var.application}ApiGatewayGetSentimentScoreConnection"
   handler          = "lambda.handler"
   memory_size      = 128
-  role             = aws_iam_role.lambda_app_sync.arn
+  role             = aws_iam_role.app_sync_lambda.arn
   runtime          = "python3.11"
   source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_sentiment_score_get_integration.output_path)
   timeout          = 5
@@ -466,10 +467,10 @@ resource "aws_lambda_function" "api_gateway_main_sentiment_score_id_get_integrat
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_sentiment_score_id_get_integration.output_path
-  function_name    = "FunkyModeApiGatewayGetSentimentScore"
+  function_name    = "${var.application}ApiGatewayGetSentimentScore"
   handler          = "lambda.handler"
   memory_size      = 128
-  role             = aws_iam_role.lambda_app_sync.arn
+  role             = aws_iam_role.app_sync_lambda.arn
   runtime          = "python3.11"
   source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_sentiment_score_id_get_integration.output_path)
   timeout          = 5
@@ -490,10 +491,10 @@ resource "aws_lambda_function" "api_gateway_main_syntax_token_get_integration" {
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_syntax_token_get_integration.output_path
-  function_name    = "FunkyModeApiGatewayGetSyntaxTokenConnection"
+  function_name    = "${var.application}ApiGatewayGetSyntaxTokenConnection"
   handler          = "lambda.handler"
   memory_size      = 128
-  role             = aws_iam_role.lambda_app_sync.arn
+  role             = aws_iam_role.app_sync_lambda.arn
   runtime          = "python3.11"
   source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_syntax_token_get_integration.output_path)
   timeout          = 5
@@ -514,10 +515,10 @@ resource "aws_lambda_function" "api_gateway_main_syntax_token_id_get_integration
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_syntax_token_id_get_integration.output_path
-  function_name    = "FunkyModeApiGatewayGetSyntaxToken"
+  function_name    = "${var.application}ApiGatewayGetSyntaxToken"
   handler          = "lambda.handler"
   memory_size      = 128
-  role             = aws_iam_role.lambda_app_sync.arn
+  role             = aws_iam_role.app_sync_lambda.arn
   runtime          = "python3.11"
   source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_syntax_token_id_get_integration.output_path)
   timeout          = 5
@@ -538,10 +539,10 @@ resource "aws_lambda_function" "api_gateway_main_syntax_token_part_of_speech_get
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_syntax_token_part_of_speech_get_integration.output_path
-  function_name    = "FunkyModeApiGatewayGetSyntaxTokenPartOfSpeechConnection"
+  function_name    = "${var.application}ApiGatewayGetSyntaxTokenPartOfSpeechConnection"
   handler          = "lambda.handler"
   memory_size      = 128
-  role             = aws_iam_role.lambda_app_sync.arn
+  role             = aws_iam_role.app_sync_lambda.arn
   runtime          = "python3.11"
   source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_syntax_token_part_of_speech_get_integration.output_path)
   timeout          = 5
@@ -562,10 +563,10 @@ resource "aws_lambda_function" "api_gateway_main_syntax_token_part_of_speech_id_
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_syntax_token_part_of_speech_id_get_integration.output_path
-  function_name    = "FunkyModeApiGatewayGetSyntaxTokenPartOfSpeech"
+  function_name    = "${var.application}ApiGatewayGetSyntaxTokenPartOfSpeech"
   handler          = "lambda.handler"
   memory_size      = 128
-  role             = aws_iam_role.lambda_app_sync.arn
+  role             = aws_iam_role.app_sync_lambda.arn
   runtime          = "python3.11"
   source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_syntax_token_part_of_speech_id_get_integration.output_path)
   timeout          = 5
@@ -586,10 +587,10 @@ resource "aws_lambda_function" "api_gateway_main_user_get_integration" {
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_user_get_integration.output_path
-  function_name    = "FunkyModeApiGatewayGetUserConnection"
+  function_name    = "${var.application}ApiGatewayGetUserConnection"
   handler          = "lambda.handler"
   memory_size      = 128
-  role             = aws_iam_role.lambda_app_sync.arn
+  role             = aws_iam_role.app_sync_lambda.arn
   runtime          = "python3.11"
   source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_user_get_integration.output_path)
   timeout          = 5
@@ -610,10 +611,10 @@ resource "aws_lambda_function" "api_gateway_main_user_id_get_integration" {
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_user_id_get_integration.output_path
-  function_name    = "FunkyModeApiGatewayGetUser"
+  function_name    = "${var.application}ApiGatewayGetUser"
   handler          = "lambda.handler"
   memory_size      = 128
-  role             = aws_iam_role.lambda_app_sync.arn
+  role             = aws_iam_role.app_sync_lambda.arn
   runtime          = "python3.11"
   source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_user_id_get_integration.output_path)
   timeout          = 5
@@ -622,6 +623,7 @@ resource "aws_lambda_function" "api_gateway_main_user_id_get_integration" {
   }
 }
 
+// CognitoUserPools
 resource "aws_lambda_function" "cognito_user_pool_pre_authentication" {
   architectures = ["x86_64"]
   environment {
@@ -711,6 +713,31 @@ resource "aws_lambda_function" "cognito_user_pool_pre_sign_up" {
   role             = aws_iam_role.cognito_lambda.arn
   runtime          = "python3.11"
   source_code_hash = filebase64sha256(data.archive_file.cognito_user_pool_pre_sign_up.output_path)
+  tags_all         = local.tags_all
+  timeout          = 5
+  tracing_config {
+    mode = "Active"
+  }
+}
+
+// DynamoDB
+resource "aws_lambda_function" "dynamo_db_main_stream" {
+  architectures = ["x86_64"]
+  environment {
+    variables = {
+      LOG_LEVEL = "INFO"
+    }
+  }
+  ephemeral_storage {
+    size = 512
+  }
+  filename         = data.archive_file.dynamo_db_main_stream.output_path
+  function_name    = "${var.application}DynamoDBStream"
+  handler          = "lambda.handler"
+  memory_size      = 128
+  role             = aws_iam_role.dynamo_db_stream_lambda.arn
+  runtime          = "python3.11"
+  source_code_hash = filebase64sha256(data.archive_file.dynamo_db_main_stream.output_path)
   tags_all         = local.tags_all
   timeout          = 5
   tracing_config {
