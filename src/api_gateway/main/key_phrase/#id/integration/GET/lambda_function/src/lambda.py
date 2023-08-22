@@ -7,15 +7,15 @@ import os
 QUERY = """
 query Query($id: ID!) {
     get_key_phrase(id: $id) {
-            created_date
-            begin_offset
-            end_offset
-            id
-            order
-            quote_id
-            score
-            text
-            updated_date
+        created_date
+        begin_offset
+        end_offset
+        id
+        order
+        quote_id
+        score
+        text
+        updated_date
     }
 }
 """

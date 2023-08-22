@@ -7,10 +7,10 @@ import os
 QUERY = """
 query Query($id: ID!) {
     get_user(id: $id) {
-            created_date
-            email
-            id
-            updated_date
+        created_date
+        email
+        id
+        updated_date
     }
 }
 """

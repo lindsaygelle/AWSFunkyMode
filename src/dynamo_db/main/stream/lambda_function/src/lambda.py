@@ -22,6 +22,7 @@ class EventRecord(TypedDict):
     eventName: str
     eventVersion: str
     eventSource: str
+    eventSourceARN: str
 
 
 class Event(TypedDict):

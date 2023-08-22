@@ -7,11 +7,11 @@ import os
 QUERY = """
 query Query($id: ID!) {
     get_quote_subscription(id: $id) {
-            created_date
-            quote_id
-            id
-            updated_date
-            user_id
+        created_date
+        quote_id
+        id
+        updated_date
+        user_id
     }
 }
 """

@@ -7,16 +7,16 @@ import os
 QUERY = """
 query Query($id: ID!) {
     get_entity(id: $id) {
-            begin_offset
-            created_date
-            end_offset
-            id
-            order
-            quote_id
-            score
-            text
-            type
-            updated_date
+        begin_offset
+        created_date
+        end_offset
+        id
+        order
+        quote_id
+        score
+        text
+        type
+        updated_date
     }
 }
 """

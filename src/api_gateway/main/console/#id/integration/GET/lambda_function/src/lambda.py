@@ -7,11 +7,11 @@ import os
 QUERY = """
 query Query($id: ID!) {
     get_console(id: $id) {
-            abbreviation
-            created_date
-            id
-            name
-            updated_date
+        abbreviation
+        created_date
+        id
+        name
+        updated_date
     }
 }
 """

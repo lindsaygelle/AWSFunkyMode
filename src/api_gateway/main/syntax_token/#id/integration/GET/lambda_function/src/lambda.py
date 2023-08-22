@@ -7,15 +7,15 @@ import os
 QUERY = """
 query Query($id: ID!) {
     get_syntax_token(id: $id) {
-            begin_offset
-            created_date
-            end_offset
-            id
-            order
-            quote_id
-            text
-            tokenId
-            updated_date
+        begin_offset
+        created_date
+        end_offset
+        id
+        order
+        quote_id
+        text
+        tokenId
+        updated_date
     }
 }
 """

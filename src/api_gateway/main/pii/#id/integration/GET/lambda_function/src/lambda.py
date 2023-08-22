@@ -7,15 +7,15 @@ import os
 QUERY = """
 query Query($id: ID!) {
     get_pii(id: $id) {
-            begin_offset
-            created_date
-            end_offset
-            id
-            order
-            quote_id
-            score
-            type
-            updated_date
+        begin_offset
+        created_date
+        end_offset
+        id
+        order
+        quote_id
+        score
+        type
+        updated_date
     }
 }
 """

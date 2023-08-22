@@ -7,12 +7,12 @@ import os
 QUERY = """
 query Query($id: ID!) {
     get_quote_subscription_rule(id: $id) {
-            address
-            category
-            created_date
-            quote_subscription_id
-            schedule
-            updated_date
+        address
+        category
+        created_date
+        quote_subscription_id
+        schedule
+        updated_date
     }
 }
 """

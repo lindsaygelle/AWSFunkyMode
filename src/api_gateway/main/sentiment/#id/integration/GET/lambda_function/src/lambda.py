@@ -7,11 +7,11 @@ import os
 QUERY = """
 query Query($id: ID!) {
     get_sentiment(id: $id) {
-            created_date
-            id
-            quote_id
-            sentiment
-            updated_date
+        created_date
+        id
+        quote_id
+        sentiment
+        updated_date
     }
 }
 """

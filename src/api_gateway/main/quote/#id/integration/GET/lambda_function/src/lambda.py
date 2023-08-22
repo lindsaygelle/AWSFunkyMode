@@ -7,11 +7,11 @@ import os
 QUERY = """
 query Query($id: ID!) {
     get_quote(id: $id) {
-            created_date
-            game_id
-            id
-            text
-            updated_date
+        created_date
+        game_id
+        id
+        text
+        updated_date
     }
 }
 """

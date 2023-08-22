@@ -7,12 +7,12 @@ import os
 QUERY = """
 query Query($id: ID!) {
     get_game(id: $id) {
-            abbreviation
-            console_id
-            created_date
-            id
-            name
-            updated_date
+        abbreviation
+        console_id
+        created_date
+        id
+        name
+        updated_date
     }
 }
 """

@@ -7,13 +7,13 @@ import os
 QUERY = """
 query Query($id: ID!) {
     get_sentiment_score(id: $id) {
-            created_date
-            mixed
-            negative
-            neutral
-            positive
-            sentiment_id
-            updated_date
+        created_date
+        mixed
+        negative
+        neutral
+        positive
+        sentiment_id
+        updated_date
     }
 }
 """

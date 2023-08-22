@@ -7,12 +7,12 @@ import os
 QUERY = """
 query Query($id: ID!) {
     get_syntax_token_part_of_speech(id: $id) {
-            created_date
-            score
-            id
-            syntax_token_id
-            tag
-            updated_date
+        created_date
+        score
+        id
+        syntax_token_id
+        tag
+        updated_date
     }
 }
 """
