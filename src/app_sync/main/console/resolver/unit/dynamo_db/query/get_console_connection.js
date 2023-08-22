@@ -10,11 +10,11 @@ export function request(ctx) {
   const query = JSON.parse(
     util.transform.toDynamoDBConditionExpression({
       pk: {
-        eq: "Console"
+        eq: "Console",
       },
       sk: {
-        beginsWith: "Metadata#"
-      }
+        beginsWith: "Metadata#",
+      },
     }),
   );
   return { limit, nextToken: next_token, operation: "Query", query };

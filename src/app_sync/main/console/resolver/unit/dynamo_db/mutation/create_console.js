@@ -7,15 +7,20 @@ import { util } from "@aws-appsync/utils";
  */
 export function request(ctx) {
   const createdDate = util.time.nowISO8601();
-  const id = util.autoUlid();
+  const { id = util.autoUlid() } = ctx.args.input;
   const updatedDate = createdDate;
   return {
-    attributeValues: util.dynamodb.toMapValues(Object.assign({ created_date: createdDate, id, updated_date: updatedDate }, ctx.args.input)),
+    attributeValues: util.dynamodb.toMapValues(
+      Object.assign(
+        { created_date: createdDate, id, updated_date: updatedDate },
+        ctx.args.input,
+      ),
+    ),
     key: util.dynamodb.toMapValues({
       pk: "Console",
-      sk: "Metadata#" + util.autoUlid()
+      sk: "Metadata#" + id,
     }),
-    operation: "PutItem"
+    operation: "PutItem",
   };
 }
 

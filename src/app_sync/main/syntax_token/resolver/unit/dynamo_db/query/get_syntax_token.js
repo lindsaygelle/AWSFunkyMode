@@ -9,9 +9,9 @@ export function request(ctx) {
   return {
     key: util.dynamodb.toMapValues({
       pk: "SyntaxToken",
-      sk: ("Metadata#" + ctx.args.id)
+      sk: "Metadata#" + ctx.args.id,
     }),
-    operation: "GetItem"
+    operation: "GetItem",
   };
 }
 
