@@ -26,13 +26,21 @@ class AppSyncRequest(TypedDict):
     variables: Optional[Dict[str, Any]]
 
 
-class GetQuoteConnection(TypedDict):
-    items: Optional[List[Dict[str, Any]]]
+class Quote(TypedDict):
+    created_date: str
+    game_id: str
+    id: str
+    text: str
+    updated_date: str
+
+
+class QuoteConnection(TypedDict):
+    items: Optional[List[Quote]]
     next_token: Optional[str]
 
 
 class AppSyncResponseData(TypedDict):
-    get_quote_connection: GetQuoteConnection
+    get_quote_connection: QuoteConnection
 
 
 class AppSyncResponse(TypedDict):
@@ -118,7 +126,7 @@ def handler(event: Event, context) -> Response:
     )
     response: HTTPResponse = urlopen(request)
     response_data: AppSyncResponse = json.load(response)
-    content: GetQuoteConnection = response_data.get("data")
+    content: QuoteConnection = response_data.get("data")
     if not (isinstance(content, dict)):
         content = {}
     status_code: Optional[int] = response.status
@@ -126,4 +134,4 @@ def handler(event: Event, context) -> Response:
         body=json.dumps(content.get("get_quote_connection", {})),
         headers={**{"Content-Type": "application/json"}, **response.headers},
         statusCode=status_code,
-)
+    )

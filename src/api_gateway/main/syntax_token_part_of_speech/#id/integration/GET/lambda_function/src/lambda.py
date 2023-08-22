@@ -24,12 +24,17 @@ class AppSyncRequest(TypedDict):
     variables: Optional[Dict[str, Any]]
 
 
-class GetSyntaxTokenPartOfSpeech(TypedDict):
-    pass
+class SyntaxTokenPartOfSpeech(TypedDict):
+    created_date: str
+    score: float
+    id: str
+    syntax_token_id: str
+    tag: str
+    updated_date: str
 
 
 class AppSyncResponseData(TypedDict):
-    get_syntax_token_part_of_speech: GetSyntaxTokenPartOfSpeech
+    get_syntax_token_part_of_speech: SyntaxTokenPartOfSpeech
 
 
 class AppSyncResponse(TypedDict):
@@ -114,7 +119,7 @@ def handler(event: Event, context) -> Response:
     )
     response: HTTPResponse = urlopen(request)
     response_data: AppSyncResponse = json.load(response)
-    content: GetSyntaxTokenPartOfSpeech = response_data.get("data")
+    content: SyntaxTokenPartOfSpeech = response_data.get("data")
     if not (isinstance(content, dict)):
         content = {}
     status_code: Optional[int] = response.status
@@ -122,4 +127,4 @@ def handler(event: Event, context) -> Response:
         body=json.dumps(content.get("get_syntax_token_part_of_speech", {})),
         headers={**{"Content-Type": "application/json"}, **response.headers},
         statusCode=status_code,
-)
+    )

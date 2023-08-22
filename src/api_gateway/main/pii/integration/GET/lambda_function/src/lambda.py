@@ -30,13 +30,25 @@ class AppSyncRequest(TypedDict):
     variables: Optional[Dict[str, Any]]
 
 
-class GetPiiConnection(TypedDict):
-    items: Optional[List[Dict[str, Any]]]
+class Pii(TypedDict):
+    begin_offset: int
+    created_date: str
+    end_offset: int
+    id: str
+    order: int
+    quote_id: str
+    score: float
+    type: str
+    updated_date: str
+
+
+class PiiConnection(TypedDict):
+    items: Optional[List[Pii]]
     next_token: Optional[str]
 
 
 class AppSyncResponseData(TypedDict):
-    get_pii_connection: GetPiiConnection
+    get_pii_connection: PiiConnection
 
 
 class AppSyncResponse(TypedDict):
@@ -122,7 +134,7 @@ def handler(event: Event, context) -> Response:
     )
     response: HTTPResponse = urlopen(request)
     response_data: AppSyncResponse = json.load(response)
-    content: GetPiiConnection = response_data.get("data")
+    content: PiiConnection = response_data.get("data")
     if not (isinstance(content, dict)):
         content = {}
     status_code: Optional[int] = response.status
@@ -130,4 +142,4 @@ def handler(event: Event, context) -> Response:
         body=json.dumps(content.get("get_pii_connection", {})),
         headers={**{"Content-Type": "application/json"}, **response.headers},
         statusCode=status_code,
-)
+    )

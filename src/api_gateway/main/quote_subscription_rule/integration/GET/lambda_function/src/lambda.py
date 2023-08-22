@@ -27,13 +27,22 @@ class AppSyncRequest(TypedDict):
     variables: Optional[Dict[str, Any]]
 
 
-class GetQuoteSubscriptionRuleConnection(TypedDict):
-    items: Optional[List[Dict[str, Any]]]
+class QuoteSubscriptionRule(TypedDict):
+    address: str
+    category: str
+    created_date: str
+    quote_subscription_id: str
+    schedule: str
+    updated_date: str
+
+
+class QuoteSubscriptionRuleConnection(TypedDict):
+    items: Optional[List[QuoteSubscriptionRule]]
     next_token: Optional[str]
 
 
 class AppSyncResponseData(TypedDict):
-    get_quote_subscription_rule_connection: GetQuoteSubscriptionRuleConnection
+    get_quote_subscription_rule_connection: QuoteSubscriptionRuleConnection
 
 
 class AppSyncResponse(TypedDict):
@@ -119,7 +128,7 @@ def handler(event: Event, context) -> Response:
     )
     response: HTTPResponse = urlopen(request)
     response_data: AppSyncResponse = json.load(response)
-    content: GetQuoteSubscriptionRuleConnection = response_data.get("data")
+    content: QuoteSubscriptionRuleConnection = response_data.get("data")
     if not (isinstance(content, dict)):
         content = {}
     status_code: Optional[int] = response.status
@@ -127,4 +136,4 @@ def handler(event: Event, context) -> Response:
         body=json.dumps(content.get("get_quote_subscription_rule_connection", {})),
         headers={**{"Content-Type": "application/json"}, **response.headers},
         statusCode=status_code,
-)
+    )

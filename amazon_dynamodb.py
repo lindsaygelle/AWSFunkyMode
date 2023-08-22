@@ -568,7 +568,7 @@ def main():
         dynamodb = boto3.resource("dynamodb")
         dynamodb_table = dynamodb.Table("FunkyMode")
         put_item(dynamodb_table, output_filename, models)
-        #with open(output_filename, mode="w") as output_fp:
+        # with open(output_filename, mode="w") as output_fp:
         #    for model in models:
         #        output_fp.write(process_model(model) + "\n")
 

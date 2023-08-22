@@ -31,13 +31,26 @@ class AppSyncRequest(TypedDict):
     variables: Optional[Dict[str, Any]]
 
 
-class GetEntityConnection(TypedDict):
-    items: Optional[List[Dict[str, Any]]]
+class Entity(TypedDict):
+    begin_offset: int
+    created_date: str
+    end_offset: int
+    id: str
+    order: int
+    quote_id: str
+    score: float
+    text: str
+    type: str
+    updated_date: str
+
+
+class EntityConnection(TypedDict):
+    items: Optional[List[Entity]]
     next_token: Optional[str]
 
 
 class AppSyncResponseData(TypedDict):
-    get_entity_connection: GetEntityConnection
+    get_entity_connection: EntityConnection
 
 
 class AppSyncResponse(TypedDict):
@@ -123,7 +136,7 @@ def handler(event: Event, context) -> Response:
     )
     response: HTTPResponse = urlopen(request)
     response_data: AppSyncResponse = json.load(response)
-    content: GetEntityConnection = response_data.get("data")
+    content: EntityConnection = response_data.get("data")
     if not (isinstance(content, dict)):
         content = {}
     status_code: Optional[int] = response.status
@@ -131,4 +144,4 @@ def handler(event: Event, context) -> Response:
         body=json.dumps(content.get("get_entity_connection", {})),
         headers={**{"Content-Type": "application/json"}, **response.headers},
         statusCode=status_code,
-)
+    )

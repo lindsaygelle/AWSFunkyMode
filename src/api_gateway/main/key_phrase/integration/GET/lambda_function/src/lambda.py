@@ -30,13 +30,25 @@ class AppSyncRequest(TypedDict):
     variables: Optional[Dict[str, Any]]
 
 
-class GetKeyPhraseConnection(TypedDict):
-    items: Optional[List[Dict[str, Any]]]
+class KeyPhrase(TypedDict):
+    created_date: str
+    begin_offset: int
+    end_offset: int
+    id: str
+    order: int
+    quote_id: str
+    score: float
+    text: str
+    updated_date: str
+
+
+class KeyPhraseConnection(TypedDict):
+    items: Optional[List[KeyPhrase]]
     next_token: Optional[str]
 
 
 class AppSyncResponseData(TypedDict):
-    get_key_phrase_connection: GetKeyPhraseConnection
+    get_key_phrase_connection: KeyPhraseConnection
 
 
 class AppSyncResponse(TypedDict):
@@ -122,7 +134,7 @@ def handler(event: Event, context) -> Response:
     )
     response: HTTPResponse = urlopen(request)
     response_data: AppSyncResponse = json.load(response)
-    content: GetKeyPhraseConnection = response_data.get("data")
+    content: KeyPhraseConnection = response_data.get("data")
     if not (isinstance(content, dict)):
         content = {}
     status_code: Optional[int] = response.status
@@ -130,4 +142,4 @@ def handler(event: Event, context) -> Response:
         body=json.dumps(content.get("get_key_phrase_connection", {})),
         headers={**{"Content-Type": "application/json"}, **response.headers},
         statusCode=status_code,
-)
+    )

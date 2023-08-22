@@ -28,12 +28,21 @@ class AppSyncRequest(TypedDict):
     variables: Optional[Dict[str, Any]]
 
 
-class GetEntity(TypedDict):
-    pass
+class Entity(TypedDict):
+    begin_offset: int
+    created_date: str
+    end_offset: int
+    id: str
+    order: int
+    quote_id: str
+    score: float
+    text: str
+    type: str
+    updated_date: str
 
 
 class AppSyncResponseData(TypedDict):
-    get_entity: GetEntity
+    get_entity: Entity
 
 
 class AppSyncResponse(TypedDict):
@@ -118,7 +127,7 @@ def handler(event: Event, context) -> Response:
     )
     response: HTTPResponse = urlopen(request)
     response_data: AppSyncResponse = json.load(response)
-    content: GetEntity = response_data.get("data")
+    content: Entity = response_data.get("data")
     if not (isinstance(content, dict)):
         content = {}
     status_code: Optional[int] = response.status
@@ -126,4 +135,4 @@ def handler(event: Event, context) -> Response:
         body=json.dumps(content.get("get_entity", {})),
         headers={**{"Content-Type": "application/json"}, **response.headers},
         statusCode=status_code,
-)
+    )

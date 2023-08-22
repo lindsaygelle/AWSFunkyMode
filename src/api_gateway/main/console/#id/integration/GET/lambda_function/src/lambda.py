@@ -23,12 +23,16 @@ class AppSyncRequest(TypedDict):
     variables: Optional[Dict[str, Any]]
 
 
-class GetConsole(TypedDict):
-    pass
+class Console(TypedDict):
+    abbreviation: str
+    created_date: str
+    id: str
+    name: str
+    updated_date: str
 
 
 class AppSyncResponseData(TypedDict):
-    get_console: GetConsole
+    get_console: Console
 
 
 class AppSyncResponse(TypedDict):
@@ -113,7 +117,7 @@ def handler(event: Event, context) -> Response:
     )
     response: HTTPResponse = urlopen(request)
     response_data: AppSyncResponse = json.load(response)
-    content: GetConsole = response_data.get("data")
+    content: Console = response_data.get("data")
     if not (isinstance(content, dict)):
         content = {}
     status_code: Optional[int] = response.status
@@ -121,4 +125,4 @@ def handler(event: Event, context) -> Response:
         body=json.dumps(content.get("get_console", {})),
         headers={**{"Content-Type": "application/json"}, **response.headers},
         statusCode=status_code,
-)
+    )

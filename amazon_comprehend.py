@@ -8,6 +8,7 @@ import concurrent.futures
 
 class ComprehendDetect:
     """Encapsulates Comprehend detection functions."""
+
     def __init__(self, comprehend_client):
         """
         :param comprehend_client: A Boto3 Comprehend client.
@@ -25,7 +26,8 @@ class ComprehendDetect:
         """
         try:
             return self.comprehend_client.detect_entities(
-                Text=text, LanguageCode=language_code)
+                Text=text, LanguageCode=language_code
+            )
         except Exception:
             print("Couldn't detect entities.")
             raise
@@ -41,7 +43,8 @@ class ComprehendDetect:
         """
         try:
             return self.comprehend_client.detect_key_phrases(
-                Text=text, LanguageCode=language_code)
+                Text=text, LanguageCode=language_code
+            )
         except Exception:
             print("Couldn't detect phrases.")
             raise
@@ -57,7 +60,8 @@ class ComprehendDetect:
         """
         try:
             return self.comprehend_client.detect_pii_entities(
-                Text=text, LanguageCode=language_code)
+                Text=text, LanguageCode=language_code
+            )
         except Exception:
             print("Couldn't detect PII entities.")
             raise
@@ -74,7 +78,8 @@ class ComprehendDetect:
         """
         try:
             return self.comprehend_client.detect_syntax(
-                Text=text, LanguageCode=language_code)
+                Text=text, LanguageCode=language_code
+            )
         except Exception:
             print("Couldn't detect syntax.")
             raise
@@ -90,7 +95,8 @@ class ComprehendDetect:
         """
         try:
             return self.comprehend_client.detect_sentiment(
-                Text=text, LanguageCode=language_code)
+                Text=text, LanguageCode=language_code
+            )
         except Exception:
             print("Couldn't detect sentiment.")
             raise
@@ -101,15 +107,16 @@ def process_quote(quote: str, detect: ComprehendDetect, current_utc_time: dateti
         "CreatedAt": str(current_utc_time),
         "Entities": detect.detect_entities(quote),
         "KeyPhrases": detect.detect_key_phrases(quote),
-        "MD5": hashlib.md5(quote.encode('utf-8')).hexdigest(),
+        "MD5": hashlib.md5(quote.encode("utf-8")).hexdigest(),
         "Pii": detect.detect_pii(quote),
         "Quote": quote,
-        "SHA256": hashlib.sha256(quote.encode('utf-8')).hexdigest(),
+        "SHA256": hashlib.sha256(quote.encode("utf-8")).hexdigest(),
         "Sentiment": detect.detect_sentiment(quote),
         "Syntax": detect.detect_syntax(quote),
         "UpdatedAt": str(current_utc_time),
     }
     return processed_quote
+
 
 def process_quotes(quotes, detect):
     processed_quotes = []
@@ -126,8 +133,9 @@ def process_quotes(quotes, detect):
 
     return processed_quotes
 
+
 def main():
-    comprehend_client = boto3.client('comprehend')
+    comprehend_client = boto3.client("comprehend")
     detect = ComprehendDetect(comprehend_client)
 
     input_filename = "./data/normal/json/quotes.json"
@@ -156,5 +164,6 @@ def main():
         with open(output_filename, mode="w") as output_fp:
             json.dump(contents, output_fp, indent=4, sort_keys=True)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

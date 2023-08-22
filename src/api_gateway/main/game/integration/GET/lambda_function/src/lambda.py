@@ -27,13 +27,22 @@ class AppSyncRequest(TypedDict):
     variables: Optional[Dict[str, Any]]
 
 
-class GetGameConnection(TypedDict):
-    items: Optional[List[Dict[str, Any]]]
+class Game(TypedDict):
+    abbreviation: str
+    console_id: str
+    created_date: str
+    id: str
+    name: str
+    updated_date: str
+
+
+class GameConnection(TypedDict):
+    items: Optional[List[Game]]
     next_token: Optional[str]
 
 
 class AppSyncResponseData(TypedDict):
-    get_game_connection: GetGameConnection
+    get_game_connection: GameConnection
 
 
 class AppSyncResponse(TypedDict):
@@ -119,7 +128,7 @@ def handler(event: Event, context) -> Response:
     )
     response: HTTPResponse = urlopen(request)
     response_data: AppSyncResponse = json.load(response)
-    content: GetGameConnection = response_data.get("data")
+    content: GameConnection = response_data.get("data")
     if not (isinstance(content, dict)):
         content = {}
     status_code: Optional[int] = response.status
@@ -127,4 +136,4 @@ def handler(event: Event, context) -> Response:
         body=json.dumps(content.get("get_game_connection", {})),
         headers={**{"Content-Type": "application/json"}, **response.headers},
         statusCode=status_code,
-)
+    )

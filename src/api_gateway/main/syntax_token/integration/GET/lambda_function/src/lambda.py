@@ -30,13 +30,25 @@ class AppSyncRequest(TypedDict):
     variables: Optional[Dict[str, Any]]
 
 
-class GetSyntaxTokenConnection(TypedDict):
-    items: Optional[List[Dict[str, Any]]]
+class SyntaxToken(TypedDict):
+    begin_offset: int
+    created_date: str
+    end_offset: int
+    id: str
+    order: int
+    quote_id: str
+    text: str
+    tokenId: int
+    updated_date: str
+
+
+class SyntaxTokenConnection(TypedDict):
+    items: Optional[List[SyntaxToken]]
     next_token: Optional[str]
 
 
 class AppSyncResponseData(TypedDict):
-    get_syntax_token_connection: GetSyntaxTokenConnection
+    get_syntax_token_connection: SyntaxTokenConnection
 
 
 class AppSyncResponse(TypedDict):
@@ -122,7 +134,7 @@ def handler(event: Event, context) -> Response:
     )
     response: HTTPResponse = urlopen(request)
     response_data: AppSyncResponse = json.load(response)
-    content: GetSyntaxTokenConnection = response_data.get("data")
+    content: SyntaxTokenConnection = response_data.get("data")
     if not (isinstance(content, dict)):
         content = {}
     status_code: Optional[int] = response.status
@@ -130,4 +142,4 @@ def handler(event: Event, context) -> Response:
         body=json.dumps(content.get("get_syntax_token_connection", {})),
         headers={**{"Content-Type": "application/json"}, **response.headers},
         statusCode=status_code,
-)
+    )

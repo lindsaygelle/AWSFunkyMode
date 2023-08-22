@@ -23,12 +23,16 @@ class AppSyncRequest(TypedDict):
     variables: Optional[Dict[str, Any]]
 
 
-class GetQuoteSubscription(TypedDict):
-    pass
+class QuoteSubscription(TypedDict):
+    created_date: str
+    quote_id: str
+    id: str
+    updated_date: str
+    user_id: str
 
 
 class AppSyncResponseData(TypedDict):
-    get_quote_subscription: GetQuoteSubscription
+    get_quote_subscription: QuoteSubscription
 
 
 class AppSyncResponse(TypedDict):
@@ -113,7 +117,7 @@ def handler(event: Event, context) -> Response:
     )
     response: HTTPResponse = urlopen(request)
     response_data: AppSyncResponse = json.load(response)
-    content: GetQuoteSubscription = response_data.get("data")
+    content: QuoteSubscription = response_data.get("data")
     if not (isinstance(content, dict)):
         content = {}
     status_code: Optional[int] = response.status
@@ -121,4 +125,4 @@ def handler(event: Event, context) -> Response:
         body=json.dumps(content.get("get_quote_subscription", {})),
         headers={**{"Content-Type": "application/json"}, **response.headers},
         statusCode=status_code,
-)
+    )
