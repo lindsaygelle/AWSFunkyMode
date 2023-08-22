@@ -7,11 +7,11 @@ import os
 QUERY = """
 query Query($id: ID!) {
     get_quote(id: $id) {
-        created_date
-        game_id
-        id
-        text
-        updated_date
+            created_date
+            game_id
+            id
+            text
+            updated_date
     }
 }
 """
@@ -23,12 +23,16 @@ class AppSyncRequest(TypedDict):
     variables: Optional[Dict[str, Any]]
 
 
-class GetQuote(TypedDict):
-    pass
+class Quote(TypedDict):
+    created_date: str
+    game_id: str
+    id: str
+    text: str
+    updated_date: str
 
 
 class AppSyncResponseData(TypedDict):
-    get_quote: GetQuote
+    get_quote: Quote
 
 
 class AppSyncResponse(TypedDict):
@@ -113,7 +117,7 @@ def handler(event: Event, context) -> Response:
     )
     response: HTTPResponse = urlopen(request)
     response_data: AppSyncResponse = json.load(response)
-    content: GetQuote = response_data.get("data")
+    content: Quote = response_data.get("data")
     if not (isinstance(content, dict)):
         content = {}
     status_code: Optional[int] = response.status
@@ -121,4 +125,4 @@ def handler(event: Event, context) -> Response:
         body=json.dumps(content.get("get_quote", {})),
         headers={**{"Content-Type": "application/json"}, **response.headers},
         statusCode=status_code,
-)
+    )

@@ -7,10 +7,10 @@ import os
 QUERY = """
 query Query($id: ID!) {
     get_user(id: $id) {
-        created_date
-        email
-        id
-        updated_date
+            created_date
+            email
+            id
+            updated_date
     }
 }
 """
@@ -22,12 +22,15 @@ class AppSyncRequest(TypedDict):
     variables: Optional[Dict[str, Any]]
 
 
-class GetUser(TypedDict):
-    pass
+class User(TypedDict):
+    created_date: str
+    email: None
+    id: str
+    updated_date: str
 
 
 class AppSyncResponseData(TypedDict):
-    get_user: GetUser
+    get_user: User
 
 
 class AppSyncResponse(TypedDict):
@@ -112,7 +115,7 @@ def handler(event: Event, context) -> Response:
     )
     response: HTTPResponse = urlopen(request)
     response_data: AppSyncResponse = json.load(response)
-    content: GetUser = response_data.get("data")
+    content: User = response_data.get("data")
     if not (isinstance(content, dict)):
         content = {}
     status_code: Optional[int] = response.status
@@ -120,4 +123,4 @@ def handler(event: Event, context) -> Response:
         body=json.dumps(content.get("get_user", {})),
         headers={**{"Content-Type": "application/json"}, **response.headers},
         statusCode=status_code,
-)
+    )

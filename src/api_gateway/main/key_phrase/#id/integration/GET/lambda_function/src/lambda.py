@@ -7,15 +7,15 @@ import os
 QUERY = """
 query Query($id: ID!) {
     get_key_phrase(id: $id) {
-        created_date
-        begin_offset
-        end_offset
-        id
-        order
-        quote_id
-        score
-        text
-        updated_date
+            created_date
+            begin_offset
+            end_offset
+            id
+            order
+            quote_id
+            score
+            text
+            updated_date
     }
 }
 """
@@ -27,12 +27,20 @@ class AppSyncRequest(TypedDict):
     variables: Optional[Dict[str, Any]]
 
 
-class GetKeyPhrase(TypedDict):
-    pass
+class KeyPhrase(TypedDict):
+    created_date: str
+    begin_offset: int
+    end_offset: int
+    id: str
+    order: int
+    quote_id: str
+    score: float
+    text: str
+    updated_date: str
 
 
 class AppSyncResponseData(TypedDict):
-    get_key_phrase: GetKeyPhrase
+    get_key_phrase: KeyPhrase
 
 
 class AppSyncResponse(TypedDict):
@@ -117,7 +125,7 @@ def handler(event: Event, context) -> Response:
     )
     response: HTTPResponse = urlopen(request)
     response_data: AppSyncResponse = json.load(response)
-    content: GetKeyPhrase = response_data.get("data")
+    content: KeyPhrase = response_data.get("data")
     if not (isinstance(content, dict)):
         content = {}
     status_code: Optional[int] = response.status
@@ -125,4 +133,4 @@ def handler(event: Event, context) -> Response:
         body=json.dumps(content.get("get_key_phrase", {})),
         headers={**{"Content-Type": "application/json"}, **response.headers},
         statusCode=status_code,
-)
+    )

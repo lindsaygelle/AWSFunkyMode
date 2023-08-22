@@ -7,11 +7,11 @@ import os
 QUERY = """
 query Query($id: ID!) {
     get_sentiment(id: $id) {
-        created_date
-        id
-        quote_id
-        sentiment
-        updated_date
+            created_date
+            id
+            quote_id
+            sentiment
+            updated_date
     }
 }
 """
@@ -23,12 +23,16 @@ class AppSyncRequest(TypedDict):
     variables: Optional[Dict[str, Any]]
 
 
-class GetSentiment(TypedDict):
-    pass
+class Sentiment(TypedDict):
+    created_date: str
+    id: str
+    quote_id: str
+    sentiment: str
+    updated_date: str
 
 
 class AppSyncResponseData(TypedDict):
-    get_sentiment: GetSentiment
+    get_sentiment: Sentiment
 
 
 class AppSyncResponse(TypedDict):
@@ -113,7 +117,7 @@ def handler(event: Event, context) -> Response:
     )
     response: HTTPResponse = urlopen(request)
     response_data: AppSyncResponse = json.load(response)
-    content: GetSentiment = response_data.get("data")
+    content: Sentiment = response_data.get("data")
     if not (isinstance(content, dict)):
         content = {}
     status_code: Optional[int] = response.status
@@ -121,4 +125,4 @@ def handler(event: Event, context) -> Response:
         body=json.dumps(content.get("get_sentiment", {})),
         headers={**{"Content-Type": "application/json"}, **response.headers},
         statusCode=status_code,
-)
+    )

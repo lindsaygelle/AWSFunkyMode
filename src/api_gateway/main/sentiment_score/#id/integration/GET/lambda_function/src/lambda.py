@@ -7,13 +7,13 @@ import os
 QUERY = """
 query Query($id: ID!) {
     get_sentiment_score(id: $id) {
-        created_date
-        mixed
-        negative
-        neutral
-        positive
-        sentiment_id
-        updated_date
+            created_date
+            mixed
+            negative
+            neutral
+            positive
+            sentiment_id
+            updated_date
     }
 }
 """
@@ -25,12 +25,18 @@ class AppSyncRequest(TypedDict):
     variables: Optional[Dict[str, Any]]
 
 
-class GetSentimentScore(TypedDict):
-    pass
+class SentimentScore(TypedDict):
+    created_date: str
+    mixed: float
+    negative: float
+    neutral: float
+    positive: float
+    sentiment_id: str
+    updated_date: str
 
 
 class AppSyncResponseData(TypedDict):
-    get_sentiment_score: GetSentimentScore
+    get_sentiment_score: SentimentScore
 
 
 class AppSyncResponse(TypedDict):
@@ -115,7 +121,7 @@ def handler(event: Event, context) -> Response:
     )
     response: HTTPResponse = urlopen(request)
     response_data: AppSyncResponse = json.load(response)
-    content: GetSentimentScore = response_data.get("data")
+    content: SentimentScore = response_data.get("data")
     if not (isinstance(content, dict)):
         content = {}
     status_code: Optional[int] = response.status
@@ -123,4 +129,4 @@ def handler(event: Event, context) -> Response:
         body=json.dumps(content.get("get_sentiment_score", {})),
         headers={**{"Content-Type": "application/json"}, **response.headers},
         statusCode=status_code,
-)
+    )

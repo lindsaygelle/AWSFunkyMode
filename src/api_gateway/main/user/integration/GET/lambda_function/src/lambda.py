@@ -25,13 +25,20 @@ class AppSyncRequest(TypedDict):
     variables: Optional[Dict[str, Any]]
 
 
-class GetUserConnection(TypedDict):
-    items: Optional[List[Dict[str, Any]]]
+class User(TypedDict):
+    created_date: str
+    email: None
+    id: str
+    updated_date: str
+
+
+class UserConnection(TypedDict):
+    items: Optional[List[User]]
     next_token: Optional[str]
 
 
 class AppSyncResponseData(TypedDict):
-    get_user_connection: GetUserConnection
+    get_user_connection: UserConnection
 
 
 class AppSyncResponse(TypedDict):
@@ -117,7 +124,7 @@ def handler(event: Event, context) -> Response:
     )
     response: HTTPResponse = urlopen(request)
     response_data: AppSyncResponse = json.load(response)
-    content: GetUserConnection = response_data.get("data")
+    content: UserConnection = response_data.get("data")
     if not (isinstance(content, dict)):
         content = {}
     status_code: Optional[int] = response.status
@@ -125,4 +132,4 @@ def handler(event: Event, context) -> Response:
         body=json.dumps(content.get("get_user_connection", {})),
         headers={**{"Content-Type": "application/json"}, **response.headers},
         statusCode=status_code,
-)
+    )

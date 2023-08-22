@@ -7,15 +7,15 @@ import os
 QUERY = """
 query Query($id: ID!) {
     get_pii(id: $id) {
-        begin_offset
-        created_date
-        end_offset
-        id
-        order
-        quote_id
-        score
-        type
-        updated_date
+            begin_offset
+            created_date
+            end_offset
+            id
+            order
+            quote_id
+            score
+            type
+            updated_date
     }
 }
 """
@@ -27,12 +27,20 @@ class AppSyncRequest(TypedDict):
     variables: Optional[Dict[str, Any]]
 
 
-class GetPii(TypedDict):
-    pass
+class Pii(TypedDict):
+    begin_offset: int
+    created_date: str
+    end_offset: int
+    id: str
+    order: int
+    quote_id: str
+    score: float
+    type: str
+    updated_date: str
 
 
 class AppSyncResponseData(TypedDict):
-    get_pii: GetPii
+    get_pii: Pii
 
 
 class AppSyncResponse(TypedDict):
@@ -117,7 +125,7 @@ def handler(event: Event, context) -> Response:
     )
     response: HTTPResponse = urlopen(request)
     response_data: AppSyncResponse = json.load(response)
-    content: GetPii = response_data.get("data")
+    content: Pii = response_data.get("data")
     if not (isinstance(content, dict)):
         content = {}
     status_code: Optional[int] = response.status
@@ -125,4 +133,4 @@ def handler(event: Event, context) -> Response:
         body=json.dumps(content.get("get_pii", {})),
         headers={**{"Content-Type": "application/json"}, **response.headers},
         statusCode=status_code,
-)
+    )

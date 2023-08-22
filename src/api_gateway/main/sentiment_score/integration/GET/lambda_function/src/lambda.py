@@ -28,13 +28,23 @@ class AppSyncRequest(TypedDict):
     variables: Optional[Dict[str, Any]]
 
 
-class GetSentimentScoreConnection(TypedDict):
-    items: Optional[List[Dict[str, Any]]]
+class SentimentScore(TypedDict):
+    created_date: str
+    mixed: float
+    negative: float
+    neutral: float
+    positive: float
+    sentiment_id: str
+    updated_date: str
+
+
+class SentimentScoreConnection(TypedDict):
+    items: Optional[List[SentimentScore]]
     next_token: Optional[str]
 
 
 class AppSyncResponseData(TypedDict):
-    get_sentiment_score_connection: GetSentimentScoreConnection
+    get_sentiment_score_connection: SentimentScoreConnection
 
 
 class AppSyncResponse(TypedDict):
@@ -120,7 +130,7 @@ def handler(event: Event, context) -> Response:
     )
     response: HTTPResponse = urlopen(request)
     response_data: AppSyncResponse = json.load(response)
-    content: GetSentimentScoreConnection = response_data.get("data")
+    content: SentimentScoreConnection = response_data.get("data")
     if not (isinstance(content, dict)):
         content = {}
     status_code: Optional[int] = response.status
@@ -128,4 +138,4 @@ def handler(event: Event, context) -> Response:
         body=json.dumps(content.get("get_sentiment_score_connection", {})),
         headers={**{"Content-Type": "application/json"}, **response.headers},
         statusCode=status_code,
-)
+    )

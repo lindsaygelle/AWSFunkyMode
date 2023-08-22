@@ -7,12 +7,12 @@ import os
 QUERY = """
 query Query($id: ID!) {
     get_quote_subscription_rule(id: $id) {
-        address
-        category
-        created_date
-        quote_subscription_id
-        schedule
-        updated_date
+            address
+            category
+            created_date
+            quote_subscription_id
+            schedule
+            updated_date
     }
 }
 """
@@ -24,12 +24,17 @@ class AppSyncRequest(TypedDict):
     variables: Optional[Dict[str, Any]]
 
 
-class GetQuoteSubscriptionRule(TypedDict):
-    pass
+class QuoteSubscriptionRule(TypedDict):
+    address: str
+    category: str
+    created_date: str
+    quote_subscription_id: str
+    schedule: str
+    updated_date: str
 
 
 class AppSyncResponseData(TypedDict):
-    get_quote_subscription_rule: GetQuoteSubscriptionRule
+    get_quote_subscription_rule: QuoteSubscriptionRule
 
 
 class AppSyncResponse(TypedDict):
@@ -114,7 +119,7 @@ def handler(event: Event, context) -> Response:
     )
     response: HTTPResponse = urlopen(request)
     response_data: AppSyncResponse = json.load(response)
-    content: GetQuoteSubscriptionRule = response_data.get("data")
+    content: QuoteSubscriptionRule = response_data.get("data")
     if not (isinstance(content, dict)):
         content = {}
     status_code: Optional[int] = response.status
@@ -122,4 +127,4 @@ def handler(event: Event, context) -> Response:
         body=json.dumps(content.get("get_quote_subscription_rule", {})),
         headers={**{"Content-Type": "application/json"}, **response.headers},
         statusCode=status_code,
-)
+    )
