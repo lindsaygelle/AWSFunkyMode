@@ -14,6 +14,14 @@ resource "aws_lambda_permission" "api_gateway_main_console_id_get_integration" {
   statement_id  = "AllowExecutionFromAPIGateway"
 }
 
+resource "aws_lambda_permission" "api_gateway_main_console_post_integration" {
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.api_gateway_main_console_post_integration.function_name
+  principal     = "apigateway.amazonaws.com"
+  source_arn    = "${aws_api_gateway_rest_api.main.execution_arn}/*"
+  statement_id  = "AllowExecutionFromAPIGateway"
+}
+
 resource "aws_lambda_permission" "api_gateway_main_entity_get_integration" {
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.api_gateway_main_entity_get_integration.function_name
@@ -25,6 +33,14 @@ resource "aws_lambda_permission" "api_gateway_main_entity_get_integration" {
 resource "aws_lambda_permission" "api_gateway_main_entity_id_get_integration" {
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.api_gateway_main_entity_id_get_integration.function_name
+  principal     = "apigateway.amazonaws.com"
+  source_arn    = "${aws_api_gateway_rest_api.main.execution_arn}/*"
+  statement_id  = "AllowExecutionFromAPIGateway"
+}
+
+resource "aws_lambda_permission" "api_gateway_main_entity_post_integration" {
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.api_gateway_main_entity_post_integration.function_name
   principal     = "apigateway.amazonaws.com"
   source_arn    = "${aws_api_gateway_rest_api.main.execution_arn}/*"
   statement_id  = "AllowExecutionFromAPIGateway"
@@ -46,6 +62,14 @@ resource "aws_lambda_permission" "api_gateway_main_game_id_get_integration" {
   statement_id  = "AllowExecutionFromAPIGateway"
 }
 
+resource "aws_lambda_permission" "api_gateway_main_game_post_integration" {
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.api_gateway_main_game_post_integration.function_name
+  principal     = "apigateway.amazonaws.com"
+  source_arn    = "${aws_api_gateway_rest_api.main.execution_arn}/*"
+  statement_id  = "AllowExecutionFromAPIGateway"
+}
+
 resource "aws_lambda_permission" "api_gateway_main_key_phrase_get_integration" {
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.api_gateway_main_key_phrase_get_integration.function_name
@@ -57,6 +81,14 @@ resource "aws_lambda_permission" "api_gateway_main_key_phrase_get_integration" {
 resource "aws_lambda_permission" "api_gateway_main_key_phrase_id_get_integration" {
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.api_gateway_main_key_phrase_id_get_integration.function_name
+  principal     = "apigateway.amazonaws.com"
+  source_arn    = "${aws_api_gateway_rest_api.main.execution_arn}/*"
+  statement_id  = "AllowExecutionFromAPIGateway"
+}
+
+resource "aws_lambda_permission" "api_gateway_main_key_phrase_post_integration" {
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.api_gateway_main_key_phrase_post_integration.function_name
   principal     = "apigateway.amazonaws.com"
   source_arn    = "${aws_api_gateway_rest_api.main.execution_arn}/*"
   statement_id  = "AllowExecutionFromAPIGateway"
@@ -78,6 +110,14 @@ resource "aws_lambda_permission" "api_gateway_main_pii_id_get_integration" {
   statement_id  = "AllowExecutionFromAPIGateway"
 }
 
+resource "aws_lambda_permission" "api_gateway_main_pii_post_integration" {
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.api_gateway_main_pii_post_integration.function_name
+  principal     = "apigateway.amazonaws.com"
+  source_arn    = "${aws_api_gateway_rest_api.main.execution_arn}/*"
+  statement_id  = "AllowExecutionFromAPIGateway"
+}
+
 resource "aws_lambda_permission" "api_gateway_main_quote_get_integration" {
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.api_gateway_main_quote_get_integration.function_name
@@ -89,6 +129,14 @@ resource "aws_lambda_permission" "api_gateway_main_quote_get_integration" {
 resource "aws_lambda_permission" "api_gateway_main_quote_id_get_integration" {
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.api_gateway_main_quote_id_get_integration.function_name
+  principal     = "apigateway.amazonaws.com"
+  source_arn    = "${aws_api_gateway_rest_api.main.execution_arn}/*"
+  statement_id  = "AllowExecutionFromAPIGateway"
+}
+
+resource "aws_lambda_permission" "api_gateway_main_quote_post_integration" {
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.api_gateway_main_quote_post_integration.function_name
   principal     = "apigateway.amazonaws.com"
   source_arn    = "${aws_api_gateway_rest_api.main.execution_arn}/*"
   statement_id  = "AllowExecutionFromAPIGateway"
@@ -110,6 +158,14 @@ resource "aws_lambda_permission" "api_gateway_main_quote_subscription_id_get_int
   statement_id  = "AllowExecutionFromAPIGateway"
 }
 
+resource "aws_lambda_permission" "api_gateway_main_quote_subscription_post_integration" {
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.api_gateway_main_quote_subscription_post_integration.function_name
+  principal     = "apigateway.amazonaws.com"
+  source_arn    = "${aws_api_gateway_rest_api.main.execution_arn}/*"
+  statement_id  = "AllowExecutionFromAPIGateway"
+}
+
 resource "aws_lambda_permission" "api_gateway_main_quote_subscription_rule_get_integration" {
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.api_gateway_main_quote_subscription_rule_get_integration.function_name
@@ -121,6 +177,14 @@ resource "aws_lambda_permission" "api_gateway_main_quote_subscription_rule_get_i
 resource "aws_lambda_permission" "api_gateway_main_quote_subscription_rule_id_get_integration" {
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.api_gateway_main_quote_subscription_rule_id_get_integration.function_name
+  principal     = "apigateway.amazonaws.com"
+  source_arn    = "${aws_api_gateway_rest_api.main.execution_arn}/*"
+  statement_id  = "AllowExecutionFromAPIGateway"
+}
+
+resource "aws_lambda_permission" "api_gateway_main_quote_subscription_rule_post_integration" {
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.api_gateway_main_quote_subscription_rule_post_integration.function_name
   principal     = "apigateway.amazonaws.com"
   source_arn    = "${aws_api_gateway_rest_api.main.execution_arn}/*"
   statement_id  = "AllowExecutionFromAPIGateway"
@@ -142,6 +206,14 @@ resource "aws_lambda_permission" "api_gateway_main_sentiment_id_get_integration"
   statement_id  = "AllowExecutionFromAPIGateway"
 }
 
+resource "aws_lambda_permission" "api_gateway_main_sentiment_post_integration" {
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.api_gateway_main_sentiment_post_integration.function_name
+  principal     = "apigateway.amazonaws.com"
+  source_arn    = "${aws_api_gateway_rest_api.main.execution_arn}/*"
+  statement_id  = "AllowExecutionFromAPIGateway"
+}
+
 resource "aws_lambda_permission" "api_gateway_main_sentiment_score_get_integration" {
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.api_gateway_main_sentiment_score_get_integration.function_name
@@ -153,6 +225,14 @@ resource "aws_lambda_permission" "api_gateway_main_sentiment_score_get_integrati
 resource "aws_lambda_permission" "api_gateway_main_sentiment_score_id_get_integration" {
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.api_gateway_main_sentiment_score_id_get_integration.function_name
+  principal     = "apigateway.amazonaws.com"
+  source_arn    = "${aws_api_gateway_rest_api.main.execution_arn}/*"
+  statement_id  = "AllowExecutionFromAPIGateway"
+}
+
+resource "aws_lambda_permission" "api_gateway_main_sentiment_score_post_integration" {
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.api_gateway_main_sentiment_score_post_integration.function_name
   principal     = "apigateway.amazonaws.com"
   source_arn    = "${aws_api_gateway_rest_api.main.execution_arn}/*"
   statement_id  = "AllowExecutionFromAPIGateway"
@@ -190,6 +270,22 @@ resource "aws_lambda_permission" "api_gateway_main_syntax_token_part_of_speech_i
   statement_id  = "AllowExecutionFromAPIGateway"
 }
 
+resource "aws_lambda_permission" "api_gateway_main_syntax_token_part_of_speech_post_integration" {
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.api_gateway_main_syntax_token_part_of_speech_post_integration.function_name
+  principal     = "apigateway.amazonaws.com"
+  source_arn    = "${aws_api_gateway_rest_api.main.execution_arn}/*"
+  statement_id  = "AllowExecutionFromAPIGateway"
+}
+
+resource "aws_lambda_permission" "api_gateway_main_syntax_token_post_integration" {
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.api_gateway_main_syntax_token_post_integration.function_name
+  principal     = "apigateway.amazonaws.com"
+  source_arn    = "${aws_api_gateway_rest_api.main.execution_arn}/*"
+  statement_id  = "AllowExecutionFromAPIGateway"
+}
+
 resource "aws_lambda_permission" "api_gateway_main_user_get_integration" {
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.api_gateway_main_user_get_integration.function_name
@@ -201,6 +297,14 @@ resource "aws_lambda_permission" "api_gateway_main_user_get_integration" {
 resource "aws_lambda_permission" "api_gateway_main_user_id_get_integration" {
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.api_gateway_main_user_id_get_integration.function_name
+  principal     = "apigateway.amazonaws.com"
+  source_arn    = "${aws_api_gateway_rest_api.main.execution_arn}/*"
+  statement_id  = "AllowExecutionFromAPIGateway"
+}
+
+resource "aws_lambda_permission" "api_gateway_main_user_post_integration" {
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.api_gateway_main_user_post_integration.function_name
   principal     = "apigateway.amazonaws.com"
   source_arn    = "${aws_api_gateway_rest_api.main.execution_arn}/*"
   statement_id  = "AllowExecutionFromAPIGateway"

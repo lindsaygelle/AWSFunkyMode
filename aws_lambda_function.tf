@@ -11,7 +11,7 @@ resource "aws_lambda_function" "api_gateway_main_console_get_integration" {
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_console_get_integration.output_path
-  function_name    = "${var.application}ApiGatewayGetConsoleConnection"
+  function_name    = "FunkyModeApiGatewayGetConsoleConnection"
   handler          = "lambda.handler"
   memory_size      = 128
   role             = aws_iam_role.app_sync_lambda.arn
@@ -35,12 +35,36 @@ resource "aws_lambda_function" "api_gateway_main_console_id_get_integration" {
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_console_id_get_integration.output_path
-  function_name    = "${var.application}ApiGatewayGetConsole"
+  function_name    = "FunkyModeApiGatewayGetConsole"
   handler          = "lambda.handler"
   memory_size      = 128
   role             = aws_iam_role.app_sync_lambda.arn
   runtime          = "python3.11"
   source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_console_id_get_integration.output_path)
+  timeout          = 5
+  tracing_config {
+    mode = "Active"
+  }
+}
+
+resource "aws_lambda_function" "api_gateway_main_console_post_integration" {
+  architectures = ["x86_64"]
+  environment {
+    variables = {
+      APP_SYNC_API_KEY     = aws_appsync_api_key.main.key
+      APP_SYNC_GRAPHQL_URL = aws_appsync_graphql_api.main.uris["GRAPHQL"]
+    }
+  }
+  ephemeral_storage {
+    size = 512
+  }
+  filename         = data.archive_file.api_gateway_main_console_post_integration.output_path
+  function_name    = "FunkyModeApiGatewayPostConsole"
+  handler          = "lambda.handler"
+  memory_size      = 128
+  role             = aws_iam_role.app_sync_lambda.arn
+  runtime          = "python3.11"
+  source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_console_post_integration.output_path)
   timeout          = 5
   tracing_config {
     mode = "Active"
@@ -59,7 +83,7 @@ resource "aws_lambda_function" "api_gateway_main_entity_get_integration" {
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_entity_get_integration.output_path
-  function_name    = "${var.application}ApiGatewayGetEntityConnection"
+  function_name    = "FunkyModeApiGatewayGetEntityConnection"
   handler          = "lambda.handler"
   memory_size      = 128
   role             = aws_iam_role.app_sync_lambda.arn
@@ -83,12 +107,36 @@ resource "aws_lambda_function" "api_gateway_main_entity_id_get_integration" {
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_entity_id_get_integration.output_path
-  function_name    = "${var.application}ApiGatewayGetEntity"
+  function_name    = "FunkyModeApiGatewayGetEntity"
   handler          = "lambda.handler"
   memory_size      = 128
   role             = aws_iam_role.app_sync_lambda.arn
   runtime          = "python3.11"
   source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_entity_id_get_integration.output_path)
+  timeout          = 5
+  tracing_config {
+    mode = "Active"
+  }
+}
+
+resource "aws_lambda_function" "api_gateway_main_entity_post_integration" {
+  architectures = ["x86_64"]
+  environment {
+    variables = {
+      APP_SYNC_API_KEY     = aws_appsync_api_key.main.key
+      APP_SYNC_GRAPHQL_URL = aws_appsync_graphql_api.main.uris["GRAPHQL"]
+    }
+  }
+  ephemeral_storage {
+    size = 512
+  }
+  filename         = data.archive_file.api_gateway_main_entity_post_integration.output_path
+  function_name    = "FunkyModeApiGatewayPostEntity"
+  handler          = "lambda.handler"
+  memory_size      = 128
+  role             = aws_iam_role.app_sync_lambda.arn
+  runtime          = "python3.11"
+  source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_entity_post_integration.output_path)
   timeout          = 5
   tracing_config {
     mode = "Active"
@@ -107,7 +155,7 @@ resource "aws_lambda_function" "api_gateway_main_game_get_integration" {
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_game_get_integration.output_path
-  function_name    = "${var.application}ApiGatewayGetGameConnection"
+  function_name    = "FunkyModeApiGatewayGetGameConnection"
   handler          = "lambda.handler"
   memory_size      = 128
   role             = aws_iam_role.app_sync_lambda.arn
@@ -131,12 +179,36 @@ resource "aws_lambda_function" "api_gateway_main_game_id_get_integration" {
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_game_id_get_integration.output_path
-  function_name    = "${var.application}ApiGatewayGetGame"
+  function_name    = "FunkyModeApiGatewayGetGame"
   handler          = "lambda.handler"
   memory_size      = 128
   role             = aws_iam_role.app_sync_lambda.arn
   runtime          = "python3.11"
   source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_game_id_get_integration.output_path)
+  timeout          = 5
+  tracing_config {
+    mode = "Active"
+  }
+}
+
+resource "aws_lambda_function" "api_gateway_main_game_post_integration" {
+  architectures = ["x86_64"]
+  environment {
+    variables = {
+      APP_SYNC_API_KEY     = aws_appsync_api_key.main.key
+      APP_SYNC_GRAPHQL_URL = aws_appsync_graphql_api.main.uris["GRAPHQL"]
+    }
+  }
+  ephemeral_storage {
+    size = 512
+  }
+  filename         = data.archive_file.api_gateway_main_game_post_integration.output_path
+  function_name    = "FunkyModeApiGatewayPostGame"
+  handler          = "lambda.handler"
+  memory_size      = 128
+  role             = aws_iam_role.app_sync_lambda.arn
+  runtime          = "python3.11"
+  source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_game_post_integration.output_path)
   timeout          = 5
   tracing_config {
     mode = "Active"
@@ -155,7 +227,7 @@ resource "aws_lambda_function" "api_gateway_main_key_phrase_get_integration" {
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_key_phrase_get_integration.output_path
-  function_name    = "${var.application}ApiGatewayGetKeyPhraseConnection"
+  function_name    = "FunkyModeApiGatewayGetKeyPhraseConnection"
   handler          = "lambda.handler"
   memory_size      = 128
   role             = aws_iam_role.app_sync_lambda.arn
@@ -179,12 +251,36 @@ resource "aws_lambda_function" "api_gateway_main_key_phrase_id_get_integration" 
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_key_phrase_id_get_integration.output_path
-  function_name    = "${var.application}ApiGatewayGetKeyPhrase"
+  function_name    = "FunkyModeApiGatewayGetKeyPhrase"
   handler          = "lambda.handler"
   memory_size      = 128
   role             = aws_iam_role.app_sync_lambda.arn
   runtime          = "python3.11"
   source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_key_phrase_id_get_integration.output_path)
+  timeout          = 5
+  tracing_config {
+    mode = "Active"
+  }
+}
+
+resource "aws_lambda_function" "api_gateway_main_key_phrase_post_integration" {
+  architectures = ["x86_64"]
+  environment {
+    variables = {
+      APP_SYNC_API_KEY     = aws_appsync_api_key.main.key
+      APP_SYNC_GRAPHQL_URL = aws_appsync_graphql_api.main.uris["GRAPHQL"]
+    }
+  }
+  ephemeral_storage {
+    size = 512
+  }
+  filename         = data.archive_file.api_gateway_main_key_phrase_post_integration.output_path
+  function_name    = "FunkyModeApiGatewayPostKeyPhrase"
+  handler          = "lambda.handler"
+  memory_size      = 128
+  role             = aws_iam_role.app_sync_lambda.arn
+  runtime          = "python3.11"
+  source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_key_phrase_post_integration.output_path)
   timeout          = 5
   tracing_config {
     mode = "Active"
@@ -203,7 +299,7 @@ resource "aws_lambda_function" "api_gateway_main_pii_get_integration" {
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_pii_get_integration.output_path
-  function_name    = "${var.application}ApiGatewayGetPiiConnection"
+  function_name    = "FunkyModeApiGatewayGetPiiConnection"
   handler          = "lambda.handler"
   memory_size      = 128
   role             = aws_iam_role.app_sync_lambda.arn
@@ -227,12 +323,36 @@ resource "aws_lambda_function" "api_gateway_main_pii_id_get_integration" {
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_pii_id_get_integration.output_path
-  function_name    = "${var.application}ApiGatewayGetPii"
+  function_name    = "FunkyModeApiGatewayGetPii"
   handler          = "lambda.handler"
   memory_size      = 128
   role             = aws_iam_role.app_sync_lambda.arn
   runtime          = "python3.11"
   source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_pii_id_get_integration.output_path)
+  timeout          = 5
+  tracing_config {
+    mode = "Active"
+  }
+}
+
+resource "aws_lambda_function" "api_gateway_main_pii_post_integration" {
+  architectures = ["x86_64"]
+  environment {
+    variables = {
+      APP_SYNC_API_KEY     = aws_appsync_api_key.main.key
+      APP_SYNC_GRAPHQL_URL = aws_appsync_graphql_api.main.uris["GRAPHQL"]
+    }
+  }
+  ephemeral_storage {
+    size = 512
+  }
+  filename         = data.archive_file.api_gateway_main_pii_post_integration.output_path
+  function_name    = "FunkyModeApiGatewayPostPii"
+  handler          = "lambda.handler"
+  memory_size      = 128
+  role             = aws_iam_role.app_sync_lambda.arn
+  runtime          = "python3.11"
+  source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_pii_post_integration.output_path)
   timeout          = 5
   tracing_config {
     mode = "Active"
@@ -251,7 +371,7 @@ resource "aws_lambda_function" "api_gateway_main_quote_get_integration" {
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_quote_get_integration.output_path
-  function_name    = "${var.application}ApiGatewayGetQuoteConnection"
+  function_name    = "FunkyModeApiGatewayGetQuoteConnection"
   handler          = "lambda.handler"
   memory_size      = 128
   role             = aws_iam_role.app_sync_lambda.arn
@@ -275,12 +395,36 @@ resource "aws_lambda_function" "api_gateway_main_quote_id_get_integration" {
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_quote_id_get_integration.output_path
-  function_name    = "${var.application}ApiGatewayGetQuote"
+  function_name    = "FunkyModeApiGatewayGetQuote"
   handler          = "lambda.handler"
   memory_size      = 128
   role             = aws_iam_role.app_sync_lambda.arn
   runtime          = "python3.11"
   source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_quote_id_get_integration.output_path)
+  timeout          = 5
+  tracing_config {
+    mode = "Active"
+  }
+}
+
+resource "aws_lambda_function" "api_gateway_main_quote_post_integration" {
+  architectures = ["x86_64"]
+  environment {
+    variables = {
+      APP_SYNC_API_KEY     = aws_appsync_api_key.main.key
+      APP_SYNC_GRAPHQL_URL = aws_appsync_graphql_api.main.uris["GRAPHQL"]
+    }
+  }
+  ephemeral_storage {
+    size = 512
+  }
+  filename         = data.archive_file.api_gateway_main_quote_post_integration.output_path
+  function_name    = "FunkyModeApiGatewayPostQuote"
+  handler          = "lambda.handler"
+  memory_size      = 128
+  role             = aws_iam_role.app_sync_lambda.arn
+  runtime          = "python3.11"
+  source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_quote_post_integration.output_path)
   timeout          = 5
   tracing_config {
     mode = "Active"
@@ -299,7 +443,7 @@ resource "aws_lambda_function" "api_gateway_main_quote_subscription_get_integrat
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_quote_subscription_get_integration.output_path
-  function_name    = "${var.application}ApiGatewayGetQuoteSubscriptionConnection"
+  function_name    = "FunkyModeApiGatewayGetQuoteSubscriptionConnection"
   handler          = "lambda.handler"
   memory_size      = 128
   role             = aws_iam_role.app_sync_lambda.arn
@@ -323,12 +467,36 @@ resource "aws_lambda_function" "api_gateway_main_quote_subscription_id_get_integ
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_quote_subscription_id_get_integration.output_path
-  function_name    = "${var.application}ApiGatewayGetQuoteSubscription"
+  function_name    = "FunkyModeApiGatewayGetQuoteSubscription"
   handler          = "lambda.handler"
   memory_size      = 128
   role             = aws_iam_role.app_sync_lambda.arn
   runtime          = "python3.11"
   source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_quote_subscription_id_get_integration.output_path)
+  timeout          = 5
+  tracing_config {
+    mode = "Active"
+  }
+}
+
+resource "aws_lambda_function" "api_gateway_main_quote_subscription_post_integration" {
+  architectures = ["x86_64"]
+  environment {
+    variables = {
+      APP_SYNC_API_KEY     = aws_appsync_api_key.main.key
+      APP_SYNC_GRAPHQL_URL = aws_appsync_graphql_api.main.uris["GRAPHQL"]
+    }
+  }
+  ephemeral_storage {
+    size = 512
+  }
+  filename         = data.archive_file.api_gateway_main_quote_subscription_post_integration.output_path
+  function_name    = "FunkyModeApiGatewayPostQuoteSubscription"
+  handler          = "lambda.handler"
+  memory_size      = 128
+  role             = aws_iam_role.app_sync_lambda.arn
+  runtime          = "python3.11"
+  source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_quote_subscription_post_integration.output_path)
   timeout          = 5
   tracing_config {
     mode = "Active"
@@ -347,7 +515,7 @@ resource "aws_lambda_function" "api_gateway_main_quote_subscription_rule_get_int
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_quote_subscription_rule_get_integration.output_path
-  function_name    = "${var.application}ApiGatewayGetQuoteSubscriptionRuleConnection"
+  function_name    = "FunkyModeApiGatewayGetQuoteSubscriptionRuleConnection"
   handler          = "lambda.handler"
   memory_size      = 128
   role             = aws_iam_role.app_sync_lambda.arn
@@ -371,12 +539,36 @@ resource "aws_lambda_function" "api_gateway_main_quote_subscription_rule_id_get_
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_quote_subscription_rule_id_get_integration.output_path
-  function_name    = "${var.application}ApiGatewayGetQuoteSubscriptionRule"
+  function_name    = "FunkyModeApiGatewayGetQuoteSubscriptionRule"
   handler          = "lambda.handler"
   memory_size      = 128
   role             = aws_iam_role.app_sync_lambda.arn
   runtime          = "python3.11"
   source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_quote_subscription_rule_id_get_integration.output_path)
+  timeout          = 5
+  tracing_config {
+    mode = "Active"
+  }
+}
+
+resource "aws_lambda_function" "api_gateway_main_quote_subscription_rule_post_integration" {
+  architectures = ["x86_64"]
+  environment {
+    variables = {
+      APP_SYNC_API_KEY     = aws_appsync_api_key.main.key
+      APP_SYNC_GRAPHQL_URL = aws_appsync_graphql_api.main.uris["GRAPHQL"]
+    }
+  }
+  ephemeral_storage {
+    size = 512
+  }
+  filename         = data.archive_file.api_gateway_main_quote_subscription_rule_post_integration.output_path
+  function_name    = "FunkyModeApiGatewayPostQuoteSubscriptionRule"
+  handler          = "lambda.handler"
+  memory_size      = 128
+  role             = aws_iam_role.app_sync_lambda.arn
+  runtime          = "python3.11"
+  source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_quote_subscription_rule_post_integration.output_path)
   timeout          = 5
   tracing_config {
     mode = "Active"
@@ -395,7 +587,7 @@ resource "aws_lambda_function" "api_gateway_main_sentiment_get_integration" {
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_sentiment_get_integration.output_path
-  function_name    = "${var.application}ApiGatewayGetSentimentConnection"
+  function_name    = "FunkyModeApiGatewayGetSentimentConnection"
   handler          = "lambda.handler"
   memory_size      = 128
   role             = aws_iam_role.app_sync_lambda.arn
@@ -419,12 +611,36 @@ resource "aws_lambda_function" "api_gateway_main_sentiment_id_get_integration" {
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_sentiment_id_get_integration.output_path
-  function_name    = "${var.application}ApiGatewayGetSentiment"
+  function_name    = "FunkyModeApiGatewayGetSentiment"
   handler          = "lambda.handler"
   memory_size      = 128
   role             = aws_iam_role.app_sync_lambda.arn
   runtime          = "python3.11"
   source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_sentiment_id_get_integration.output_path)
+  timeout          = 5
+  tracing_config {
+    mode = "Active"
+  }
+}
+
+resource "aws_lambda_function" "api_gateway_main_sentiment_post_integration" {
+  architectures = ["x86_64"]
+  environment {
+    variables = {
+      APP_SYNC_API_KEY     = aws_appsync_api_key.main.key
+      APP_SYNC_GRAPHQL_URL = aws_appsync_graphql_api.main.uris["GRAPHQL"]
+    }
+  }
+  ephemeral_storage {
+    size = 512
+  }
+  filename         = data.archive_file.api_gateway_main_sentiment_post_integration.output_path
+  function_name    = "FunkyModeApiGatewayPostSentiment"
+  handler          = "lambda.handler"
+  memory_size      = 128
+  role             = aws_iam_role.app_sync_lambda.arn
+  runtime          = "python3.11"
+  source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_sentiment_post_integration.output_path)
   timeout          = 5
   tracing_config {
     mode = "Active"
@@ -443,7 +659,7 @@ resource "aws_lambda_function" "api_gateway_main_sentiment_score_get_integration
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_sentiment_score_get_integration.output_path
-  function_name    = "${var.application}ApiGatewayGetSentimentScoreConnection"
+  function_name    = "FunkyModeApiGatewayGetSentimentScoreConnection"
   handler          = "lambda.handler"
   memory_size      = 128
   role             = aws_iam_role.app_sync_lambda.arn
@@ -467,12 +683,36 @@ resource "aws_lambda_function" "api_gateway_main_sentiment_score_id_get_integrat
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_sentiment_score_id_get_integration.output_path
-  function_name    = "${var.application}ApiGatewayGetSentimentScore"
+  function_name    = "FunkyModeApiGatewayGetSentimentScore"
   handler          = "lambda.handler"
   memory_size      = 128
   role             = aws_iam_role.app_sync_lambda.arn
   runtime          = "python3.11"
   source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_sentiment_score_id_get_integration.output_path)
+  timeout          = 5
+  tracing_config {
+    mode = "Active"
+  }
+}
+
+resource "aws_lambda_function" "api_gateway_main_sentiment_score_post_integration" {
+  architectures = ["x86_64"]
+  environment {
+    variables = {
+      APP_SYNC_API_KEY     = aws_appsync_api_key.main.key
+      APP_SYNC_GRAPHQL_URL = aws_appsync_graphql_api.main.uris["GRAPHQL"]
+    }
+  }
+  ephemeral_storage {
+    size = 512
+  }
+  filename         = data.archive_file.api_gateway_main_sentiment_score_post_integration.output_path
+  function_name    = "FunkyModeApiGatewayPostSentimentScore"
+  handler          = "lambda.handler"
+  memory_size      = 128
+  role             = aws_iam_role.app_sync_lambda.arn
+  runtime          = "python3.11"
+  source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_sentiment_score_post_integration.output_path)
   timeout          = 5
   tracing_config {
     mode = "Active"
@@ -491,7 +731,7 @@ resource "aws_lambda_function" "api_gateway_main_syntax_token_get_integration" {
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_syntax_token_get_integration.output_path
-  function_name    = "${var.application}ApiGatewayGetSyntaxTokenConnection"
+  function_name    = "FunkyModeApiGatewayGetSyntaxTokenConnection"
   handler          = "lambda.handler"
   memory_size      = 128
   role             = aws_iam_role.app_sync_lambda.arn
@@ -515,7 +755,7 @@ resource "aws_lambda_function" "api_gateway_main_syntax_token_id_get_integration
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_syntax_token_id_get_integration.output_path
-  function_name    = "${var.application}ApiGatewayGetSyntaxToken"
+  function_name    = "FunkyModeApiGatewayGetSyntaxToken"
   handler          = "lambda.handler"
   memory_size      = 128
   role             = aws_iam_role.app_sync_lambda.arn
@@ -539,7 +779,7 @@ resource "aws_lambda_function" "api_gateway_main_syntax_token_part_of_speech_get
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_syntax_token_part_of_speech_get_integration.output_path
-  function_name    = "${var.application}ApiGatewayGetSyntaxTokenPartOfSpeechConnection"
+  function_name    = "FunkyModeApiGatewayGetSyntaxTokenPartOfSpeechConnection"
   handler          = "lambda.handler"
   memory_size      = 128
   role             = aws_iam_role.app_sync_lambda.arn
@@ -563,12 +803,60 @@ resource "aws_lambda_function" "api_gateway_main_syntax_token_part_of_speech_id_
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_syntax_token_part_of_speech_id_get_integration.output_path
-  function_name    = "${var.application}ApiGatewayGetSyntaxTokenPartOfSpeech"
+  function_name    = "FunkyModeApiGatewayGetSyntaxTokenPartOfSpeech"
   handler          = "lambda.handler"
   memory_size      = 128
   role             = aws_iam_role.app_sync_lambda.arn
   runtime          = "python3.11"
   source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_syntax_token_part_of_speech_id_get_integration.output_path)
+  timeout          = 5
+  tracing_config {
+    mode = "Active"
+  }
+}
+
+resource "aws_lambda_function" "api_gateway_main_syntax_token_part_of_speech_post_integration" {
+  architectures = ["x86_64"]
+  environment {
+    variables = {
+      APP_SYNC_API_KEY     = aws_appsync_api_key.main.key
+      APP_SYNC_GRAPHQL_URL = aws_appsync_graphql_api.main.uris["GRAPHQL"]
+    }
+  }
+  ephemeral_storage {
+    size = 512
+  }
+  filename         = data.archive_file.api_gateway_main_syntax_token_part_of_speech_post_integration.output_path
+  function_name    = "FunkyModeApiGatewayPostSyntaxTokenPartOfSpeech"
+  handler          = "lambda.handler"
+  memory_size      = 128
+  role             = aws_iam_role.app_sync_lambda.arn
+  runtime          = "python3.11"
+  source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_syntax_token_part_of_speech_post_integration.output_path)
+  timeout          = 5
+  tracing_config {
+    mode = "Active"
+  }
+}
+
+resource "aws_lambda_function" "api_gateway_main_syntax_token_post_integration" {
+  architectures = ["x86_64"]
+  environment {
+    variables = {
+      APP_SYNC_API_KEY     = aws_appsync_api_key.main.key
+      APP_SYNC_GRAPHQL_URL = aws_appsync_graphql_api.main.uris["GRAPHQL"]
+    }
+  }
+  ephemeral_storage {
+    size = 512
+  }
+  filename         = data.archive_file.api_gateway_main_syntax_token_post_integration.output_path
+  function_name    = "FunkyModeApiGatewayPostSyntaxToken"
+  handler          = "lambda.handler"
+  memory_size      = 128
+  role             = aws_iam_role.app_sync_lambda.arn
+  runtime          = "python3.11"
+  source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_syntax_token_post_integration.output_path)
   timeout          = 5
   tracing_config {
     mode = "Active"
@@ -587,7 +875,7 @@ resource "aws_lambda_function" "api_gateway_main_user_get_integration" {
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_user_get_integration.output_path
-  function_name    = "${var.application}ApiGatewayGetUserConnection"
+  function_name    = "FunkyModeApiGatewayGetUserConnection"
   handler          = "lambda.handler"
   memory_size      = 128
   role             = aws_iam_role.app_sync_lambda.arn
@@ -611,12 +899,36 @@ resource "aws_lambda_function" "api_gateway_main_user_id_get_integration" {
     size = 512
   }
   filename         = data.archive_file.api_gateway_main_user_id_get_integration.output_path
-  function_name    = "${var.application}ApiGatewayGetUser"
+  function_name    = "FunkyModeApiGatewayGetUser"
   handler          = "lambda.handler"
   memory_size      = 128
   role             = aws_iam_role.app_sync_lambda.arn
   runtime          = "python3.11"
   source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_user_id_get_integration.output_path)
+  timeout          = 5
+  tracing_config {
+    mode = "Active"
+  }
+}
+
+resource "aws_lambda_function" "api_gateway_main_user_post_integration" {
+  architectures = ["x86_64"]
+  environment {
+    variables = {
+      APP_SYNC_API_KEY     = aws_appsync_api_key.main.key
+      APP_SYNC_GRAPHQL_URL = aws_appsync_graphql_api.main.uris["GRAPHQL"]
+    }
+  }
+  ephemeral_storage {
+    size = 512
+  }
+  filename         = data.archive_file.api_gateway_main_user_post_integration.output_path
+  function_name    = "FunkyModeApiGatewayPostUser"
+  handler          = "lambda.handler"
+  memory_size      = 128
+  role             = aws_iam_role.app_sync_lambda.arn
+  runtime          = "python3.11"
+  source_code_hash = filebase64sha256(data.archive_file.api_gateway_main_user_post_integration.output_path)
   timeout          = 5
   tracing_config {
     mode = "Active"

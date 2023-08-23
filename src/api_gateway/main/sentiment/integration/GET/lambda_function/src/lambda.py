@@ -6,6 +6,7 @@ import json
 import os
 
 
+OPERATION_QUERY = "Query"
 QUERY = """
 query Query($limit: Int, $next_token: String) {
     get_sentiment_connection(limit: $limit, next_token: $next_token) {
@@ -132,6 +133,7 @@ def create_app_sync_request(
         url,
         data=json.dumps(app_sync_request_data).encode("utf-8"),
         headers=app_sync_request_headers,
+        method="GET",
     )
     return request
 
@@ -170,35 +172,43 @@ def make_app_sync_request(
     return response
 
 
-def make_app_sync_request_query(event: Event) -> HTTPResponse:
-    query_string_parameters = event.get("queryStringParameters") or {}
-    event_headers = create_app_sync_request_headers(event.get("headers"))
-    app_sync_request_variables = {
-        "limit": query_string_parameters.get("limit"),
-        "next_token": query_string_parameters.get("next_token"),
-    }
+def make_app_sync_request_query(
+    event_body: Any, event_headers: HTTPHeaders
+) -> HTTPResponse:
     response = make_app_sync_request(
         event_headers=event_headers,
-        operation_name="Query",
+        operation_name=OPERATION_QUERY,
         query=QUERY,
-        variables=app_sync_request_variables,
+        variables=event_body,
     )
     return response
 
 
 def handler(event: Event, context: Any) -> Response:
+    body: Optional[SentimentConnection] = None
+    headers: HTTPHeaders = {"Content-Type": "application/json"}
     status_code: int = HTTPStatus.OK.value
-    response: HTTPResponse = make_app_sync_request_query(event)
-    response_data: AppSyncResponse = json.load(response)
-    content: SentimentConnection = response_data.get("data")
-    errors: AppSyncResponseError = response_data.get("errors")
-    if isinstance(errors, list):
-        print(errors)
+    try:
+        query_string_parameters = event.get("queryStringParameters") or {}
+        event_body = {
+            "limit": query_string_parameters.get("limit"),
+            "next_token": query_string_parameters.get("next_token"),
+        }
+        event_headers = event.get("headers")
+        response: HTTPResponse = make_app_sync_request_query(event_body, event_headers)
+        response_data: AppSyncResponse = json.load(response)
+        print(response_data)
+        body = (response_data.get("data") or {}).get("get_sentiment_connection")
+        headers = {**headers, **response.headers}
+        status = response.status
+        errors: AppSyncResponseError = response_data.get("errors")
+        if isinstance(errors, list):
+            print(errors)
+            status_code = HTTPStatus.BAD_REQUEST.value
+    except Exception as e:
         status_code = HTTPStatus.BAD_REQUEST.value
-    if not (isinstance(content, dict)):
-        content = {}
     return Response(
-        body=json.dumps(content.get("get_sentiment_connection", {})),
-        headers={**{"Content-Type": "application/json"}, **response.headers},
+        body=json.dumps(body),
+        headers=headers,
         statusCode=status_code,
     )

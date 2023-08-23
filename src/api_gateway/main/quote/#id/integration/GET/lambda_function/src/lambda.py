@@ -6,6 +6,7 @@ import json
 import os
 
 
+OPERATION_QUERY = "Query"
 QUERY = """
 query Query($id: ID!) {
     get_quote(id: $id) {
@@ -124,6 +125,7 @@ def create_app_sync_request(
         url,
         data=json.dumps(app_sync_request_data).encode("utf-8"),
         headers=app_sync_request_headers,
+        method="GET",
     )
     return request
 
@@ -162,32 +164,42 @@ def make_app_sync_request(
     return response
 
 
-def make_app_sync_request_query(event: Event) -> HTTPResponse:
-    path_parameters = event.get("pathParameters", {})
-    event_headers = create_app_sync_request_headers(event.get("headers"))
-    app_sync_request_variables = {
-        "id": path_parameters.get("id"),
-    }
+def make_app_sync_request_query(
+    event_body: Any, event_headers: HTTPHeaders
+) -> HTTPResponse:
     response = make_app_sync_request(
         event_headers=event_headers,
-        operation_name="Query",
+        operation_name=OPERATION_QUERY,
         query=QUERY,
-        variables=app_sync_request_variables,
+        variables=event_body,
     )
     return response
 
 
 def handler(event: Event, context: Any) -> Response:
+    body: Optional[Quote] = None
+    headers: HTTPHeader = {"Content-Type": "application/json"}
     status_code: int = HTTPStatus.OK.value
-    response: HTTPResponse = make_app_sync_request_query(event)
-    response_data: AppSyncResponse = json.load(response)
-    content: Optional[Quote] = response_data.get("data", {}).get("get_quote")
-    errors: AppSyncResponseError = response_data.get("errors")
-    if isinstance(errors, list):
-        print(errors)
+    try:
+        path_parameters = event.get("pathParameters", {})
+        event_body = {
+            "id": path_parameters.get("id"),
+        }
+        event_headers = event.get("headers")
+        response: HTTPResponse = make_app_sync_request_query(event_body, event_headers)
+        response_data: AppSyncResponse = json.load(response)
+        print(response_data)
+        headers = {**headers, **response.headers}
+        content = response_data.get("data", {}).get("get_quote")
+        status = response.status
+        errors: AppSyncResponseError = response_data.get("errors")
+        if isinstance(errors, list):
+            print(errors)
+            status_code = HTTPStatus.BAD_REQUEST.value
+    except Exception as e:
         status_code = HTTPStatus.BAD_REQUEST.value
     return Response(
         body=json.dumps(content),
-        headers={**{"Content-Type": "application/json"}, **response.headers},
+        headers=headers,
         statusCode=status_code,
     )
