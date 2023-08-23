@@ -1,4 +1,5 @@
 from typing import Any, Dict, List, Optional, Union, TypedDict
+from http import HTTPStatus
 from http.client import HTTPResponse
 from urllib.request import Request, urlopen
 import json
@@ -19,10 +20,14 @@ query Query($id: ID!) {
 """
 
 
-class AppSyncRequest(TypedDict):
+class AppSyncRequestDataVariables(TypedDict):
+    id: str
+
+
+class AppSyncRequestData(TypedDict):
     operationName: str
     query: str
-    variables: Optional[Dict[str, Any]]
+    variables: AppSyncRequestDataVariables
 
 
 class SentimentScore(TypedDict):
@@ -39,8 +44,19 @@ class AppSyncResponseData(TypedDict):
     get_sentiment_score: SentimentScore
 
 
+class AppSyncResponseError(TypedDict):
+    locations: List[Dict[str, str]]
+    message: str
+    path: str
+
+
 class AppSyncResponse(TypedDict):
     data: AppSyncResponseData
+    errors: Optional[List[AppSyncResponseError]]
+
+
+HTTPHeaders = Dict[str, str]
+HTTPMultiValueHeaders = Dict[str, List[str]]
 
 
 class RequestContextIdentity(TypedDict):
@@ -78,16 +94,21 @@ class EventRequestContext(TypedDict):
     stage: str
 
 
+EventMultiValueQueryStringParameters = Dict[str, List[str]]
+EventPathParameters = Dict[str, str]
+EventQueryStringParameters = Dict[str, str]
+
+
 class Event(TypedDict):
     body: Optional[str]
-    headers: Optional[Dict[str, str]]
+    headers: Optional[HTTPHeaders]
     httpMethod: str
     isBase64Encoded: bool
-    multiValueHeaders: Optional[Dict[str, List[str]]]
-    multiValueQueryStringParameters: Optional[Dict[str, List[str]]]
+    multiValueHeaders: Optional[HTTPMultiValueHeaders]
+    multiValueQueryStringParameters: Optional[EventMultiValueQueryStringParameters]
     path: str
-    pathParameters: Optional[Dict[str, str]]
-    queryStringParameters: Optional[Dict[str, str]]
+    pathParameters: Optional[EventPathParameters]
+    queryStringParameters: Optional[EventQueryStringParameters]
     requestContext: EventRequestContext
     resource: str
     stageVariables: Optional[Dict[str, str]]
@@ -99,32 +120,78 @@ class Response(TypedDict):
     statusCode: int
 
 
-def handler(event: Event, context) -> Response:
-    path_parameters = event.get("pathParameters")
-    if not (isinstance(path_parameters, dict)):
-        path_parameters = {}
-    app_sync_request: AppSyncRequest = AppSyncRequest(
-        operationName="Query",
-        query=QUERY,
-        variables={
-            "id": path_parameters.get("id"),
-        },
+def create_app_sync_request(
+    app_sync_request_data: AppSyncRequestData,
+    app_sync_request_headers: Dict[str, str],
+) -> Request:
+    url: Optional[str] = os.environ.get("APP_SYNC_GRAPHQL_URL")
+    request: Request = Request(
+        url,
+        data=json.dumps(app_sync_request_data).encode("utf-8"),
+        headers=app_sync_request_headers,
     )
-    app_sync_request_data: str = json.dumps(app_sync_request).encode("utf-8")
-    app_sync_request_headers: Dict[str, str] = {
+    return request
+
+
+def create_app_sync_request_data(
+    operation_name: str, query: str, variables: AppSyncRequestDataVariables
+) -> AppSyncRequestData:
+    return AppSyncRequestData(
+        operationName=operation_name,
+        query=query,
+        variables=variables,
+    )
+
+
+def create_app_sync_request_headers(headers: HTTPHeaders) -> Dict[str, str]:
+    return {
         "Content-Type": "application/json",
         "X-Api-Key": os.environ.get("APP_SYNC_API_KEY"),
     }
-    url: Optional[str] = os.environ.get("APP_SYNC_GRAPHQL_URL")
-    request: Request = Request(
-        url, data=app_sync_request_data, headers=app_sync_request_headers
+
+
+def make_app_sync_request(
+    event_headers: HTTPHeaders,
+    operation_name: str,
+    query: str,
+    variables: AppSyncRequestDataVariables,
+) -> HTTPResponse:
+    app_sync_request_data = create_app_sync_request_data(
+        operation_name=operation_name, query=query, variables=variables
+    )
+    app_sync_request_headers = create_app_sync_request_headers(event_headers)
+    request: Request = create_app_sync_request(
+        app_sync_request_data, app_sync_request_headers
     )
     response: HTTPResponse = urlopen(request)
+    return response
+
+
+def handler(event: Event, context) -> Response:
+    status_code: int = HTTPStatus.OK.value
+    path_parameters = event.get("pathParameters")
+    if not (isinstance(path_parameters, dict)):
+        path_parameters = {}
+    event_headers: HTTPHeaders = create_app_sync_request_headers(event.get("headers"))
+    app_sync_request_variables: AppSyncRequestDataVariables = (
+        AppSyncRequestDataVariables(
+            id=path_parameters.get("id"),
+        )
+    )
+    response: HTTPResponse = make_app_sync_request(
+        event_headers=event_headers,
+        operation_name="Query",
+        query=QUERY,
+        variables=app_sync_request_variables,
+    )
     response_data: AppSyncResponse = json.load(response)
     content: SentimentScore = response_data.get("data")
+    errors: AppSyncResponseError = response_data.get("errors")
+    if isinstance(errors, list):
+        print(errors)
+        status_code = HTTPStatus.BAD_REQUEST.value
     if not (isinstance(content, dict)):
         content = {}
-    status_code: Optional[int] = response.status
     return Response(
         body=json.dumps(content.get("get_sentiment_score", {})),
         headers={**{"Content-Type": "application/json"}, **response.headers},

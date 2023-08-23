@@ -8,10 +8,10 @@ import { util } from "@aws-appsync/utils";
 export function request(ctx) {
   return {
     operation: "DeleteItem",
-      key: util.dynamodb.toMapValues({
-        pk: "Console",
-        sk: ("Metadata#" + ctx.args.id)
-    })
+    key: util.dynamodb.toMapValues({
+      pk: "Console",
+      sk: "Metadata#" + ctx.args.id,
+    }),
   };
 }
 
