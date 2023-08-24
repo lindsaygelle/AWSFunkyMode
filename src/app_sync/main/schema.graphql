@@ -1,11 +1,13 @@
 input CreateConsoleInput {
     abbreviation: String!
+    id: ID!
     name: String!
 }
 
 input CreateEntityInput {
     begin_offset: Int!
     end_offset: Int!
+    id: ID!
     order: Int!
     quote_id: ID!
     score: Float!
@@ -16,12 +18,14 @@ input CreateEntityInput {
 input CreateGameInput {
     abbreviation: String!
     console_id: ID!
+    id: ID!
     name: String!
 }
 
 input CreateKeyPhraseInput {
     begin_offset: Int!
     end_offset: Int!
+    id: ID!
     order: Int!
     quote_id: ID!
     score: Float!
@@ -31,6 +35,7 @@ input CreateKeyPhraseInput {
 input CreatePiiInput {
     begin_offset: Int!
     end_offset: Int!
+    id: ID!
     order: Int!
     quote_id: ID!
     score: Float!
@@ -39,11 +44,13 @@ input CreatePiiInput {
 
 input CreateQuoteInput {
     game_id: ID!
+    id: ID!
     text: String!
 }
 
 input CreateQuoteSubscriptionInput {
     quote_id: ID!
+    id: ID!
     user_id: ID!
 }
 
@@ -55,6 +62,7 @@ input CreateQuoteSubscriptionRuleInput {
 }
 
 input CreateSentimentInput {
+    id: ID!
     quote_id: ID!
     sentiment: String!
 }
@@ -70,6 +78,7 @@ input CreateSentimentScoreInput {
 input CreateSyntaxTokenInput {
     begin_offset: Int!
     end_offset: Int!
+    id: ID!
     order: Int!
     quote_id: ID!
     text: String!
@@ -78,12 +87,14 @@ input CreateSyntaxTokenInput {
 
 input CreateSyntaxTokenPartOfSpeechInput {
     score: Float!
+    id: ID!
     syntax_token_id: ID!
     tag: String!
 }
 
 input CreateUserInput {
     email: AWSEmail!
+    id: ID!
 }
 
 input DeleteConsoleInput {

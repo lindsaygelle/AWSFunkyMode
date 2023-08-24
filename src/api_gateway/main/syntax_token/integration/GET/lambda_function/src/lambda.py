@@ -139,9 +139,11 @@ def create_app_sync_request(
     url: Optional[str] = os.environ.get("APP_SYNC_GRAPHQL_URL")
     request: Request = Request(
         url,
-        data=json.dumps(app_sync_request_data).encode("utf-8"),
+        data=json.dumps(app_sync_request_data, default=lambda x: str(x)).encode(
+            "utf-8"
+        ),
         headers=app_sync_request_headers,
-        method="GET",
+        method="POST",
     )
     return request
 
@@ -202,7 +204,9 @@ def handler(event: Event, context: Any) -> Response:
             "limit": query_string_parameters.get("limit"),
             "next_token": query_string_parameters.get("next_token"),
         }
+        print(event_body)
         event_headers = event.get("headers")
+        print(event_headers)
         response: HTTPResponse = make_app_sync_request_query(event_body, event_headers)
         response_data: AppSyncResponse = json.load(response)
         print(response_data)

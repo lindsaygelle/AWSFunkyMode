@@ -2,6 +2,7 @@ from typing import Any, Dict, List, Optional, Union, TypedDict
 from http import HTTPStatus
 from http.client import HTTPResponse
 from urllib.request import Request, urlopen
+from uuid import NAMESPACE_DNS, UUID, uuid5
 import json
 import os
 
@@ -9,10 +10,12 @@ import os
 MUTATION = """
 mutation Mutation(
         $abbreviation: String!,
+        $id: ID!,
         $name: String!
     ) {
     create_console(input: {
         abbreviation: $abbreviation,
+        id: $id,
         name: $name
     }) {
         abbreviation
@@ -32,6 +35,12 @@ class Console(TypedDict):
     id: str
     name: str
     updated_date: str
+
+
+class ConsoleMutation(TypedDict):
+    abbreviation: str
+    id: UUID
+    name: str
 
 
 AppSyncRequestVariables = Dict[str, Any]
@@ -129,7 +138,9 @@ def create_app_sync_request(
     url: Optional[str] = os.environ.get("APP_SYNC_GRAPHQL_URL")
     request: Request = Request(
         url,
-        data=json.dumps(app_sync_request_data).encode("utf-8"),
+        data=json.dumps(app_sync_request_data, default=lambda x: str(x)).encode(
+            "utf-8"
+        ),
         headers=app_sync_request_headers,
         method="POST",
     )
@@ -171,7 +182,7 @@ def make_app_sync_request(
 
 
 def make_app_sync_request_mutation(
-    event_body: Any, event_headers: HTTPHeaders
+    event_body: ConsoleMutation, event_headers: HTTPHeaders
 ) -> HTTPResponse:
     response = make_app_sync_request(
         event_headers=event_headers,
@@ -187,8 +198,11 @@ def handler(event: Event, context: Any) -> Response:
     headers: HTTPHeaders = {"Content-Type": "application/json"}
     status_code: int = HTTPStatus.OK.value
     try:
-        event_body = json.loads(event.get("body"))
+        event_body: ConsoleMutation = json.loads(event.get("body"))
+        event_body["id"] = uuid5(NAMESPACE_DNS, json.dumps(event_body, sort_keys=True))
+        print(event_body)
         event_headers = event.get("headers")
+        print(event_headers)
         response: HTTPResponse = make_app_sync_request_mutation(
             event_body, event_headers
         )
