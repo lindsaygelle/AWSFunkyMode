@@ -12,6 +12,7 @@ query Query($limit: Int, $next_token: String) {
     get_sentiment_score_connection(limit: $limit, next_token: $next_token) {
         items {
             created_date
+            id
             mixed
             negative
             neutral
@@ -27,6 +28,7 @@ query Query($limit: Int, $next_token: String) {
 
 class SentimentScore(TypedDict):
     created_date: str
+    id: str
     mixed: float
     negative: float
     neutral: float

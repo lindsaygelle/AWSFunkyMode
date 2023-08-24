@@ -11,6 +11,7 @@ QUERY = """
 query Query($id: ID!) {
     get_sentiment_score(id: $id) {
         created_date
+        id
         mixed
         negative
         neutral
@@ -24,6 +25,7 @@ query Query($id: ID!) {
 
 class SentimentScore(TypedDict):
     created_date: str
+    id: str
     mixed: float
     negative: float
     neutral: float

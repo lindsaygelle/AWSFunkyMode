@@ -9,6 +9,7 @@ import os
 
 MUTATION = """
 mutation Mutation(
+        $id: ID!,
         $mixed: Float!,
         $negative: Float!,
         $neutral: Float!,
@@ -16,6 +17,7 @@ mutation Mutation(
         $sentiment_id: ID!
     ) {
     create_sentiment_score(input: {
+        id: $id,
         mixed: $mixed,
         negative: $negative,
         neutral: $neutral,
@@ -23,6 +25,7 @@ mutation Mutation(
         sentiment_id: $sentiment_id
     }) {
         created_date
+        id
         mixed
         negative
         neutral
@@ -37,6 +40,7 @@ OPERATION_MUTATION = "Mutation"
 
 class SentimentScore(TypedDict):
     created_date: str
+    id: str
     mixed: float
     negative: float
     neutral: float
@@ -46,6 +50,7 @@ class SentimentScore(TypedDict):
 
 
 class SentimentScoreMutation(TypedDict):
+    id: UUID
     mixed: float
     negative: float
     neutral: float

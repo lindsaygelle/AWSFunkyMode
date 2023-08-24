@@ -157,7 +157,7 @@ def process_quote(quote: str, detect: ComprehendDetect):
         "key_phrases": detect.detect_key_phrases(quote),
         "pii": detect.detect_pii(quote),
         "sentiment": detect.detect_sentiment(quote),
-        "syntax": detect.detect_syntax(quote),
+        "syntax_tokens": detect.detect_syntax(quote),
         "text": quote,
     }
     return processed_quote
@@ -204,10 +204,6 @@ def main():
 
         with open(output_filename, mode="w") as output_fp:
             json.dump(contents, output_fp, indent=4, sort_keys=True)
-
-
-if __name__ == "__main__":
-    main()
 
 
 if __name__ == "__main__":

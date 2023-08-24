@@ -68,6 +68,7 @@ input CreateSentimentInput {
 }
 
 input CreateSentimentScoreInput {
+    id: ID!
     mixed: Float!
     negative: Float!
     neutral: Float!
@@ -82,7 +83,7 @@ input CreateSyntaxTokenInput {
     order: Int!
     quote_id: ID!
     text: String!
-    tokenId: Int!
+    token_id: Int!
 }
 
 input CreateSyntaxTokenPartOfSpeechInput {
@@ -283,6 +284,7 @@ type SentimentConnection {
 
 type SentimentScore {
     created_date: AWSDateTime!
+    id: ID!
     mixed: Float!
     negative: Float!
     neutral: Float!
@@ -304,7 +306,7 @@ type SyntaxToken {
     order: Int!
     quote_id: ID!
     text: String!
-    tokenId: Int!
+    token_id: Int!
     updated_date: AWSDateTime!
 }
 
