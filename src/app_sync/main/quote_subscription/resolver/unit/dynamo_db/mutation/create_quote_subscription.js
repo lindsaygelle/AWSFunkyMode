@@ -7,7 +7,7 @@ import { util } from "@aws-appsync/utils";
  */
 export function request(ctx) {
   const createdDate = util.time.nowISO8601();
-  const { id = util.autoUlid() } = ctx.args.input;
+  const { id } = ctx.args.input;
   const updatedDate = createdDate;
   return {
     attributeValues: util.dynamodb.toMapValues(

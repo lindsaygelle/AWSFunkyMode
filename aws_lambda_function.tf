@@ -51,7 +51,6 @@ resource "aws_lambda_function" "api_gateway_main_console_post_integration" {
   architectures = ["x86_64"]
   environment {
     variables = {
-      APP_SYNC_API_KEY     = aws_appsync_api_key.main.key
       APP_SYNC_GRAPHQL_URL = aws_appsync_graphql_api.main.uris["GRAPHQL"]
     }
   }
@@ -123,7 +122,6 @@ resource "aws_lambda_function" "api_gateway_main_entity_post_integration" {
   architectures = ["x86_64"]
   environment {
     variables = {
-      APP_SYNC_API_KEY     = aws_appsync_api_key.main.key
       APP_SYNC_GRAPHQL_URL = aws_appsync_graphql_api.main.uris["GRAPHQL"]
     }
   }
@@ -195,7 +193,6 @@ resource "aws_lambda_function" "api_gateway_main_game_post_integration" {
   architectures = ["x86_64"]
   environment {
     variables = {
-      APP_SYNC_API_KEY     = aws_appsync_api_key.main.key
       APP_SYNC_GRAPHQL_URL = aws_appsync_graphql_api.main.uris["GRAPHQL"]
     }
   }
@@ -267,7 +264,6 @@ resource "aws_lambda_function" "api_gateway_main_key_phrase_post_integration" {
   architectures = ["x86_64"]
   environment {
     variables = {
-      APP_SYNC_API_KEY     = aws_appsync_api_key.main.key
       APP_SYNC_GRAPHQL_URL = aws_appsync_graphql_api.main.uris["GRAPHQL"]
     }
   }
@@ -339,7 +335,6 @@ resource "aws_lambda_function" "api_gateway_main_pii_post_integration" {
   architectures = ["x86_64"]
   environment {
     variables = {
-      APP_SYNC_API_KEY     = aws_appsync_api_key.main.key
       APP_SYNC_GRAPHQL_URL = aws_appsync_graphql_api.main.uris["GRAPHQL"]
     }
   }
@@ -411,7 +406,6 @@ resource "aws_lambda_function" "api_gateway_main_quote_post_integration" {
   architectures = ["x86_64"]
   environment {
     variables = {
-      APP_SYNC_API_KEY     = aws_appsync_api_key.main.key
       APP_SYNC_GRAPHQL_URL = aws_appsync_graphql_api.main.uris["GRAPHQL"]
     }
   }
@@ -483,7 +477,6 @@ resource "aws_lambda_function" "api_gateway_main_quote_subscription_post_integra
   architectures = ["x86_64"]
   environment {
     variables = {
-      APP_SYNC_API_KEY     = aws_appsync_api_key.main.key
       APP_SYNC_GRAPHQL_URL = aws_appsync_graphql_api.main.uris["GRAPHQL"]
     }
   }
@@ -555,7 +548,6 @@ resource "aws_lambda_function" "api_gateway_main_quote_subscription_rule_post_in
   architectures = ["x86_64"]
   environment {
     variables = {
-      APP_SYNC_API_KEY     = aws_appsync_api_key.main.key
       APP_SYNC_GRAPHQL_URL = aws_appsync_graphql_api.main.uris["GRAPHQL"]
     }
   }
@@ -627,7 +619,6 @@ resource "aws_lambda_function" "api_gateway_main_sentiment_post_integration" {
   architectures = ["x86_64"]
   environment {
     variables = {
-      APP_SYNC_API_KEY     = aws_appsync_api_key.main.key
       APP_SYNC_GRAPHQL_URL = aws_appsync_graphql_api.main.uris["GRAPHQL"]
     }
   }
@@ -699,7 +690,6 @@ resource "aws_lambda_function" "api_gateway_main_sentiment_score_post_integratio
   architectures = ["x86_64"]
   environment {
     variables = {
-      APP_SYNC_API_KEY     = aws_appsync_api_key.main.key
       APP_SYNC_GRAPHQL_URL = aws_appsync_graphql_api.main.uris["GRAPHQL"]
     }
   }
@@ -819,7 +809,6 @@ resource "aws_lambda_function" "api_gateway_main_syntax_token_part_of_speech_pos
   architectures = ["x86_64"]
   environment {
     variables = {
-      APP_SYNC_API_KEY     = aws_appsync_api_key.main.key
       APP_SYNC_GRAPHQL_URL = aws_appsync_graphql_api.main.uris["GRAPHQL"]
     }
   }
@@ -843,7 +832,6 @@ resource "aws_lambda_function" "api_gateway_main_syntax_token_post_integration" 
   architectures = ["x86_64"]
   environment {
     variables = {
-      APP_SYNC_API_KEY     = aws_appsync_api_key.main.key
       APP_SYNC_GRAPHQL_URL = aws_appsync_graphql_api.main.uris["GRAPHQL"]
     }
   }
@@ -915,7 +903,6 @@ resource "aws_lambda_function" "api_gateway_main_user_post_integration" {
   architectures = ["x86_64"]
   environment {
     variables = {
-      APP_SYNC_API_KEY     = aws_appsync_api_key.main.key
       APP_SYNC_GRAPHQL_URL = aws_appsync_graphql_api.main.uris["GRAPHQL"]
     }
   }
