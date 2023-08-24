@@ -18,7 +18,7 @@ query Query($limit: Int, $next_token: String) {
             order
             quote_id
             text
-            tokenId
+            token_id
             updated_date
         }
         next_token
@@ -35,7 +35,7 @@ class SyntaxToken(TypedDict):
     order: int
     quote_id: str
     text: str
-    tokenId: int
+    token_id: int
     updated_date: str
 
 

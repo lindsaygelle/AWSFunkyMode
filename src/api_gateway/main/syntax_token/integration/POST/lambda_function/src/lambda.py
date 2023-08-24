@@ -15,7 +15,7 @@ mutation Mutation(
         $order: Int!,
         $quote_id: ID!,
         $text: String!,
-        $tokenId: Int!
+        $token_id: Int!
     ) {
     create_syntax_token(input: {
         begin_offset: $begin_offset,
@@ -24,7 +24,7 @@ mutation Mutation(
         order: $order,
         quote_id: $quote_id,
         text: $text,
-        tokenId: $tokenId
+        token_id: $token_id
     }) {
         begin_offset
         created_date
@@ -33,7 +33,7 @@ mutation Mutation(
         order
         quote_id
         text
-        tokenId
+        token_id
         updated_date
     }
 }
@@ -49,7 +49,7 @@ class SyntaxToken(TypedDict):
     order: int
     quote_id: str
     text: str
-    tokenId: int
+    token_id: int
     updated_date: str
 
 
@@ -60,7 +60,7 @@ class SyntaxTokenMutation(TypedDict):
     order: int
     quote_id: str
     text: str
-    tokenId: int
+    token_id: int
 
 
 AppSyncRequestVariables = Dict[str, Any]

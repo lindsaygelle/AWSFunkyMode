@@ -1,323 +1,328 @@
-Donkey Kong Country
-    Super Nintendo Entertainment System
-        "Whoa, Dudes! My name's Funky Kong! My bodacious Jumbo Barrel can launch you to any point on the island!"
-        "Most unfortunately, it can only send you to a place you've already been to... which is a complete and total bummer, let me tell you!"
-        "You dudes need some lives or something? Jungle Hijinxs is the place for that!"
-        "Yo Gorillas! Go see old man Cranky, he can help you out!"
-        "If you guys see Candy on your way out, tell her I'll give her surfing lessons anytime!"
-        "Yeah, crucial Kongs! If you feel the need for speed, jump in and like, jet!"
-        "Fancy a flight, DK Dude? You know the score, hop in and high tail it!" (to Donkey Kong)
-        "Whoa, Donkey dude! Maybe your little surf buddy's on another level. Go check 'em out!" (to Donkey Kong)
-        "Yo Diddy cool! Lost the big guy again? Blast off back and see the scene!" (to Diddy Kong)
-        "Still talking to yourself, huh? Check out the jungle, I'm sure you'll find your buddy!" (to Diddy Kong)
-        "Lookin' good, Kongs! Buckle up and blast off, you're outta here!"
-    Nintendo GameBoy Color
-        "Woah, Dudes! I'm Funky Kong!"
-        "My rad Jumbo Barrel can get you to any point on the island!"
-        "But it only sends you to places you've already been..."
-        "Major bummer!"
-        "Hey, dudes, tell Candy she can ride my wave anytime!"
-        "Looking good, Kongs! Belt up. Blast off. You're outta sight!"
-        "Yeah, Kongs! Like, jump in and, like, um, jet outta here!"
-        "Yo, Gorillas! Seek the Cranky one, the guru of game stuff!"
-        "Need some lives? Get on down to Jungle Hijinxs."
-        "Dudeski, your bud has gotta be on a level somewhere!"
-        "Fancy a flight, DK? You know the score. Hop in and grab air!"
-        "Lookin' good, Kongs! Belt up. Blast off. You're outta sight!"
-        "Yo, Diddy! Lost the big guy again? Hop in and have a look!"
-        "Where's your pal? Try checking the jungle for your bud!"
-    Nintendo GameBoy Advanced
-        "Hi. I'm Funky Kong! See my rad barrels. They're way cool. The Jumbo Barrel can get you around this island in no time. But it only travels to places you have already visited."
-        "The other barrel, the one with the hook, will take you to my most excellent fishing pools."
-        "To choose a barrel, just move underneath it and press the A Button. To exit my hut, just press Right on the Control Pad."
-        "Right, let's get going. Did you know that you can enter the Jumbo Barrel at any time while on the world maps?"
-        "Simply press START and select the icon with my face on it. I'll be there in a flash."
-        "Cool move! You'll like this. I will set a challenge for you to beat. If you are successful, I will reward you with some wicked items."
-        "Here's what you need to do. Use the Control Pad to move Enguarde Left and Right. When you are ready to strike, press the A Button. This will haul the catch from the water. Simply place it in the boat to make it yours."
-        "Right on, man. My first challenge is to catch 20 or more of those red fish within the time limit. The more you catch, the better the prize." (introduction to the Kongo Jungle challenge, "Twenty Red Fish")
-        "One thing, though. Don't hook anything but the red ones."
-        "Record catch is [number] red fish."
-        "This time I would like you to catch 15 Croctopus within the time limit. Be careful not to hook any bottles, as those will reduce your time left. Not good, man!" (introduction to the Monkey Mines challenge, Croctopus Cull)
-        "Record catch is [number] Croctopus."
-        "Dude, these waters are full of sharks. Help me clear them out and I'll give you more excellent things. Try to hook ten within the time limit. One thing, though. Don't hook anything but sharks." (introduction to the Vine Valley challenge, Chump Chomps)
-        "Record catch is [number] Chomps Jr."
-        "Right, mate, this time you must catch as many Squidges as you can within the time limit. I reckon 50 should be no problem. Get going." (introduction to the Gorilla Glacier challenge, Squidgin Time)
-        "Record catch is [number] Squidges."
-        "Bummer, the water is all full of trash. Collect as much as possible within the time limit. The more trash collected, the better my reward. Haul in at least 10 pieces of trash and remember, don't hook any fish!" (introduction to the Kremkroc Industries, Inc. challenge, Out With the Trash)
-        "Best clean-up is [number] pieces of trash."
-        "Right, dude, this is a tricky one. The timer will start very low. You must try to catch more than one same-colored fish at a time; the more on the hook, the greater the kombo. Once you get a kombo, you will gain more time. Fill the timer to complete the challenge." (introduction to the Chimp Caverns challenge, Let's Go a Kombo'in)
-        "Biggest kombo is [number]"
-        "Oh, dear! I think you had better try again."
-        "Well done, dude! Here, take this reward!"
-        "Bummer! I think you had better try again. I see you did manage to catch that pesky crab, though. Here, take this."
-        "Well done, dude! Cool fishing! And you caught that pesky crab! Here, take these as a reward!"
-        "Hey, dudes, tell Candy she can ride my wave anytime!"
-        "Looking good, Kongs! Belt up. Blast off. You're outta sight!"
-        "Yeah, Kongs! Like, jump in and, like, um, jet outta here!"
-        "Yo, Gorillas! Seek the Cranky one, the guru of game stuff!"
-        "Need some lives? Get on down to Jungle Hijinxs."
-        "Hey, man! Try my fishing challenge!"
-        "Dudeski, your bud has gotta be on a level somewhere!"
-        "Fancy a flight, DK? You know the score. Hop in and grab air!"'
-        "Lookin' good, Kongs! Belt up. Blast off. You're outta sight!"'
-        "Yo, Diddy! Lost the big guy again? Hop in and have a look!"
-        "Where's your pal? Try checking the jungle for your bud!"
-        "Fancy your chances! Try my fishing challenge!"
-        "Yeah, wicked, man!"
-        "I'm bailing out, dudes!"
-Donkey Kong Country 2: Diddy's Kong Quest
-    Super Nintendo Entertainment System
-        "Lookin' good, dudes! I'm Funky the main monkey, and my new Funky's Flights can take you anywhere on Crocodile Isle, provided you've already checked it out of course!"
-        "Cruise on over to the barrel man, and ride the skies!"'
-        "Everything is cool guys.[sic] You're lookin' ready to ride and catch some clouds!"
-        "All flights cleared, dudes. Choose and cruise!"
-        "Way cool! Pick a flight and you're outta sight!"
-        "Pick it and kick it, Kongs! You're A-Okay!"
-        "Drop in on the other Kongs, dudes. We're all here to help you guys!"
-        "Jump in my jet n' jive, Clive!"
-        "Awesome playing, Kongs! Go get that K. Rool. He just ain't cool!"
-        "Wicked! She's all tuned up and ready to go!"
-        "Cool! She's all yours dudes.[sic] Catch y'later!"
-        "Check me out again, huh?"
-        "Remember, Funky's the Monkey!"
-        "I fly 24 hours y'know![sic]"
-        "Stay loose, guys!"
-        "Call again, good buddies!"
-        "Catch y' later, dudes!"
-        "Take it easy, Kongs!"
-    Nintendo GameBoy Advanced
-        "Woah! Dude, come in and join me. The waves are excellent."
-        "Wait 'til tomorrow, and we will all go."
-        "Lookin' good, dudes! I'm Funky the main monkey, and my new Funky's Flights can take you anywhere on Crocodile Isle, provided you're already checked it out, of course! Unfortunately, I'm overrun with business at the moment, so I'm far too bust to help you guys out. Don't worry, though. I'm sure we can come to some arrangement."
-        "I know! I will lend you one of my copters, but only if you can prove you can fly it."
-        "Cruise on over and jump in the barrel, man. Go ride the skies!"
-        "Right, dudes, listen up. This is how you fly. Use the  to steer the Gyrocopter."
-        "Pressing the  button will fire the main fun. Have you got all that?"
-        "This is a piece of cake. All you have to do is take off and fly through twenty rings. You can pass through each ring in any direction. Slowly land at the helipad to complete the mission. You have five minutes of fuel. Good luck!"
-        "Awesome, guys. You sure got the hang of flying."
-        "You are now free to use the copter whenever you need it. Just access your inventory by pressing START and choose Gyrocopter."
-        "One more thing. I could use a good pilot."
-        "Come back to see me. I have plenty of jobs on the go."
-        "Here, take this. Many thanks, guys."
-        "What happened, dudes? You bailed before the mission was completed. I think you need to try again."
-        "I think I'll catch some rays now!"
-        "Woah, dude, you back again? I have just the job for you, but you must learn to fly using advanced controls."
-        "Pressing the  button will lock your facing direction, allowing you to shoot while moving backwards. Pressing the  button will make the copter face forward; useful in tight situations. One thing, though. While in this mode, you can only drop bombs."
-        "I need you to take a chest to the second landing zone. There is one problem. The way ahead is flooded. The Gyrocopter can only hold so much air, so keep a close eye on the gauge in the bottom right corner of the screen. Press SELECT to release the winch; it will automatically hook onto the chest. Press SELECT again to retract the winch. One more thing. You'll need to pick up some ammo packs and blast your way through any blockages."
-        "This is a long-haul mission. I have filled her up to the max. You have ten minutes of flyin' time. Don't waste it."
-        "Not cool, dude!"
-        "Ouch!"
-        "Cool, dude!"
-        "Well done, guys. You did it. The chest is still in one piece."
-        "Thanks for your help. Take this Hero Coin."
-        "Back again? This mission is quite tricky."
-        "The Kremlings have destroyed the DK statue. Find the pieces and reconstruct it. To hook a statue piece, press SELECT to release the winch. Pressing SELECT again will drop off anything on the rope. One more thing. Keep a close eye on any statue pieces rebuilt, as they might go missing. You have five minutes of fuel, so get going."
-        "Wow! You sure know how to handle that old bird."
-        "Here is your reward."
-        "Come on, dudes, I need your help."
-        "Zingers have attacked Kong Island and kidnapped members of the Kong family. Go and rescue them. To pick up a passenger, land beside them and they will jump right in. Once they're on board, take them back to the helipad. You must rescue six hostages to complete this mission. She's all gassed up and ready to go. You have five minutes flying time."
-        "Well done. Take this Hero Coin as a small reward."
-        "Hey, man, I'm glad you're back. I need your help."
-        "I have dropped my ghetto blaster in the icy water below. Go and get it for me. Shoot the buttons hanging on the wall to lower the water. You only have three minutes of juice, so you better get going, dude!"
-        "Well done! I can now listen to the DK rap all night long."
-        "Here is your reward."
-        "Back again! Ready to hit the skies again?"
-        "The Kongs have been out exploring but have got themselves trapped. Go and rescue them. Raise and lower the water level using the buttons mounted on the walls. I didn't have time to fill her up. You only have three minutes flying time."
-        "Well done, guys. Take this as your reward."
-        "So, dude, think you're a pro pilot now, do you?"
-        "Rebuild the DK statue, but beware of entering the toxic waste. The Gyrocopter will explode with the slightest touch of that green filth. Use the buttons on the walls to lower the waste, then nip in and retrieve the statue parts."
-        "Nice flying! I thought you'd struggle with that mission. Here, take this."
-        "You guys sure know how to fly my old bird. Here, take this photo as a token of my appreciation."
-        "Hey, man! You have already completed this mission. I'm not paying you twice."
-        "You did get a new best time, though!"
-Donkey Kong Country 3: Dixie Kong's Double Trouble!
-    Super Nintendo Entertainment System
-        "Yo, Dixie, what's happening? I've set up my smokin' new boat shop on this island. But that's not all..."
-        "...I've also brought your excellent cousin Kiddy Kong along for the ride!"
-        "He may be a toddler, but if you let him throw you upwards, you'll almost reach the stars! Oh yeah!"
-        "And if you throw him, his humongous body can smash through the floor of some areas! Trust me!"
-        "What's up! Have you got me anything new I can use?"
-        "Hey hey, Funky's in the zone! Cash is not a problem, Kongs, 'cause my boats you can loan."
-        "I'm the tower of power, too sweet to be sour! Yo, Kongs, got anything new yet?"
-        "Hey, Kiddy, take a break and catch some rays -- know what I mean?"
-        "Since moving into this place, I've become a real grease monkey!"
-        "I'm just hanging out today. Watching the ships come in, and then going out again!"
-        "Cool and the gang, Kiddy! How's it going today?"
-        "If you see that loser up at the big house, tell him to keep it down at night. I've got to get my beauty sleep!"
-        "Any idea who that major dweeb who lives at the top of the island is?"
-        "Oh yeah! Everything is whistlin', Kiddy!"
-        "The guy in the big house is most uncool! If I were you, Dixie, I'd keep well away!"
-        "Hey, those heinous boss men have got a hoard of items. If you find anything, bring it on back here, huh?"
-        "Freak out! Freak out! Spare parts for my boats are what it's all about."
-        "Uh uh. Yeah! What we're needing is some sort of spare part situation, you dig?"
-        "Wicked! I only need a few more parts to get my vehicles going."
-        "Keep looking out for those items, Kongs. I'm a few parts short for my new invention!"
-        "Cool, dudes! I knew you'd be up for it. Right, here's what you need to do. Those Kremlings have cluttered up all my shortcuts downriver. Why don't you see if you can blast their scaly butts out of the water?"
-        "Use the +Control Pad to steer your boat, the B Button to accelerate, and the A Button to fire your gun."
-        "Destroy 10 and I'll reward you big-time!"
-        "Oh dear, what happened, dudes? You need to try harder."
-        "You sure showed those Kremlings. Here, take these as a small reward."
-        "A patch? Oh yeah! This is just what I needed!"
-        "Right, dudes, you ready for this? You need to steal the floating mines from the Kremlings before they can cause mayhem. They won't be happy about it, so expect a chase! Use your excellent steering skills to bring the mines across the safety zone marked with buoys."
-        "Well done, dudes, you have cleared the river of those blasted mines. Here, take your reward."
-        "Hang on for just a couple of seconds, Dixie/Kiddy/Kongs, and I'll get you a cool new tub for you to rub a dub dub!"
-        "Whoa! Bogus docking, Kongs! Get my crate back in here before that clumsy Bazaar parks it on the rocks!"
-        "Hey, Kongs - a ski! Not toooo shabby!"
-        "Problem is, though, I'm going to need its partner before I can get you on your way."
-        "Wahay! You've found two skis! Awesome! Now I've now got all the parts I need to make the ultimate ride!"
-        "Wait right there, Dixie/Kiddy/Kongs, while I bring you my latest and greatest boat yet!"
-        "Bonkers! I've built in a cool turbo feature that'll be sure to take you to new heights! Just press the B button!"
-        "Ready for some Hovercraft action? All the Kongs have decided to go swimming... right outside the Kremling stronghold. Duh. Defend them from the Kremling kidnappers until help arrives! You gotta have at least one Kong left to complete the challenge."
-        "Yo, dudes, the Kong family is back safely. Here, take these."
-        "Hey! Someone's told you I've been extra busy lately. Well...it's something a bit special."
-        "If you can find all the DK coins, you can put them down as a deposit on my ultimate ride. Come back when you've got some more, Dixie/Kiddy/Kongs! I'll keep you informed on how close to the jackpot you are."
-        "You're still 1-40 coin(s) short of the deposit for my top gear!"
-        "Unbelievable type of a situation! You've found all of the DK coins!"
-        "I'm sorry, Dixie/Kiddy/Kongs, I didn't think you'd actually find them all, so I've got nothing new to show you!"
-        "Hey, Dixie/Kiddy/Kongs, just kidding, you know? May I introduce you to my finest and coolest creation yet, the Funky-Copter!"
-        "Back again? Radical. This time you need to use the Turbo Ski to beat your opponents to the finish line. Do three laps of the track to complete the challenge!"
-        "Yo, dudes, you flew around that track. Here, take these."
-        "Well done, dudes! You have passed all my challenges."
-        "Here, take this strange-looking bird. I am sure it will come in useful."
-        "Time to catch some rays."
-        "Don't stay away for too long, huh?"
-        "Bust a move, gotta groove!"
-        "Gotta go, Kongs. Surf's up."
-        "Take it real easy, Kongs."
-        "Hang five, Kongs."
-        "Catch you later, Dixie/Kiddy/Kongs."
-        "I'll be seein' ya later, Kongs."
-Donkey Kong 64
-    Nintendo 64
-        "Hey, been a long time, [Kong]-Dude!"
-        "K. Rool's return is a real bummer, so the main monkey's here to fix you up with some reptile kickin' hardware."
-        "That's a real bummer, [Kong]."
-        "But I ain't seein' the 3 big ones I need for your cool shooter."
-        "I'll just hang loose until you come back!"
-        "Check this out."
-        "I've got this real cool shooter that'll trash K. Rool's army, and it's yours for just 3 coins."
-        "Are we talkin' a deal here?"
-        "Gimme some slack, [Kong]-dude. I'm all cleaned out!"
-        "Lookin' low, Donkey-dude. Here, lemme max at your ammo!"
-DK: Jungle Climber
-    Nintendo DS
-        "Hey, bud! Gimme 4 oil barrels, and I'll give you a little lift over to Little Sun Sun Island! Oh, yeah!"
-        "You need 4 oil barrels if you want a ride."
-        "You wanna fly? Because for you, my main monkey, it is no problemo!"
-        "In the event of a water landing, Diddy can be used as a flotation device..."
-        "Hey, bud! Hook me up with 5 oil barrels, and I'll fly you over to Little Lost Island! Oh, yeah!"
-        "This is Funky Kong to Ground Control..."
-        "You wanna fly again? Great! I just repacked the parachutes!"
-Mario Kart Wii
-    Nintendo Wii
-        "Yo!"
-        "Okay!"
-        "Yes! Ha ha." (opponent runs into one of Funky Kong's items)
-        "Yahoo!" (tricking)
-        "Yee haw!" (tricking)
-        "Woo hoo hoo!" (boosting)
-        "Baby!" (becoming invincible)
-        "Noooooooooo!" (loses race)
-        "En garde!"
-Donkey Kong Country: Tropical Freeze
-    Nintendo WiiU
-        "Whoa, long time no see! Welcome to Funky's Fly 'n' Buy. Don't tell me you forgot your pal Funky Kong? I'm here to help ya on another epic adventure!" (introducing himself)
-        "Whoa, dude, welcome to Funky's Fly 'n' Buy! You got the coins, I got the gear!" (Entering his shop)
-        "These Snowmads are a real downer... And right in the middle of surfing season, too." (Entering his shop)
-        "Radical Kong! How're ya holding up? I wish I could give you a lift home, but I need coins for gas money." (Entering his shop)
-        "Your tie is lookin' tubular, DK. Is that a cotton blend you got there?" (Entering his shop)
-        "Man, I don't know what's up with these dumb Snowmads. Can't they leave us Kongs to chill in peace?" (Entering his shop)
-        "Welcome back! I was just thinkin' about you, and how you could use some supremely cool stuff from your bud Funky!" (Entering his shop)
-        "Yo, Kong! Hey, I was thinking about a groovy cloud surfboard, but I need some coinage for the tinkering." (Entering his shop)
-        "Excellent timing! I was just thinking that I could use some banana coins. Got somethin' shiny for me?" (Entering his shop)
-        "Red, green, blue... I've got more balloons than I know what to do with!" (Entering his shop)
-        "Ever tried one of these Green Balloons? I hear they can be real lifesavers!" (Entering his shop)
-        "Wanna buy this bird? He's more like a rental... He keeps coming back here!" (Entering his shop)
-        "Hey, Kong! If you're feelin' a bit dogged, grab some Banana Juice or a Crash Guard and you can take anything on!" (Entering his shop)
-        "No return policy on these barrels, Donkey-dude! I've had them for years." (Entering his shop)
-        "Crucial Kong! Check out this groovy new toy machine I picked up! You can collect some fab figurines, dude!" (Entering his shop)
-        "There's baddies down here too? Yeesh, not cool." (Entering his shop)
-        "Man, there are even penguins out here? Not cool, bro." (Entering his shop)
-        "Yikes, did we get blasted into the Bermuda Triangle or somethin'? You see all that gnarly wreckage out there?" (Entering his shop in Mangrove Cove)
-        "Watch your step out there, bros--this ain't the extreme air you're lookin' for." (Entering his shop in Autumn Heights)
-        "Hey, Kong! Hope you've been packing some sunscreen--those rays can get pretty extreme!" (Entering his shop in Bright Savannah)
-        "Under the water is cool and all, but I still prefer up top on the rockin' rollin' waves!" (Entering his shop in Sea Breeze Cove)
-        "Whoa, there's so much cool machinery on this island--it really gets the tinkerin' juices flowin'!" (Entering his shop in Juicy Jungle)
-        "Mmmm, nothing like a fruit smoothie to get ya ready for some action!" (Entering his shop in Juicy Jungle)
-        "Not cool, man! The whole island's frozen over!" (Entering his shop on Donkey Kong Island)
-        "Nothin' like classic red for righteous revivals!" (Highlighting a Red Balloon)
-        "Pitfalls got ya down? Way down? This balloon will really lift your spirits!" (Highlighting a Green Balloon)
-        "This brand-new Blue Balloon has everything you need for some excellent underwater air time!" (Highlighting a Blue Balloon)
-        "Squawks is the bird with the word on finding Puzzle Pieces!" (Highlighting Squawks)
-        "Vehicle troubles? It's dangerous to go alone--take one of these!" (Highlighting a Crash Guard)
-        "This. Stuff. Is. Awesome. I have no idea what it is, dude, but it tastes radical!" (Highlighting a Banana Juice)
-        "It's a heart! You'd better not think too much about that, bro..." (Highlighting a Heart Boost)
-        "Feeling the need for some jet-powered action? Diddy's got the skills!" (Highlighting the DD Barrel)
-        "Want to get the jump on those frozen flipper-heads? Dixie's your dudette!" (Highlighting the DX Barrel)
-        "Need a little extra spring in your step? Cranky's no spring chicken, but he sure is spry!" (Highlighting the CK Barrel)
-        "Yo! I found this machine a while ago. It'll give you somethin' cool if you give it some coins!" (Highlighting the Capsule Toy Machine for the first time)
-        "Want a tubular toy for your collection? Try your luck to get 'em all!" (Highlighting the Capsule Toy Machine afterwards)
-        "Fantastic choice, bro!" (Buying something)
-        "I wonder how many of those I'd need to hook to my board to get some air..." (Buying a Red Balloon)
-        "Radical! I was about to say, if I had a coin for everytime I saw you fall out there, I'd be surfin' instead of sellin'!" (Buying a Red Balloon)
-        "Radical red!" (Buying a Red Balloon)
-        "Whoa, man, slow down, there! You're totally overloaded." (Trying to buy a Red Balloon when the player has too many of them)
-        "I dunno what's in this one, but it'll help ya if you're down!" (Buying a Green Balloon)
-        "Groovy green!" (Buying a Green Balloon)
-        "I'd rather get my air from some extreme surfing, but this is groovy too!" (Buying a Blue Balloon)
-        "Blue like the ocean--a breath of fresh air does ya good, dude!" (Buying a Blue Balloon)
-        "Bodacious blue!" (Buying a Blue Balloon)
-        "Groovy, gotcha down for an appointment with the bodacious bird! What, didja think you owned him now? Nah!" (Buying Squawks)
-        "Oh man, I hope I don't lose my keys while he's gone..." (Buying Squawks)
-        "With this, you'll totally show those annoying Snowmads what it means to be on like Donkey Kong!" (Buying Banana Juice)
-        "Mmm, this juice is supreme! I'd grab the recipe, but I kinda don't wanna know what's in it..." (Buying Banana Juice)
-        "Three's totally better than two, right? Yeah, that's totally right." (Buying a Heart Boost)
-        "I dunno if it'll fill your heart, but it makes a great container for one!" (Buying a Heart Boost)
-        "Don't worry, bro, I understand; sometimes you just wanna take the chill way." (Buying a Heart Boost)
-        "Wait, are there dudes in these barrels?! Gnarly!" (Buying any Partner Barrel)
-        "A monkey and a barrel--it fits together like radical sprays and supreme surf sprays!" (Buying any Partner Barrel)
-        "It's okay, dude; sometimes I get lonely too!" (Buying any Partner Barrel)
-        "You and Diddy are the best duo--like bananas in a bunch. Man, now I'm hungry..." (Buying a Diddy Kong Barrel)
-        "Dixie's got the simian style that'll get you out of any hairy situation!" (Buying a Dixie Kong Barrel)
-        "Just remember not to throw the barrel too hard, Donkey-dude--don't wanna break somethin' on the old ape!" (Buying a Cranky Kong Barrel)
-        "Man, these little things are so cool" (Buying one or more figurines from the Capsule Toy Machine)
-        "Whoa, dude, you've got all the toys there are! Hey, wanna do some trading later?" (Trying to buy figurines when the player has the whole collection)
-        "Bummer, dude! Come back with more coins!" (Not having enough coins to buy something)
-        "Hey, dude, I don't wanna be a downer, but you still gotta have the coinage..." (Not having enough coins to buy something)
-        "Hey, man, I love video games too, but sometimes you gotta save your coins for more important stuff!" (Not having enough coins to buy something)
-        "Hey, I think I dropped some coins when I was out surfing. You should go hunt 'em down!" (Not having enough coins to buy something)
-        "You don't have enough, dude. Been spendin' all your coins on these cool capsule toys?" (Not having enough coins to buy something)
-        "Dude, come back anytime! Like, really, anytime. I get bored." (Leaving the shop)
-        "Remember to work with your buddies, Kong. A little extra help might be what ya need to find some cool hidden stuff!" (Leaving the shop)
-        "Those Snowmads are a gnarly bunch! I hear they're enjoyin' your island. Go get 'em, DK!" (Leaving the shop)
-        "Be careful out there, bud. Me, I'll just hang out here, 'kay?" (Leaving the shop)
-        "Keep your eyes open out there, dude--those areas might have some sweet secret passages!" (Leaving the shop)
-        "Show those pesky penguins the radical righteousness of us supreme simians!" (Leaving the shop)
-        "Fight the good fight, Kong-bro--stay primal!" (Leaving the shop)
-        "Remember to take a break for some surfing. The waves around here are radical!" (Leaving the shop)
-        "Catch a ride on a big, juicy wave for me!" (Leaving the shop)
-        "Hurry up, bro! The surf out there is lookin' excellent, and I wanna catch me some tubular waves!" (Leaving the shop)
-        "Be careful out there, Kong--this island looks like it's got a lot of gnarly creatures waitin' for ya!" (Leaving the shop in Mangrove Cove)
-        "Those mountains are cool to look at, but totally not my style. This place is for the birds!" (Leaving the shop in Autumn Heights)
-        "Grab some shade where you can, dude--that sun is smokin' hot!" (Leaving the shop in Bright Savannah)
-        "Don't get lost in that tall grass, Kong" (Leaving the shop in Bright Savannah)
-        "There's some pretty cool stuff down there. Grab a blue balloon and double your dive time, dude!" (Leaving the shop in Sea Breeze Cove)
-        "Better you than me, Kong--I wouldn't wanna end up as fish food down there!" (Leaving the shop in Sea Breeze Cove)
-        "Man, this is a pretty rockin' place, but where are all the giant bananas?!" (Leaving the shop in Juicy Jungle)
-        "I hear ice-floe surfing is pretty big in some places. Hmmm…" (Leaving his shop on Donkey Kong Island)
-        "Come back whenever you need the help, Kongs! Don't forget that you two can help each other out both above and below water!" (Leaving the shop)
-        "Remember, Funky's the monkey for all your shoppin' needs!" (Leaving the shop)
-Super Smash Bros. Ultimate
-    Nintendo Switch
-        "Hey, hey! Come kick it Kong-style!"
-        "This spirit's the real deal! Feelin' funky? This one's for you!"
-        "This spirit's the real deal! This one's a red-hot primary."
-        "You wanna get your hands on this spirit?"
-        "This tasty little dude can increase a spirit's level a bit!"
-        "Oh yeah, sweet pick! That'll level up a spirit real nice."
-        "This crunchy munchy has that power! It can level up a spirit A CRAZY amount!"
-        "Decided you want some Adventure Skills? This item is your best friend!"
-        "You wanna get your hands on this item?"
-        "Nice choice!"
-        "Sorry, I'm out of stock right now. Come back later-it'll be EPIC!"
-        "Come back again! I'll be here!"
+Nintendo 64:
+    Donkey Kong 64:
+        - "Hey, been a long time, [Kong]-Dude!"
+        - "K. Rool's return is a real bummer, so the main monkey's here to fix you up with some reptile kickin' hardware."
+        - "That's a real bummer, [Kong]."
+        - "But I ain't seein' the 3 big ones I need for your cool shooter."
+        - "I'll just hang loose until you come back!"
+        - "Check this out."
+        - "I've got this real cool shooter that'll trash K. Rool's army, and it's yours for just 3 coins."
+        - "Are we talkin' a deal here?"
+        - "Gimme some slack, [Kong]-dude. I'm all cleaned out!"
+        - "Lookin' low, Donkey-dude. Here, lemme max at your ammo!"
+Nintendo DS:
+    DK: Jungle Climber:
+        - "Hey, bud! Gimme 4 oil barrels, and I'll give you a little lift over to Little Sun Sun Island! Oh, yeah!"
+        - "You need 4 oil barrels if you want a ride."
+        - "You wanna fly? Because for you, my main monkey, it is no problemo!"
+        - "In the event of a water landing, Diddy can be used as a flotation device..."
+        - "Hey, bud! Hook me up with 5 oil barrels, and I'll fly you over to Little Lost Island! Oh, yeah!"
+        - "This is Funky Kong to Ground Control..."
+        - "You wanna fly again? Great! I just repacked the parachutes!"
+Nintendo Wii:
+    Mario Kart Wii:
+        - "Yo!"
+        - "Okay!"
+        - "Yes! Ha ha." (opponent runs into one of Funky Kong's items)
+        - "Yahoo!" (tricking)
+        - "Yee haw!" (tricking)
+        - "Woo hoo hoo!" (boosting)
+        - "Baby!" (becoming invincible)
+        - "Noooooooooo!" (loses race)
+        - "En garde!"
+Nintendo Wii U:
+    Donkey Kong Country: Tropical Freeze:
+        - "Whoa, long time no see! Welcome to Funky's Fly 'n' Buy. Don't tell me you forgot your pal Funky Kong? I'm here to help ya on another epic adventure!" (introducing himself)
+        - "Whoa, dude, welcome to Funky's Fly 'n' Buy! You got the coins, I got the gear!" (Entering his shop)
+        - "These Snowmads are a real downer... And right in the middle of surfing season, too." (Entering his shop)
+        - "Radical Kong! How're ya holding up? I wish I could give you a lift home, but I need coins for gas money." (Entering his shop)
+        - "Your tie is lookin' tubular, DK. Is that a cotton blend you got there?" (Entering his shop)
+        - "Man, I don't know what's up with these dumb Snowmads. Can't they leave us Kongs to chill in peace?" (Entering his shop)
+        - "Welcome back! I was just thinkin' about you, and how you could use some supremely cool stuff from your bud Funky!" (Entering his shop)
+        - "Yo, Kong! Hey, I was thinking about a groovy cloud surfboard, but I need some coinage for the tinkering." (Entering his shop)
+        - "Excellent timing! I was just thinking that I could use some banana coins. Got somethin' shiny for me?" (Entering his shop)
+        - "Red, green, blue... I've got more balloons than I know what to do with!" (Entering his shop)
+        - "Ever tried one of these Green Balloons? I hear they can be real lifesavers!" (Entering his shop)
+        - "Wanna buy this bird? He's more like a rental... He keeps coming back here!" (Entering his shop)
+        - "Hey, Kong! If you're feelin' a bit dogged, grab some Banana Juice or a Crash Guard and you can take anything on!" (Entering his shop)
+        - "No return policy on these barrels, Donkey-dude! I've had them for years." (Entering his shop)
+        - "Crucial Kong! Check out this groovy new toy machine I picked up! You can collect some fab figurines, dude!" (Entering his shop)
+        - "There's baddies down here too? Yeesh, not cool." (Entering his shop)
+        - "Man, there are even penguins out here? Not cool, bro." (Entering his shop)
+        - "Yikes, did we get blasted into the Bermuda Triangle or somethin'? You see all that gnarly wreckage out there?" (Entering his shop in Mangrove Cove)
+        - "Watch your step out there, bros--this ain't the extreme air you're lookin' for." (Entering his shop in Autumn Heights)
+        - "Hey, Kong! Hope you've been packing some sunscreen--those rays can get pretty extreme!" (Entering his shop in Bright Savannah)
+        - "Under the water is cool and all, but I still prefer up top on the rockin' rollin' waves!" (Entering his shop in Sea Breeze Cove)
+        - "Whoa, there's so much cool machinery on this island--it really gets the tinkerin' juices flowin'!" (Entering his shop in Juicy Jungle)
+        - "Mmmm, nothing like a fruit smoothie to get ya ready for some action!" (Entering his shop in Juicy Jungle)
+        - "Not cool, man! The whole island's frozen over!" (Entering his shop on Donkey Kong Island)
+        - "Nothin' like classic red for righteous revivals!" (Highlighting a Red Balloon)
+        - "Pitfalls got ya down? Way down? This balloon will really lift your spirits!" (Highlighting a Green Balloon)
+        - "This brand-new Blue Balloon has everything you need for some excellent underwater air time!" (Highlighting a Blue Balloon)
+        - "Squawks is the bird with the word on finding Puzzle Pieces!" (Highlighting Squawks)
+        - "Vehicle troubles? It's dangerous to go alone--take one of these!" (Highlighting a Crash Guard)
+        - "This. Stuff. Is. Awesome. I have no idea what it is, dude, but it tastes radical!" (Highlighting a Banana Juice)
+        - "It's a heart! You'd better not think too much about that, bro..." (Highlighting a Heart Boost)
+        - "Feeling the need for some jet-powered action? Diddy's got the skills!" (Highlighting the DD Barrel)
+        - "Want to get the jump on those frozen flipper-heads? Dixie's your dudette!" (Highlighting the DX Barrel)
+        - "Need a little extra spring in your step? Cranky's no spring chicken, but he sure is spry!" (Highlighting the CK Barrel)
+        - "Yo! I found this machine a while ago. It'll give you somethin' cool if you give it some coins!" (Highlighting the Capsule Toy Machine for the first time)
+        - "Want a tubular toy for your collection? Try your luck to get 'em all!" (Highlighting the Capsule Toy Machine afterwards)
+        - "Fantastic choice, bro!" (Buying something)
+        - "I wonder how many of those I'd need to hook to my board to get some air..." (Buying a Red Balloon)
+        - "Radical! I was about to say, if I had a coin for everytime I saw you fall out there, I'd be surfin' instead of sellin'!" (Buying a Red Balloon)
+        - "Radical red!" (Buying a Red Balloon)
+        - "Whoa, man, slow down, there! You're totally overloaded." (Trying to buy a Red Balloon when the player has too many of them)
+        - "I dunno what's in this one, but it'll help ya if you're down!" (Buying a Green Balloon)
+        - "Groovy green!" (Buying a Green Balloon)
+        - "I'd rather get my air from some extreme surfing, but this is groovy too!" (Buying a Blue Balloon)
+        - "Blue like the ocean--a breath of fresh air does ya good, dude!" (Buying a Blue Balloon)
+        - "Bodacious blue!" (Buying a Blue Balloon)
+        - "Groovy, gotcha down for an appointment with the bodacious bird! What, didja think you owned him now? Nah!" (Buying Squawks)
+        - "Oh man, I hope I don't lose my keys while he's gone..." (Buying Squawks)
+        - "With this, you'll totally show those annoying Snowmads what it means to be on like Donkey Kong!" (Buying Banana Juice)
+        - "Mmm, this juice is supreme! I'd grab the recipe, but I kinda don't wanna know what's in it..." (Buying Banana Juice)
+        - "Three's totally better than two, right? Yeah, that's totally right." (Buying a Heart Boost)
+        - "I dunno if it'll fill your heart, but it makes a great container for one!" (Buying a Heart Boost)
+        - "Don't worry, bro, I understand; sometimes you just wanna take the chill way." (Buying a Heart Boost)
+        - "Wait, are there dudes in these barrels?! Gnarly!" (Buying any Partner Barrel)
+        - "A monkey and a barrel--it fits together like radical sprays and supreme surf sprays!" (Buying any Partner Barrel)
+        - "It's okay, dude; sometimes I get lonely too!" (Buying any Partner Barrel)
+        - "You and Diddy are the best duo--like bananas in a bunch. Man, now I'm hungry..." (Buying a Diddy Kong Barrel)
+        - "Dixie's got the simian style that'll get you out of any hairy situation!" (Buying a Dixie Kong Barrel)
+        - "Just remember not to throw the barrel too hard, Donkey-dude--don't wanna break somethin' on the old ape!" (Buying a Cranky Kong Barrel)
+        - "Man, these little things are so cool" (Buying one or more figurines from the Capsule Toy Machine)
+        - "Whoa, dude, you've got all the toys there are! Hey, wanna do some trading later?" (Trying to buy figurines when the player has the whole collection)
+        - "Bummer, dude! Come back with more coins!" (Not having enough coins to buy something)
+        - "Hey, dude, I don't wanna be a downer, but you still gotta have the coinage..." (Not having enough coins to buy something)
+        - "Hey, man, I love video games too, but sometimes you gotta save your coins for more important stuff!" (Not having enough coins to buy something)
+        - "Hey, I think I dropped some coins when I was out surfing. You should go hunt 'em down!" (Not having enough coins to buy something)
+        - "You don't have enough, dude. Been spendin' all your coins on these cool capsule toys?" (Not having enough coins to buy something)
+        - "Dude, come back anytime! Like, really, anytime. I get bored." (Leaving the shop)
+        - "Remember to work with your buddies, Kong. A little extra help might be what ya need to find some cool hidden stuff!" (Leaving the shop)
+        - "Those Snowmads are a gnarly bunch! I hear they're enjoyin' your island. Go get 'em, DK!" (Leaving the shop)
+        - "Be careful out there, bud. Me, I'll just hang out here, 'kay?" (Leaving the shop)
+        - "Keep your eyes open out there, dude--those areas might have some sweet secret passages!" (Leaving the shop)
+        - "Show those pesky penguins the radical righteousness of us supreme simians!" (Leaving the shop)
+        - "Fight the good fight, Kong-bro--stay primal!" (Leaving the shop)
+        - "Remember to take a break for some surfing. The waves around here are radical!" (Leaving the shop)
+        - "Catch a ride on a big, juicy wave for me!" (Leaving the shop)
+        - "Hurry up, bro! The surf out there is lookin' excellent, and I wanna catch me some tubular waves!" (Leaving the shop)
+        - "Be careful out there, Kong--this island looks like it's got a lot of gnarly creatures waitin' for ya!" (Leaving the shop in Mangrove Cove)
+        - "Those mountains are cool to look at, but totally not my style. This place is for the birds!" (Leaving the shop in Autumn Heights)
+        - "Grab some shade where you can, dude--that sun is smokin' hot!" (Leaving the shop in Bright Savannah)
+        - "Don't get lost in that tall grass, Kong" (Leaving the shop in Bright Savannah)
+        - "There's some pretty cool stuff down there. Grab a blue balloon and double your dive time, dude!" (Leaving the shop in Sea Breeze Cove)
+        - "Better you than me, Kong--I wouldn't wanna end up as fish food down there!" (Leaving the shop in Sea Breeze Cove)
+        - "Man, this is a pretty rockin' place, but where are all the giant bananas?!" (Leaving the shop in Juicy Jungle)
+        - "I hear ice-floe surfing is pretty big in some places. Hmmm…" (Leaving his shop on Donkey Kong Island)
+        - "Come back whenever you need the help, Kongs! Don't forget that you two can help each other out both above and below water!" (Leaving the shop)
+        - "Remember, Funky's the monkey for all your shoppin' needs!" (Leaving the shop)
+Nintendo Switch:
+    Super Smash Bros. Ultimate:
+        - "Hey, hey! Come kick it Kong-style!"
+        - "This spirit's the real deal! Feelin' funky? This one's for you!"
+        - "This spirit's the real deal! This one's a red-hot primary."
+        - "You wanna get your hands on this spirit?"
+        - "This tasty little dude can increase a spirit's level a bit!"
+        - "Oh yeah, sweet pick! That'll level up a spirit real nice."
+        - "This crunchy munchy has that power! It can level up a spirit A CRAZY amount!"
+        - "Decided you want some Adventure Skills? This item is your best friend!"
+        - "You wanna get your hands on this item?"
+        - "Nice choice!"
+        - "Sorry, I'm out of stock right now. Come back later-it'll be EPIC!"
+        - "Come back again! I'll be here!"
+Super Nintendo Entertainment System:
+    Donkey Kong Country:
+        - "Whoa, Dudes! My name's Funky Kong! My bodacious Jumbo Barrel can launch you to any point on the island!"
+        - "Most unfortunately, it can only send you to a place you've already been to... which is a complete and total bummer, let me tell you!"
+        - "You dudes need some lives or something? Jungle Hijinxs is the place for that!"
+        - "Yo Gorillas! Go see old man Cranky, he can help you out!"
+        - "If you guys see Candy on your way out, tell her I'll give her surfing lessons anytime!"
+        - "Yeah, crucial Kongs! If you feel the need for speed, jump in and like, jet!"
+        - "Fancy a flight, DK Dude? You know the score, hop in and high tail it!" (to Donkey Kong)
+        - "Whoa, Donkey dude! Maybe your little surf buddy's on another level. Go check 'em out!" (to Donkey Kong)
+        - "Yo Diddy cool! Lost the big guy again? Blast off back and see the scene!" (to Diddy Kong)
+        - "Still talking to yourself, huh? Check out the jungle, I'm sure you'll find your buddy!" (to Diddy Kong)
+        - "Lookin' good, Kongs! Buckle up and blast off, you're outta here!"
+    Donkey Kong Country 2: Diddy's Kong Quest:
+        - "Lookin' good, dudes! I'm Funky the main monkey, and my new Funky's Flights can take you anywhere on Crocodile Isle, provided you've already checked it out of course!"
+        - "Cruise on over to the barrel man, and ride the skies!"'
+        - "Everything is cool guys.[sic] You're lookin' ready to ride and catch some clouds!"
+        - "All flights cleared, dudes. Choose and cruise!"
+        - "Way cool! Pick a flight and you're outta sight!"
+        - "Pick it and kick it, Kongs! You're A-Okay!"
+        - "Drop in on the other Kongs, dudes. We're all here to help you guys!"
+        - "Jump in my jet n' jive, Clive!"
+        - "Awesome playing, Kongs! Go get that K. Rool. He just ain't cool!"
+        - "Wicked! She's all tuned up and ready to go!"
+        - "Cool! She's all yours dudes.[sic] Catch y'later!"
+        - "Check me out again, huh?"
+        - "Remember, Funky's the Monkey!"
+        - "I fly 24 hours y'know![sic]"
+        - "Stay loose, guys!"
+        - "Call again, good buddies!"
+        - "Catch y' later, dudes!"
+        - "Take it easy, Kongs!"
+    Donkey Kong Country 3: Dixie Kong's Double Trouble!:
+        - "Yo, Dixie, what's happening? I've set up my smokin' new boat shop on this island. But that's not all..."
+        - "...I've also brought your excellent cousin Kiddy Kong along for the ride!"
+        - "He may be a toddler, but if you let him throw you upwards, you'll almost reach the stars! Oh yeah!"
+        - "And if you throw him, his humongous body can smash through the floor of some areas! Trust me!"
+        - "What's up! Have you got me anything new I can use?"
+        - "Hey hey, Funky's in the zone! Cash is not a problem, Kongs, 'cause my boats you can loan."
+        - "I'm the tower of power, too sweet to be sour! Yo, Kongs, got anything new yet?"
+        - "Hey, Kiddy, take a break and catch some rays -- know what I mean?"
+        - "Since moving into this place, I've become a real grease monkey!"
+        - "I'm just hanging out today. Watching the ships come in, and then going out again!"
+        - "Cool and the gang, Kiddy! How's it going today?"
+        - "If you see that loser up at the big house, tell him to keep it down at night. I've got to get my beauty sleep!"
+        - "Any idea who that major dweeb who lives at the top of the island is?"
+        - "Oh yeah! Everything is whistlin', Kiddy!"
+        - "The guy in the big house is most uncool! If I were you, Dixie, I'd keep well away!"
+        - "Hey, those heinous boss men have got a hoard of items. If you find anything, bring it on back here, huh?"
+        - "Freak out! Freak out! Spare parts for my boats are what it's all about."
+        - "Uh uh. Yeah! What we're needing is some sort of spare part situation, you dig?"
+        - "Wicked! I only need a few more parts to get my vehicles going."
+        - "Keep looking out for those items, Kongs. I'm a few parts short for my new invention!"
+        - "Cool, dudes! I knew you'd be up for it. Right, here's what you need to do. Those Kremlings have cluttered up all my shortcuts downriver. Why don't you see if you can blast their scaly butts out of the water?"
+        - "Use the +Control Pad to steer your boat, the B Button to accelerate, and the A Button to fire your gun."
+        - "Destroy 10 and I'll reward you big-time!"
+        - "Oh dear, what happened, dudes? You need to try harder."
+        - "You sure showed those Kremlings. Here, take these as a small reward."
+        - "A patch? Oh yeah! This is just what I needed!"
+        - "Right, dudes, you ready for this? You need to steal the floating mines from the Kremlings before they can cause mayhem. They won't be happy about it, so expect a chase! Use your excellent steering skills to bring the mines across the safety zone marked with buoys."
+        - "Well done, dudes, you have cleared the river of those blasted mines. Here, take your reward."
+        - "Hang on for just a couple of seconds, Dixie/Kiddy/Kongs, and I'll get you a cool new tub for you to rub a dub dub!"
+        - "Whoa! Bogus docking, Kongs! Get my crate back in here before that clumsy Bazaar parks it on the rocks!"
+        - "Hey, Kongs - a ski! Not toooo shabby!"
+        - "Problem is, though, I'm going to need its partner before I can get you on your way."
+        - "Wahay! You've found two skis! Awesome! Now I've now got all the parts I need to make the ultimate ride!"
+        - "Wait right there, Dixie/Kiddy/Kongs, while I bring you my latest and greatest boat yet!"
+        - "Bonkers! I've built in a cool turbo feature that'll be sure to take you to new heights! Just press the B button!"
+        - "Ready for some Hovercraft action? All the Kongs have decided to go swimming... right outside the Kremling stronghold. Duh. Defend them from the Kremling kidnappers until help arrives! You gotta have at least one Kong left to complete the challenge."
+        - "Yo, dudes, the Kong family is back safely. Here, take these."
+        - "Hey! Someone's told you I've been extra busy lately. Well...it's something a bit special."
+        - "If you can find all the DK coins, you can put them down as a deposit on my ultimate ride. Come back when you've got some more, Dixie/Kiddy/Kongs! I'll keep you informed on how close to the jackpot you are."
+        - "You're still 1-40 coin(s) short of the deposit for my top gear!"
+        - "Unbelievable type of a situation! You've found all of the DK coins!"
+        - "I'm sorry, Dixie/Kiddy/Kongs, I didn't think you'd actually find them all, so I've got nothing new to show you!"
+        - "Hey, Dixie/Kiddy/Kongs, just kidding, you know? May I introduce you to my finest and coolest creation yet, the Funky-Copter!"
+        - "Back again? Radical. This time you need to use the Turbo Ski to beat your opponents to the finish line. Do three laps of the track to complete the challenge!"
+        - "Yo, dudes, you flew around that track. Here, take these."
+        - "Well done, dudes! You have passed all my challenges."
+        - "Here, take this strange-looking bird. I am sure it will come in useful."
+        - "Time to catch some rays."
+        - "Don't stay away for too long, huh?"
+        - "Bust a move, gotta groove!"
+        - "Gotta go, Kongs. Surf's up."
+        - "Take it real easy, Kongs."
+        - "Hang five, Kongs."
+        - "Catch you later, Dixie/Kiddy/Kongs."
+        - "I'll be seein' ya later, Kongs."
+Nintendo GameBoy Color:
+    Donkey Kong Country:
+        - "Woah, Dudes! I'm Funky Kong!"
+        - "My rad Jumbo Barrel can get you to any point on the island!"
+        - "But it only sends you to places you've already been..."
+        - "Major bummer!"
+        - "Hey, dudes, tell Candy she can ride my wave anytime!"
+        - "Looking good, Kongs! Belt up. Blast off. You're outta sight!"
+        - "Yeah, Kongs! Like, jump in and, like, um, jet outta here!"
+        - "Yo, Gorillas! Seek the Cranky one, the guru of game stuff!"
+        - "Need some lives? Get on down to Jungle Hijinxs."
+        - "Dudeski, your bud has gotta be on a level somewhere!"
+        - "Fancy a flight, DK? You know the score. Hop in and grab air!"
+        - "Lookin' good, Kongs! Belt up. Blast off. You're outta sight!"
+        - "Yo, Diddy! Lost the big guy again? Hop in and have a look!"
+        - "Where's your pal? Try checking the jungle for your bud!"
+Nintendo GameBoy Advanced:
+    Donkey Kong Country:
+        - "Hi. I'm Funky Kong! See my rad barrels. They're way cool. The Jumbo Barrel can get you around this island in no time. But it only travels to places you have already visited."
+        - "The other barrel, the one with the hook, will take you to my most excellent fishing pools."
+        - "To choose a barrel, just move underneath it and press the A Button. To exit my hut, just press Right on the Control Pad."
+        - "Right, let's get going. Did you know that you can enter the Jumbo Barrel at any time while on the world maps?"
+        - "Simply press START and select the icon with my face on it. I'll be there in a flash."
+        - "Cool move! You'll like this. I will set a challenge for you to beat. If you are successful, I will reward you with some wicked items."
+        - "Here's what you need to do. Use the Control Pad to move Enguarde Left and Right. When you are ready to strike, press the A Button. This will haul the catch from the water. Simply place it in the boat to make it yours."
+        - "Right on, man. My first challenge is to catch 20 or more of those red fish within the time limit. The more you catch, the better the prize." (introduction to the Kongo Jungle challenge, "Twenty Red Fish")
+        - "One thing, though. Don't hook anything but the red ones."
+        - "Record catch is [number] red fish."
+        - "This time I would like you to catch 15 Croctopus within the time limit. Be careful not to hook any bottles, as those will reduce your time left. Not good, man!" (introduction to the Monkey Mines challenge, Croctopus Cull)
+        - "Record catch is [number] Croctopus."
+        - "Dude, these waters are full of sharks. Help me clear them out and I'll give you more excellent things. Try to hook ten within the time limit. One thing, though. Don't hook anything but sharks." (introduction to the Vine Valley challenge, Chump Chomps)
+        - "Record catch is [number] Chomps Jr."
+        - "Right, mate, this time you must catch as many Squidges as you can within the time limit. I reckon 50 should be no problem. Get going." (introduction to the Gorilla Glacier challenge, Squidgin Time)
+        - "Record catch is [number] Squidges."
+        - "Bummer, the water is all full of trash. Collect as much as possible within the time limit. The more trash collected, the better my reward. Haul in at least 10 pieces of trash and remember, don't hook any fish!" (introduction to the Kremkroc Industries, Inc. challenge, Out With the Trash)
+        - "Best clean-up is [number] pieces of trash."
+        - "Right, dude, this is a tricky one. The timer will start very low. You must try to catch more than one same-colored fish at a time; the more on the hook, the greater the kombo. Once you get a kombo, you will gain more time. Fill the timer to complete the challenge." (introduction to the Chimp Caverns challenge, Let's Go a Kombo'in)
+        - "Biggest kombo is [number]"
+        - "Oh, dear! I think you had better try again."
+        - "Well done, dude! Here, take this reward!"
+        - "Bummer! I think you had better try again. I see you did manage to catch that pesky crab, though. Here, take this."
+        - "Well done, dude! Cool fishing! And you caught that pesky crab! Here, take these as a reward!"
+        - "Hey, dudes, tell Candy she can ride my wave anytime!"
+        - "Looking good, Kongs! Belt up. Blast off. You're outta sight!"
+        - "Yeah, Kongs! Like, jump in and, like, um, jet outta here!"
+        - "Yo, Gorillas! Seek the Cranky one, the guru of game stuff!"
+        - "Need some lives? Get on down to Jungle Hijinxs."
+        - "Hey, man! Try my fishing challenge!"
+        - "Dudeski, your bud has gotta be on a level somewhere!"
+        - "Fancy a flight, DK? You know the score. Hop in and grab air!"'
+        - "Lookin' good, Kongs! Belt up. Blast off. You're outta sight!"'
+        - "Yo, Diddy! Lost the big guy again? Hop in and have a look!"
+        - "Where's your pal? Try checking the jungle for your bud!"
+        - "Fancy your chances! Try my fishing challenge!"
+        - "Yeah, wicked, man!"
+        - "I'm bailing out, dudes!"
+    Donkey Kong Country 2: Diddy's Kong Quest:
+        - "Woah! Dude, come in and join me. The waves are excellent."
+        - "Wait 'til tomorrow, and we will all go."
+        - "Lookin' good, dudes! I'm Funky the main monkey, and my new Funky's Flights can take you anywhere on Crocodile Isle, provided you're already checked it out, of course! Unfortunately, I'm overrun with business at the moment, so I'm far too bust to help you guys out. Don't worry, though. I'm sure we can come to some arrangement."
+        - "I know! I will lend you one of my copters, but only if you can prove you can fly it."
+        - "Cruise on over and jump in the barrel, man. Go ride the skies!"
+        - "Right, dudes, listen up. This is how you fly. Use the  to steer the Gyrocopter."
+        - "Pressing the  button will fire the main fun. Have you got all that?"
+        - "This is a piece of cake. All you have to do is take off and fly through twenty rings. You can pass through each ring in any direction. Slowly land at the helipad to complete the mission. You have five minutes of fuel. Good luck!"
+        - "Awesome, guys. You sure got the hang of flying."
+        - "You are now free to use the copter whenever you need it. Just access your inventory by pressing START and choose Gyrocopter."
+        - "One more thing. I could use a good pilot."
+        - "Come back to see me. I have plenty of jobs on the go."
+        - "Here, take this. Many thanks, guys."
+        - "What happened, dudes? You bailed before the mission was completed. I think you need to try again."
+        - "I think I'll catch some rays now!"
+        - "Woah, dude, you back again? I have just the job for you, but you must learn to fly using advanced controls."
+        - "Pressing the  button will lock your facing direction, allowing you to shoot while moving backwards. Pressing the  button will make the copter face forward; useful in tight situations. One thing, though. While in this mode, you can only drop bombs."
+        - "I need you to take a chest to the second landing zone. There is one problem. The way ahead is flooded. The Gyrocopter can only hold so much air, so keep a close eye on the gauge in the bottom right corner of the screen. Press SELECT to release the winch; it will automatically hook onto the chest. Press SELECT again to retract the winch. One more thing. You'll need to pick up some ammo packs and blast your way through any blockages."
+        - "This is a long-haul mission. I have filled her up to the max. You have ten minutes of flyin' time. Don't waste it."
+        - "Not cool, dude!"
+        - "Ouch!"
+        - "Cool, dude!"
+        - "Well done, guys. You did it. The chest is still in one piece."
+        - "Thanks for your help. Take this Hero Coin."
+        - "Back again? This mission is quite tricky."
+        - "The Kremlings have destroyed the DK statue. Find the pieces and reconstruct it. To hook a statue piece, press SELECT to release the winch. Pressing SELECT again will drop off anything on the rope. One more thing. Keep a close eye on any statue pieces rebuilt, as they might go missing. You have five minutes of fuel, so get going."
+        - "Wow! You sure know how to handle that old bird."
+        - "Here is your reward."
+        - "Come on, dudes, I need your help."
+        - "Zingers have attacked Kong Island and kidnapped members of the Kong family. Go and rescue them. To pick up a passenger, land beside them and they will jump right in. Once they're on board, take them back to the helipad. You must rescue six hostages to complete this mission. She's all gassed up and ready to go. You have five minutes flying time."
+        - "Well done. Take this Hero Coin as a small reward."
+        - "Hey, man, I'm glad you're back. I need your help."
+        - "I have dropped my ghetto blaster in the icy water below. Go and get it for me. Shoot the buttons hanging on the wall to lower the water. You only have three minutes of juice, so you better get going, dude!"
+        - "Well done! I can now listen to the DK rap all night long."
+        - "Here is your reward."
+        - "Back again! Ready to hit the skies again?"
+        - "The Kongs have been out exploring but have got themselves trapped. Go and rescue them. Raise and lower the water level using the buttons mounted on the walls. I didn't have time to fill her up. You only have three minutes flying time."
+        - "Well done, guys. Take this as your reward."
+        - "So, dude, think you're a pro pilot now, do you?"
+        - "Rebuild the DK statue, but beware of entering the toxic waste. The Gyrocopter will explode with the slightest touch of that green filth. Use the buttons on the walls to lower the waste, then nip in and retrieve the statue parts."
+        - "Nice flying! I thought you'd struggle with that mission. Here, take this."
+        - "You guys sure know how to fly my old bird. Here, take this photo as a token of my appreciation."
+        - "Hey, man! You have already completed this mission. I'm not paying you twice."
+        - "You did get a new best time, though!"
+Book:
+    Donkey Kong Country: Rumble in the Jungle:
+        - "Just surfing the wind currents, dudes. Nothing to get uptight about. Stay mellow, stay cool."
+        - "That used to be the biggest city on Donkey Kong Island. It's called Big Ape City."
+        - "I don't go looking for trouble, and most of the time it doesn't come looking for me."

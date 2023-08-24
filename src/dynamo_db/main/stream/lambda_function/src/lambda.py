@@ -1,4 +1,42 @@
 from typing import Any, Dict, List, Literal, Union, TypedDict
+from boto3.dynamodb.types import (
+    BINARY,
+    BINARY_SET,
+    BOOLEAN,
+    LIST,
+    MAP,
+    NULL,
+    NUMBER,
+    NUMBER_SET,
+    STRING,
+    STRING_SET,
+)
+
+
+DynamoDBBinary = Dict[BINARY, str]
+DynamoDBBinarySet = Dict[BINARY_SET, List[str]]
+DynamoDBBoolean = Dict[BOOLEAN, bool]
+DynamoDBList = Dict[LIST, List[Any]]
+DynamoDBMap = Dict[MAP, Dict[Any, Any]]
+DynamoDBNull = Dict[NULL, str]
+DynamoDBNumber = Dict[NUMBER, str]
+DynamoDBNumberSet = Dict[NUMBER_SET, List[str]]
+DynamoDBString = Dict[STRING, str]
+DynamoDBStringSet = Dict[STRING_SET, List[str]]
+
+
+DynamoDBValue = Union[
+    DynamoDBBinary,
+    DynamoDBBinarySet,
+    DynamoDBBoolean,
+    DynamoDBList,
+    DynamoDBMap,
+    DynamoDBNull,
+    DynamoDBNumber,
+    DynamoDBNumberSet,
+    DynamoDBString,
+    DynamoDBStringSet,
+]
 
 
 class EventRecordDynamoDB(TypedDict):
