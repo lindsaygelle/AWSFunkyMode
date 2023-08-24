@@ -3,6 +3,7 @@ import hashlib
 import json
 import boto3
 import pytz
+import re
 import concurrent.futures
 
 
@@ -25,9 +26,13 @@ class ComprehendDetect:
         :return: The list of entities along with their confidence scores.
         """
         try:
-            return self.comprehend_client.detect_entities(
+            response = self.comprehend_client.detect_entities(
                 Text=text, LanguageCode=language_code
             )
+            response = convert_to_snake_case(response.get("Entities"))
+            for i in range(len(response)):
+                response[i] = {**response[i], **{"order": i}}
+            return response
         except Exception:
             print("Couldn't detect entities.")
             raise
@@ -42,9 +47,13 @@ class ComprehendDetect:
         :return: The list of key phrases along with their confidence scores.
         """
         try:
-            return self.comprehend_client.detect_key_phrases(
+            response = self.comprehend_client.detect_key_phrases(
                 Text=text, LanguageCode=language_code
             )
+            response = convert_to_snake_case(response.get("KeyPhrases"))
+            for i in range(len(response)):
+                response[i] = {**response[i], **{"order": i}}
+            return response
         except Exception:
             print("Couldn't detect phrases.")
             raise
@@ -59,9 +68,13 @@ class ComprehendDetect:
         :return: The list of PII entities along with their confidence scores.
         """
         try:
-            return self.comprehend_client.detect_pii_entities(
+            response = self.comprehend_client.detect_pii_entities(
                 Text=text, LanguageCode=language_code
             )
+            response = convert_to_snake_case(response.get("Entities"))
+            for i in range(len(response)):
+                response[i] = {**response[i], **{"order": i}}
+            return response
         except Exception:
             print("Couldn't detect PII entities.")
             raise
@@ -77,9 +90,13 @@ class ComprehendDetect:
         :return: The list of syntax tokens along with their confidence scores.
         """
         try:
-            return self.comprehend_client.detect_syntax(
+            response = self.comprehend_client.detect_syntax(
                 Text=text, LanguageCode=language_code
             )
+            response = convert_to_snake_case(response.get("SyntaxTokens"))
+            for i in range(len(response)):
+                response[i] = {**response[i], **{"order": i}}
+            return response
         except Exception:
             print("Couldn't detect syntax.")
             raise
@@ -94,44 +111,56 @@ class ComprehendDetect:
         :return: The sentiments along with their confidence scores.
         """
         try:
-            return self.comprehend_client.detect_sentiment(
+            response = self.comprehend_client.detect_sentiment(
                 Text=text, LanguageCode=language_code
             )
+            return {
+                "sentiment": response.get("Sentiment"),
+                "sentiment_score": convert_to_snake_case(
+                    response.get("SentimentScore")
+                ),
+            }
         except Exception:
             print("Couldn't detect sentiment.")
             raise
 
 
-def process_quote(quote: str, detect: ComprehendDetect, current_utc_time: datetime):
+def convert_to_snake_case(data):
+    if isinstance(data, dict):
+        content = {}
+        for key, value in data.items():
+            content[get_snake_case(key)] = convert_to_snake_case(value)
+        return content
+    elif isinstance(data, list):
+        return [convert_to_snake_case(item) for item in data]
+    else:
+        return data
+
+
+def get_abbreviation(name):
+    return "".join(
+        [
+            i if i.isnumeric() or len(i) == 2 else i[0]
+            for i in re.sub("[^a-zA-Z0-9\s]", "", name.upper()).split(" ")
+        ]
+    )
+
+
+def get_snake_case(value):
+    value = re.sub(r"(?<!^)(?=[A-Z])", "_", value)
+    return value.lower()
+
+
+def process_quote(quote: str, detect: ComprehendDetect):
     processed_quote = {
-        "CreatedAt": str(current_utc_time),
-        "Entities": detect.detect_entities(quote),
-        "KeyPhrases": detect.detect_key_phrases(quote),
-        "MD5": hashlib.md5(quote.encode("utf-8")).hexdigest(),
-        "Pii": detect.detect_pii(quote),
-        "Quote": quote,
-        "SHA256": hashlib.sha256(quote.encode("utf-8")).hexdigest(),
-        "Sentiment": detect.detect_sentiment(quote),
-        "Syntax": detect.detect_syntax(quote),
-        "UpdatedAt": str(current_utc_time),
+        "entities": detect.detect_entities(quote),
+        "key_phrases": detect.detect_key_phrases(quote),
+        "pii": detect.detect_pii(quote),
+        "sentiment": detect.detect_sentiment(quote),
+        "syntax": detect.detect_syntax(quote),
+        "text": quote,
     }
     return processed_quote
-
-
-def process_quotes(quotes, detect):
-    processed_quotes = []
-    current_utc_time = datetime.now(pytz.utc)
-
-    with concurrent.futures.ThreadPoolExecutor() as executor:
-        futures = [
-            executor.submit(process_quote, quote, detect, current_utc_time)
-            for quote in quotes
-        ]
-
-        for future in concurrent.futures.as_completed(futures):
-            processed_quotes.append(future.result())
-
-    return processed_quotes
 
 
 def main():
@@ -143,26 +172,42 @@ def main():
 
     with open(input_filename, mode="r") as fp:
         data = json.load(fp)
-        contents = []
+        contents = {"consoles": []}
 
-        for game in data:
-            content = {
-                "Consoles": [],
-                "Name": game["Name"],
-            }
-            consoles = game["Consoles"]
+        def process_game_quote(game, detect):
+            processed_quotes = []
+            for quote in game["quotes"]:
+                processed_quotes.append(process_quote(quote, detect))
+            return processed_quotes
 
-            for console in consoles:
+        with concurrent.futures.ThreadPoolExecutor() as executor:
+            for console in data["consoles"]:
                 content_console = {
-                    "Name": console["Name"],
-                    "Quotes": process_quotes(console["Quotes"], detect),
+                    "abbreviation": get_abbreviation(console["name"]),
+                    "games": [],
+                    "name": console["name"],
                 }
-                content["Consoles"].append(content_console)
+                contents["consoles"].append(content_console)
 
-            contents.append(content)
+                game_futures = []
+                for game in console["games"]:
+                    game_future = executor.submit(process_game_quote, game, detect)
+                    game_futures.append((game_future, game))
+
+                for game_future, game in game_futures:
+                    content_game = {
+                        "abbreviation": get_abbreviation(game["name"]),
+                        "name": game["name"],
+                        "quotes": game_future.result(),
+                    }
+                    content_console["games"].append(content_game)
 
         with open(output_filename, mode="w") as output_fp:
             json.dump(contents, output_fp, indent=4, sort_keys=True)
+
+
+if __name__ == "__main__":
+    main()
 
 
 if __name__ == "__main__":

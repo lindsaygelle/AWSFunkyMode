@@ -12,55 +12,63 @@ def process_line(line):
     return indentation, text
 
 
-def create_new_game(name):
-    return {"Name": name, "Consoles": []}
+def process_text(text: str):
+    if text.endswith(":"):
+        text = text.removesuffix(":")
+    if text.startswith("-"):
+        text = text.removeprefix("-")
+    return text.strip()
 
 
-def add_game_to_list(game, games):
-    games.append(game)
+def create_new_console(name):
+    return {"name": process_text(name), "games": []}
 
 
-def add_console_to_game(game, console_name):
-    console = {"Name": console_name, "Quotes": []}
-    game["Consoles"].append(console)
+def add_console_to_list(game, consoles):
+    consoles.append(game)
 
 
-def add_quote_to_console(game, quote):
+def add_game_to_console(game, console_name):
+    console = {"name": process_text(console_name), "quotes": []}
+    game["games"].append(console)
+
+
+def add_quote_to_game(game, quote):
     quote = quote.replace('"', "").replace("[sic]", "")
-    game["Consoles"][-1]["Quotes"].append(quote)
+    game["games"][-1]["quotes"].append(process_text(quote))
 
 
 def sort_quotes(console):
-    console["Quotes"] = sorted(console["Quotes"])
+    console["quotes"] = sorted(console["quotes"])
 
 
 def save_to_json(data, output_filename):
     with open(output_filename, encoding="utf-8", mode="w") as fp:
-        json.dump(data, fp, indent=4, sort_keys=True)
+        json.dump({"consoles": data}, fp, indent=4, sort_keys=True)
 
 
 def parse_game_data(lines):
-    games = []
-    current_game = None
+    consoles = []
+    current_console = None
 
     for line in lines:
         indentation, text = process_line(line)
 
         if indentation == 0:
-            if current_game:
-                add_game_to_list(current_game, games)
-            current_game = create_new_game(text)
+            if current_console:
+                add_console_to_list(current_console, consoles)
+            current_console = create_new_console(text)
         elif indentation == 4:
-            if current_game:
-                add_console_to_game(current_game, text)
+            if current_console:
+                add_game_to_console(current_console, text)
         elif indentation == 8:
-            if current_game and current_game["Consoles"]:
-                add_quote_to_console(current_game, text)
+            if current_console and current_console["games"]:
+                add_quote_to_game(current_console, text)
 
-    if current_game:
-        add_game_to_list(current_game, games)
+    if current_console:
+        add_console_to_list(current_console, consoles)
 
-    return games
+    return consoles
 
 
 def main():
@@ -71,7 +79,7 @@ def main():
     parsed_data = parse_game_data(lines)
 
     for game in parsed_data:
-        for console in game["Consoles"]:
+        for console in game["games"]:
             sort_quotes(console)
 
     save_to_json(parsed_data, output_filename)
