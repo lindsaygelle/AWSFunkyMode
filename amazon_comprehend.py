@@ -138,6 +138,7 @@ def convert_to_snake_case(data):
 
 
 def get_abbreviation(name):
+    name = re.sub(r"(?<=[a-z])(?=[A-Z])", " ", name)
     return "".join(
         [
             i if i.isnumeric() or len(i) == 2 else i[0]

@@ -343,60 +343,170 @@ type UserConnection {
 
 type Mutation {
     create_console(input: CreateConsoleInput): Console
+    @aws_api_key
+
     delete_console(id: ID!): Console
+    @aws_api_key
+
     create_game(input: CreateGameInput): Game
+    @aws_api_key
+
     delete_game(id: ID!): Game
+    @aws_api_key
+
     create_quote(input: CreateQuoteInput): Quote
+    @aws_api_key
+
     delete_quote(id: ID!): Quote
+    @aws_api_key
+
     create_entity(input: CreateEntityInput): Entity
+    @aws_api_key
+
     delete_entity(id: ID!): Entity
+    @aws_api_key
+
     create_key_phrase(input: CreateKeyPhraseInput): KeyPhrase
+    @aws_api_key
+
     delete_key_phrase(id: ID!): KeyPhrase
+    @aws_api_key
+
     create_pii(input: CreatePiiInput): Pii
+    @aws_api_key
+
     delete_pii(id: ID!): Pii
+    @aws_api_key
+
     create_sentiment(input: CreateSentimentInput): Sentiment
+    @aws_api_key
+
     delete_sentiment(id: ID!): Sentiment
+    @aws_api_key
+
     create_sentiment_score(input: CreateSentimentScoreInput): SentimentScore
+    @aws_api_key
+
     delete_sentiment_score(id: ID!): SentimentScore
+    @aws_api_key
+
     create_syntax_token(input: CreateSyntaxTokenInput): SyntaxToken
+    @aws_api_key
+
     delete_syntax_token(id: ID!): SyntaxToken
+    @aws_api_key
+
     create_syntax_token_part_of_speech(input: CreateSyntaxTokenPartOfSpeechInput): SyntaxTokenPartOfSpeech
+    @aws_api_key
+
     delete_syntax_token_part_of_speech(id: ID!): SyntaxTokenPartOfSpeech
+    @aws_api_key
+
     create_user(input: CreateUserInput): User
+    @aws_api_key
+
     delete_user(id: ID!): User
+    @aws_api_key
+
     create_quote_subscription(input: CreateQuoteSubscriptionInput): QuoteSubscription
+    @aws_api_key
+
     delete_quote_subscription(id: ID!): QuoteSubscription
+    @aws_api_key
+
     create_quote_subscription_rule(input: CreateQuoteSubscriptionRuleInput): QuoteSubscriptionRule
+    @aws_api_key
+
     delete_quote_subscription_rule(id: ID!): QuoteSubscriptionRule
+    @aws_api_key
+
 }
 
 type Query {
     get_console(id: ID!): Console
+    @aws_api_key
+
     get_console_connection(limit: Int, next_token: String): ConsoleConnection
+    @aws_api_key
+
     get_game(id: ID!): Game
+    @aws_api_key
+
     get_game_connection(limit: Int, next_token: String): GameConnection
+    @aws_api_key
+
     get_quote(id: ID!): Quote
+    @aws_api_key
+
     get_quote_connection(limit: Int, next_token: String): QuoteConnection
+    @aws_api_key
+
     get_entity(id: ID!): Entity
+    @aws_api_key
+
     get_entity_connection(limit: Int, next_token: String): EntityConnection
+    @aws_api_key
+
     get_key_phrase(id: ID!): KeyPhrase
+    @aws_api_key
+
     get_key_phrase_connection(limit: Int, next_token: String): KeyPhraseConnection
+    @aws_api_key
+
     get_pii(id: ID!): Pii
+    @aws_api_key
+
     get_pii_connection(limit: Int, next_token: String): PiiConnection
+    @aws_api_key
+
     get_sentiment(id: ID!): Sentiment
+    @aws_api_key
+
     get_sentiment_connection(limit: Int, next_token: String): SentimentConnection
+    @aws_api_key
+
     get_sentiment_score(id: ID!): SentimentScore
+    @aws_api_key
+
     get_sentiment_score_connection(limit: Int, next_token: String): SentimentScoreConnection
+    @aws_api_key
+
     get_syntax_token(id: ID!): SyntaxToken
+    @aws_api_key
+
     get_syntax_token_connection(limit: Int, next_token: String): SyntaxTokenConnection
+    @aws_api_key
+
     get_syntax_token_part_of_speech(id: ID!): SyntaxTokenPartOfSpeech
+    @aws_api_key
+
     get_syntax_token_part_of_speech_connection(limit: Int, next_token: String): SyntaxTokenPartOfSpeechConnection
+    @aws_api_key
+
     get_user(id: ID!): User
+    @aws_api_key
+    @aws_cognito_user_pools
+
     get_user_connection(limit: Int, next_token: String): UserConnection
+    @aws_api_key
+    @aws_cognito_user_pools
+
     get_quote_subscription(id: ID!): QuoteSubscription
+    @aws_api_key
+    @aws_cognito_user_pools
+
     get_quote_subscription_connection(limit: Int, next_token: String): QuoteSubscriptionConnection
+    @aws_api_key
+    @aws_cognito_user_pools
+
     get_quote_subscription_rule(id: ID!): QuoteSubscriptionRule
+    @aws_api_key
+    @aws_cognito_user_pools
+
     get_quote_subscription_rule_connection(limit: Int, next_token: String): QuoteSubscriptionRuleConnection
+    @aws_api_key
+    @aws_cognito_user_pools
+
 }
 
 schema {

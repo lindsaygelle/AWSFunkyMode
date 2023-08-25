@@ -4,6 +4,7 @@ from http.client import HTTPResponse
 from urllib.request import Request, urlopen
 from uuid import NAMESPACE_DNS, UUID, uuid5
 import json
+import logging
 import os
 
 
@@ -214,29 +215,34 @@ def make_app_sync_request_mutation(
 
 
 def handler(event: Event, context: Any) -> Response:
+    logging.info(event)
     body: Optional[KeyPhrase] = None
     headers: HTTPHeaders = {"Content-Type": "application/json"}
     status_code: int = HTTPStatus.OK.value
     try:
         event_body: KeyPhraseMutation = json.loads(event.get("body"))
         event_body["id"] = uuid5(NAMESPACE_DNS, json.dumps(event_body, sort_keys=True))
-        print(event_body)
+        logging.info(event_body)
         event_headers = event.get("headers")
-        print(event_headers)
+        logging.info(event_headers)
         response: HTTPResponse = make_app_sync_request_mutation(
             event_body, event_headers
         )
         response_data: AppSyncResponse = json.load(response)
-        print(response_data)
-        body = response_data.get("data", {}).get("create_key_phrase")
+        logging.info(response_data)
+        body = response_data.get("data")
+        if isinstance(body, dict):
+            body = body.get("create_key_phrase")
         headers = {**headers, **response.headers}
         status_code = response.status
         errors: AppSyncResponseError = response_data.get("errors")
         if isinstance(errors, list):
-            print(errors)
+            logging.error(errors)
             status_code = HTTPStatus.BAD_REQUEST.value
     except Exception as e:
+        logging.error(e)
         status_code = HTTPStatus.BAD_REQUEST.value
+    logging.info({"body": body, "headers": headers, "status_code": status_code})
     return Response(
         body=json.dumps(body),
         headers=headers,
