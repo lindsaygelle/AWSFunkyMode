@@ -3,6 +3,7 @@ from http import HTTPStatus
 from http.client import HTTPResponse
 from urllib.request import Request, urlopen
 import json
+import logging
 import os
 
 
@@ -187,31 +188,36 @@ def make_app_sync_request_query(
 
 
 def handler(event: Event, context: Any) -> Response:
+    logging.info(event)
     body: Optional[KeyPhrase] = None
-    headers: HTTPHeader = {"Content-Type": "application/json"}
+    headers: HTTPHeaders = {"Content-Type": "application/json"}
     status_code: int = HTTPStatus.OK.value
     try:
         path_parameters = event.get("pathParameters", {})
         event_body = {
             "id": path_parameters.get("id"),
         }
-        print(event_body)
+        logging.info(event_body)
         event_headers = event.get("headers")
-        print(event_headers)
+        logging.info(event_headers)
         response: HTTPResponse = make_app_sync_request_query(event_body, event_headers)
         response_data: AppSyncResponse = json.load(response)
-        print(response_data)
+        logging.info(response_data)
+        body = response_data.get("data")
+        if isinstance(body, dict):
+            body = body.get("get_key_phrase")
         headers = {**headers, **response.headers}
-        content = response_data.get("data", {}).get("get_key_phrase")
-        status = response.status
+        status_code = response.status
         errors: AppSyncResponseError = response_data.get("errors")
         if isinstance(errors, list):
-            print(errors)
+            logging.error(errors)
             status_code = HTTPStatus.BAD_REQUEST.value
     except Exception as e:
+        logging.error(e)
         status_code = HTTPStatus.BAD_REQUEST.value
+    logging.info({"body": body, "headers": headers, "status_code": status_code})
     return Response(
-        body=json.dumps(content),
+        body=json.dumps(body),
         headers=headers,
         statusCode=status_code,
     )

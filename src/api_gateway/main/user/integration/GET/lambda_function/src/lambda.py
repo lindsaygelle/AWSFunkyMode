@@ -3,6 +3,7 @@ from http import HTTPStatus
 from http.client import HTTPResponse
 from urllib.request import Request, urlopen
 import json
+import logging
 import os
 
 
@@ -185,6 +186,7 @@ def make_app_sync_request_query(
 
 
 def handler(event: Event, context: Any) -> Response:
+    logging.info(event)
     body: Optional[UserConnection] = None
     headers: HTTPHeaders = {"Content-Type": "application/json"}
     status_code: int = HTTPStatus.OK.value
@@ -194,21 +196,25 @@ def handler(event: Event, context: Any) -> Response:
             "limit": query_string_parameters.get("limit"),
             "next_token": query_string_parameters.get("next_token"),
         }
-        print(event_body)
+        logging.info(event_body)
         event_headers = event.get("headers")
-        print(event_headers)
+        logging.info(event_headers)
         response: HTTPResponse = make_app_sync_request_query(event_body, event_headers)
         response_data: AppSyncResponse = json.load(response)
-        print(response_data)
-        body = (response_data.get("data") or {}).get("get_user_connection")
+        logging.info(response_data)
+        body = response_data.get("data")
+        if isinstance(body, dict):
+            body = body.get("get_user_connection")
         headers = {**headers, **response.headers}
-        status = response.status
+        status_code = response.status
         errors: AppSyncResponseError = response_data.get("errors")
         if isinstance(errors, list):
-            print(errors)
+            logging.error(errors)
             status_code = HTTPStatus.BAD_REQUEST.value
     except Exception as e:
+        logging.error(e)
         status_code = HTTPStatus.BAD_REQUEST.value
+    logging.info({"body": body, "headers": headers, "status_code": status_code})
     return Response(
         body=json.dumps(body),
         headers=headers,

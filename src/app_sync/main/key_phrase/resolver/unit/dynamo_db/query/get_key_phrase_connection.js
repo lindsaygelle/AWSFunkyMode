@@ -6,7 +6,7 @@ import { util } from "@aws-appsync/utils";
  * @returns {import('@aws-appsync/utils').DynamoDBQueryRequest} the request
  */
 export function request(ctx) {
-  const { limit = 20, next_token = null } = ctx.args;
+  const { limit, next_token } = ctx.args;
   const query = JSON.parse(
     util.transform.toDynamoDBConditionExpression({
       pk: {
